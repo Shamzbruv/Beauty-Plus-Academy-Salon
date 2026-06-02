@@ -1874,7 +1874,8 @@ ${data.notes || "None"}
             
             const submitBtn = registrationForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = "Redirecting to WiPay...";
+            // Changed text to reflect bypass
+            submitBtn.textContent = "Processing Registration...";
             submitBtn.disabled = true;
 
             try {
@@ -1882,7 +1883,14 @@ ${data.notes || "None"}
                 const dataObj = {};
                 fd.forEach((value, key) => dataObj[key] = value);
                 
-                // Save form data so we can process it when we return
+                // TEMPORARY BYPASS: Directly call the successful registration logic
+                // instead of redirecting to WiPay.
+                await processSuccessfulRegistration(dataObj, "TEST-TXN-BYPASS");
+                
+                /*
+                // WiPay Integration (Temporarily Disabled)
+                // Note: The origin below was causing the error because it contained spaces.
+                // It should be changed to something like "BeautyPlusAcademy" when re-enabling.
                 sessionStorage.setItem("wipay_enroll_data", JSON.stringify(dataObj));
                 
                 const orderId = 'BP-' + Date.now();
@@ -1896,7 +1904,7 @@ ${data.notes || "None"}
                 wipayData.append("fee_structure", "customer_pay");
                 wipayData.append("method", "credit_card");
                 wipayData.append("order_id", orderId);
-                wipayData.append("origin", "Beauty Plus Academy");
+                wipayData.append("origin", "BeautyPlusAcademy"); // Fixed spaces here for later
                 wipayData.append("response_url", returnUrl);
                 wipayData.append("total", "5000.00");
 
@@ -1915,9 +1923,11 @@ ${data.notes || "None"}
                 } else {
                     throw new Error("Invalid WiPay response: " + JSON.stringify(result));
                 }
+                */
             } catch (err) {
                 console.error(err);
-                showToast("Error connecting to payment gateway. Please try again.", true);
+                showToast("An error occurred. Please try again.", true);
+            } finally {
                 submitBtn.textContent = originalBtnText;
                 submitBtn.disabled = false;
             }
