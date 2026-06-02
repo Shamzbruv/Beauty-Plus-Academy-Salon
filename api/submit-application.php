@@ -13,9 +13,9 @@ function jsonResponse(int $status, array $payload): never
 function resendRequest(array $payload, string $idempotencyKey): array
 {
     // The API key should ideally be stored in an environment variable or secure config file
-    $apiKey = 're_123456789'; // TODO: Replace with your actual Resend API Key
+    $apiKey = 're_J8gX3FL2_Ngqtn6jRv3MUFoPpa8tmQioi';
     
-    if (empty($apiKey) || $apiKey === 're_123456789') {
+    if (empty($apiKey)) {
         throw new RuntimeException('RESEND_API_KEY is missing or invalid.');
     }
 
@@ -129,8 +129,8 @@ try {
     $base64Pdf = base64_encode($pdfContent);
 
     $payload = [
-        // TODO: Replace 'admissions@yourdomain.com' with your actual verified sending domain in Resend
-        'from' => 'Beauty Plus Academy <admissions@yourdomain.com>',
+        // Note: You may want to change this to your actual verified domain in Resend later
+        'from' => 'Beauty Plus Academy <admissions@beautyplusacademyandsalon.com>',
         'to' => ['forresterpetagay30@gmail.com'], // Send to the academy's email
         'reply_to' => [$clientEmail], // Applicant's email so you can reply to them
         'subject' => "New Application (Paid) - {$applicantName}",
