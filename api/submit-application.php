@@ -131,7 +131,7 @@ try {
     $payload = [
         // Note: You may want to change this to your actual verified domain in Resend later
         'from' => 'Beauty Plus Academy <admissions@beautyplusacademyandsalon.com>',
-        'to' => ['forresterpetagay30@gmail.com'], // Send to the academy's email
+        'to' => ['forresterpetagay30@gmail.com', $clientEmail], // Send to both admin and applicant
         'reply_to' => [$clientEmail], // Applicant's email so you can reply to them
         'subject' => "New Application (Paid) - {$applicantName}",
         'html' => "<p>{$applicantName} has submitted a new application.</p><p><strong>Message:</strong><br/>" . nl2br($emailBodyText) . "</p><p>The completed application and payment details are attached as a PDF.</p>",
