@@ -1792,16 +1792,16 @@
                 
                 const pdfBlob = doc.output('blob');
 
-                // Send to PHP Backend (Resend API)
+                // Send to Web3Forms (No Backend Required)
                 const formData = new FormData();
                 const submissionId = crypto.randomUUID ? crypto.randomUUID() : 'bp-' + Date.now();
-                formData.append("submission_id", submissionId);
-                formData.append("applicant_name", name);
-                formData.append("client_email", data.email || "no-reply@example.com");
                 
-                // Attach the generated PDF blob
-                formData.append("pdf_document", pdfBlob, `application-${submissionId}.pdf`);
+                formData.append("access_key", web3formsAccessKey);
+                formData.append("subject", "New Application (Paid) - " + name);
+                formData.append("from_name", "Beauty Plus Academy Registration");
+                formData.append("replyto", data.email || "no-reply@example.com");
                 
+                // Add the message body
                 const emailMessage = `
 New Enrollment Application for ${name}
 
@@ -1824,15 +1824,19 @@ WiPay Transaction ID: ${transactionId}
 Additional Notes:
 ${data.notes || "None"}
 `;
-                formData.append("message", emailMessage);
+                formData.append("Message", emailMessage);
 
-                const response = await fetch("api/submit-application.php", {
+                // Attach the generated PDF
+                const pdfFile = new File([pdfBlob], `application-${submissionId}.pdf`, { type: 'application/pdf' });
+                formData.append("attachment", pdfFile);
+
+                const response = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     body: formData
                 });
 
                 const result = await response.json();
-                if (result.ok) {
+                if (result.success) {
                     // Trigger download of the PDF for the client so they have it neatly structured
                     doc.save("Beauty_Plus_Registration.pdf");
                     
