@@ -1879,8 +1879,8 @@ ${data.notes || "None"}
             
             const submitBtn = registrationForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent;
-            // Changed text to reflect bypass
-            submitBtn.textContent = "Processing Registration...";
+            // Changed text to reflect redirect
+            submitBtn.textContent = "Redirecting to WiPay...";
             submitBtn.disabled = true;
 
             try {
@@ -1888,14 +1888,8 @@ ${data.notes || "None"}
                 const dataObj = {};
                 fd.forEach((value, key) => dataObj[key] = value);
                 
-                // TEMPORARY BYPASS: Directly call the successful registration logic
-                // instead of redirecting to WiPay.
-                await processSuccessfulRegistration(dataObj, "TEST-TXN-BYPASS");
-                
-                /*
-                // WiPay Integration (Temporarily Disabled)
-                // Note: The origin below was causing the error because it contained spaces.
-                // It should be changed to something like "BeautyPlusAcademy" when re-enabling.
+                // WiPay Integration
+                // Save form data to session storage so we can restore it after WiPay returns
                 sessionStorage.setItem("wipay_enroll_data", JSON.stringify(dataObj));
                 
                 const orderId = 'BP-' + Date.now();
@@ -1909,7 +1903,7 @@ ${data.notes || "None"}
                 wipayData.append("fee_structure", "customer_pay");
                 wipayData.append("method", "credit_card");
                 wipayData.append("order_id", orderId);
-                wipayData.append("origin", "BeautyPlusAcademy"); // Fixed spaces here for later
+                wipayData.append("origin", "BeautyPlusAcademy");
                 wipayData.append("response_url", returnUrl);
                 wipayData.append("total", "5000.00");
 
@@ -1928,7 +1922,6 @@ ${data.notes || "None"}
                 } else {
                     throw new Error("Invalid WiPay response: " + JSON.stringify(result));
                 }
-                */
             } catch (err) {
                 console.error(err);
                 showToast("An error occurred. Please try again.", true);
@@ -1949,6 +1942,27 @@ ${data.notes || "None"}
                 if (savedData) {
                     try {
                         const data = JSON.parse(savedData);
+                        
+                        // Repopulate form with saved data so html2canvas captures it correctly!
+                        Object.keys(data).forEach(key => {
+                            const field = registrationForm.elements[key];
+                            if (field) {
+                                if (field.type === 'checkbox' || field.type === 'radio') {
+                                    if (field.length && field[0].type === 'radio') {
+                                        // RadioNodeList
+                                        for (let i = 0; i < field.length; i++) {
+                                            if (field[i].value === data[key]) field[i].checked = true;
+                                        }
+                                    } else {
+                                        field.checked = (data[key] === 'on' || data[key] === 'true');
+                                    }
+                                } else {
+                                    field.value = data[key];
+                                }
+                            }
+                        });
+                        updateSchedule(); // Update the summary card text
+                        
                         // Clean up URL to avoid re-triggering on refresh
                         window.history.replaceState({}, document.title, window.location.pathname);
                         processSuccessfulRegistration(data, transactionId);
