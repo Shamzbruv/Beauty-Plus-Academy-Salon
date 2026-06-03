@@ -1754,43 +1754,26 @@
                 const address = [data.street1, data.street2, data.city, data.state, data.zip].filter(Boolean).join(", ") || "Not provided";
                 const approach = course && flexibleCourseTitles.has(course.title) ? (data.approach || "Not selected") : "Standard scheduled class";
 
-                // Generate PDF
+                // Generate PDF by capturing the actual screen of the registration form!
+                const container = document.querySelector('.enrollment-container');
+                
+                // Temporarily adjust styles if needed for capture, though html2canvas usually handles it well
+                const canvas = await html2canvas(container, {
+                    scale: 2, // High resolution
+                    useCORS: true,
+                    backgroundColor: "#0d152e", // Match body background to avoid white edges
+                    logging: false
+                });
+                
+                const imgData = canvas.toDataURL('image/jpeg', 0.95);
                 const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
                 
-                doc.setFontSize(18);
-                doc.text("BEAUTY PLUS ACADEMY | 2026 REGISTRATION", 14, 20);
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
                 
-                doc.setFontSize(14);
-                doc.text("Applicant Information", 14, 35);
-                doc.setFontSize(11);
-                doc.text(`Name: ${name}`, 14, 45);
-                doc.text(`Phone: ${data.phone || "Not provided"}`, 14, 52);
-                doc.text(`Email: ${data.email || "Not provided"}`, 14, 59);
-                doc.text(`Address: ${address}`, 14, 66);
-                doc.text(`TRN: ${data.trn || "Not provided"}`, 14, 73);
-                
-                doc.setFontSize(14);
-                doc.text("Course Selection", 14, 90);
-                doc.setFontSize(11);
-                doc.text(`Course: ${course ? course.title : "Not selected"}`, 14, 100);
-                doc.text(`Course Fee: ${course ? course.price : "Not selected"}`, 14, 107);
-                doc.text("Registration Fee: JMD $5,000", 14, 114);
-                doc.text(`Preferred Class Time: ${data.scheduleSelect || data.writtenTime || "Not selected"}`, 14, 121);
-                doc.text(`Learning Approach: ${approach}`, 14, 128);
-                
-                doc.setFontSize(14);
-                doc.text("Payment Information", 14, 145);
-                doc.setFontSize(11);
-                doc.text(`WiPay Transaction ID: ${transactionId}`, 14, 155);
-
-                doc.setFontSize(14);
-                doc.text("Additional Notes", 14, 172);
-                doc.setFontSize(11);
-                const notesLines = doc.splitTextToSize(data.notes || "None", 180);
-                doc.text(notesLines, 14, 182);
-                
-                const pdfBlob = doc.output('blob');
+                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+                const pdfBlob = pdf.output('blob');
 
                 // Send to PHP Backend (Resend API)
                 const formData = new FormData();
@@ -1834,7 +1817,7 @@ ${data.notes || "None"}
                 const result = await response.json();
                 if (result.ok) {
                     // Trigger download of the PDF for the client so they have it neatly structured
-                    doc.save("Beauty_Plus_Registration.pdf");
+                    pdf.save("Beauty_Plus_Registration.pdf");
                     
                     // Pre-fill email action link
                     const emailSubject = encodeURIComponent("Beauty Plus Academy Application - " + name);
@@ -2050,6 +2033,7 @@ ${data.notes || "None"}
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <!-- Native Confirmation Modal (Option A) -->
     <dialog id="successDialog" closedby="any" class="success-dialog" aria-labelledby="dialogTitle">
