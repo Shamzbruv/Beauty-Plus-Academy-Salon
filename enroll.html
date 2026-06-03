@@ -1757,12 +1757,42 @@
                 // Generate PDF by capturing the actual screen of the registration form!
                 const container = document.querySelector('.form-shell');
                 
-                // Temporarily adjust styles if needed for capture, though html2canvas usually handles it well
                 const canvas = await html2canvas(container, {
                     scale: 2, // High resolution
                     useCORS: true,
-                    backgroundColor: "#0d152e", // Match body background to avoid white edges
-                    logging: false
+                    backgroundColor: "#0d152e", // Match body background
+                    logging: false,
+                    windowWidth: document.documentElement.scrollWidth,
+                    windowHeight: document.documentElement.scrollHeight,
+                    onclone: (clonedDoc) => {
+                        // Fix html2canvas input rendering issues by replacing them with styled divs in the clone
+                        const clonedContainer = clonedDoc.querySelector('.form-shell');
+                        if (clonedContainer) {
+                            clonedContainer.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select, textarea').forEach(el => {
+                                const span = clonedDoc.createElement('div');
+                                span.textContent = el.value || (el.options && el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : '');
+                                span.style.cssText = `
+                                    padding: 16px;
+                                    background: rgba(255,255,255,0.06);
+                                    border: 1px solid rgba(255,255,255,0.1);
+                                    border-radius: 12px;
+                                    color: #fff;
+                                    font-family: Inter, sans-serif;
+                                    font-size: 16px;
+                                    min-height: 52px;
+                                    display: flex;
+                                    align-items: center;
+                                    width: 100%;
+                                    box-sizing: border-box;
+                                `;
+                                if(el.tagName === 'TEXTAREA') {
+                                    span.style.whiteSpace = 'pre-wrap';
+                                    span.style.alignItems = 'flex-start';
+                                }
+                                el.parentNode.replaceChild(span, el);
+                            });
+                        }
+                    }
                 });
                 
                 const imgData = canvas.toDataURL('image/jpeg', 0.95);
@@ -1816,19 +1846,6 @@ ${data.notes || "None"}
 
                 const result = await response.json();
                 if (result.ok) {
-                    // Trigger download of the PDF for the client so they have it neatly structured
-                    pdf.save("Beauty_Plus_Registration.pdf");
-                    
-                    // Pre-fill email action link
-                    const emailSubject = encodeURIComponent("Beauty Plus Academy Application - " + name);
-                    const emailBody = encodeURIComponent(
-                        `Hi, \n\nPlease find my attached registration PDF application (Beauty_Plus_Registration.pdf) for my Beauty Plus Academy enrollment.\n\nThank you,\n${name}`
-                    );
-                    const emailBtn = document.getElementById('emailPdfBtn');
-                    if (emailBtn) {
-                        emailBtn.href = `mailto:forresterpetagay30@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-                    }
-
                     // Reset form and open success confirmation dialog
                     registrationForm.reset();
                     updateSchedule();
@@ -2042,26 +2059,12 @@ ${data.notes || "None"}
                 <i class="fa-solid fa-envelope-circle-check"></i>
             </div>
             <h3 id="dialogTitle">Registration Submitted!</h3>
-            <p class="dialog-desc">
-                Your details have been submitted. The application PDF has been saved to your device.
+            <p class="dialog-desc" style="margin-bottom: 24px;">
+                Your enrollment details and payment have been successfully submitted. We have sent a beautiful PDF copy of your registration to both you and the Academy administration automatically.
             </p>
-            
-            <div class="action-box">
-                <h4><i class="fa-solid fa-circle-exclamation"></i> Action Required</h4>
-                <p>To complete your enrollment, please email the downloaded PDF form to:</p>
-                <div class="email-badge">
-                    <span>forresterpetagay30@gmail.com</span>
-                    <button class="copy-email-btn" onclick="navigator.clipboard.writeText('forresterpetagay30@gmail.com'); showToast('Email copied!');" title="Copy Email" type="button">
-                        <i class="fa-solid fa-copy"></i>
-                    </button>
-                </div>
-            </div>
 
             <div class="dialog-actions">
-                <a id="emailPdfBtn" href="#" class="btn btn-primary email-btn" target="_blank">
-                    <i class="fa-solid fa-paper-plane"></i> Email PDF Now
-                </a>
-                <button onclick="document.getElementById('successDialog').close()" class="btn btn-secondary close-btn" type="button">
+                <button onclick="document.getElementById('successDialog').close()" class="btn btn-primary close-btn" type="button" style="width: 100%; justify-content: center;">
                     Done
                 </button>
             </div>
