@@ -1755,7 +1755,7 @@
                 const approach = course && flexibleCourseTitles.has(course.title) ? (data.approach || "Not selected") : "Standard scheduled class";
 
                 // Generate PDF by capturing the actual screen of the registration form!
-                const container = document.querySelector('.enrollment-container');
+                const container = document.querySelector('.form-shell');
                 
                 // Temporarily adjust styles if needed for capture, though html2canvas usually handles it well
                 const canvas = await html2canvas(container, {
