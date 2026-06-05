@@ -1807,44 +1807,71 @@
         bookingDate.min = new Date().toISOString().split("T")[0];
 
         // WiPay Integration for Booking
-        bookingForm.addEventListener("submit", e => {
+        bookingForm.addEventListener("submit", async e => {
             e.preventDefault();
             if(currentDepositAmount <= 0) return;
 
-            const fd = new FormData(bookingForm);
-            const selectedService = bookingServiceCatalog.find(s => s.title === fd.get("bookingService"));
-            
-            const bookingData = {
-                name: fd.get("bookingName"),
-                phone: fd.get("bookingPhone"),
-                email: fd.get("bookingEmail"),
-                method: fd.get("bookingContactMethod"),
-                service: fd.get("bookingService"),
-                category: selectedService ? selectedService.category : "General",
-                priceGuide: selectedService ? selectedService.price : "To be confirmed",
-                date: fd.get("bookingDate"),
-                time: fd.get("bookingTime"),
-                notes: fd.get("bookingNotes"),
-                depositPaid: currentDepositAmount
-            };
+            const submitBtn = document.getElementById("bookingSubmitBtn");
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Redirecting...';
+            submitBtn.disabled = true;
 
-            sessionStorage.setItem("wipay_booking_data", JSON.stringify(bookingData));
-
-            const orderId = "BKG-" + Math.random().toString(36).substr(2, 9).toUpperCase();
-            const returnUrl = encodeURIComponent(window.location.origin + window.location.pathname);
-            
-            const wipayUrl = `https://jm.wipayfinancial.com/plugins/payments/request` +
-                `?account_number=8764580603` +
-                `&currency=JMD` +
-                `&environment=live` +
-                `&fee_structure=customer_pays` +
-                `&method=credit_card` +
-                `&order_id=${orderId}` +
-                `&origin=BeautyPlusSalon` +
-                `&response_url=${returnUrl}` +
-                `&total=${currentDepositAmount}`;
+            try {
+                const fd = new FormData(bookingForm);
+                const selectedService = bookingServiceCatalog.find(s => s.title === fd.get("bookingService"));
                 
-            window.location.href = wipayUrl;
+                const bookingData = {
+                    name: fd.get("bookingName"),
+                    phone: fd.get("bookingPhone"),
+                    email: fd.get("bookingEmail"),
+                    method: fd.get("bookingContactMethod"),
+                    service: fd.get("bookingService"),
+                    category: selectedService ? selectedService.category : "General",
+                    priceGuide: selectedService ? selectedService.price : "To be confirmed",
+                    date: fd.get("bookingDate"),
+                    time: fd.get("bookingTime"),
+                    notes: fd.get("bookingNotes"),
+                    depositPaid: currentDepositAmount
+                };
+
+                sessionStorage.setItem("wipay_booking_data", JSON.stringify(bookingData));
+
+                const orderId = "BKG-" + Math.random().toString(36).substr(2, 9).toUpperCase();
+                const returnUrl = window.location.origin + window.location.pathname;
+                
+                const wipayData = new URLSearchParams();
+                wipayData.append("account_number", "1597653235");
+                wipayData.append("country_code", "JM");
+                wipayData.append("currency", "JMD");
+                wipayData.append("environment", "live");
+                wipayData.append("fee_structure", "customer_pay");
+                wipayData.append("method", "credit_card");
+                wipayData.append("order_id", orderId);
+                wipayData.append("origin", "BeautyPlusSalon");
+                wipayData.append("response_url", returnUrl);
+                wipayData.append("total", Number(currentDepositAmount).toFixed(2));
+
+                const response = await fetch("https://jm.wipayfinancial.com/plugins/payments/request", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: wipayData.toString()
+                });
+
+                const result = await response.json();
+                if (result.url) {
+                    window.location.href = result.url;
+                } else {
+                    throw new Error("Invalid WiPay response: " + JSON.stringify(result));
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Payment initiation failed. Please try again.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
         });
 
         async function processSuccessfulBooking(transactionId, bookingData) {
