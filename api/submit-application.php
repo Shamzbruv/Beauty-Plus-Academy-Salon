@@ -99,49 +99,74 @@ try {
     }
 
     $submissionId = preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['submission_id'] ?? '') ?: bin2hex(random_bytes(8));
-    $clientEmail  = filter_var($_POST['client_email'] ?? '', FILTER_VALIDATE_EMAIL);
-    $applicantName = htmlspecialchars($_POST['applicant_name'] ?? 'Applicant');
-    $emailBodyText = htmlspecialchars($_POST['message'] ?? 'Please find the completed registration application attached as a PDF.');
+    $clientEmail  = filter_var($_POST['client_email'] ?? $_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+    $applicantName = htmlspecialchars($_POST['applicant_name'] ?? $_POST['name'] ?? 'Applicant');
+    
+    $isTuition = filter_var($_POST['is_tuition'] ?? false, FILTER_VALIDATE_BOOLEAN);
+    $isBooking = filter_var($_POST['is_booking'] ?? false, FILTER_VALIDATE_BOOLEAN);
+    $hasPdf = !empty($_FILES['pdf_document']['tmp_name']);
 
-    if (!$clientEmail) {
-        throw new RuntimeException('client_email is required');
-    }
-
-    if (empty($_FILES['pdf_document']['tmp_name'])) {
+    if (!$isTuition && !$isBooking && !$hasPdf) {
         throw new RuntimeException('PDF document was not uploaded.');
     }
 
-    if (($_FILES['pdf_document']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
-        throw new RuntimeException('PDF document upload failed.');
+    if ($isBooking) {
+        $emailBodyText = "Service: " . htmlspecialchars($_POST['service'] ?? '') . "\n";
+        $emailBodyText .= "Date: " . htmlspecialchars($_POST['date'] ?? '') . "\n";
+        $emailBodyText .= "Time: " . htmlspecialchars($_POST['time'] ?? '') . "\n";
+        $emailBodyText .= "Deposit Paid: JMD $" . htmlspecialchars($_POST['depositPaid'] ?? '0') . "\n";
+        $emailBodyText .= "Transaction ID: " . htmlspecialchars($_POST['transactionId'] ?? '') . "\n";
+        $emailBodyText .= "Phone: " . htmlspecialchars($_POST['phone'] ?? '') . "\n";
+        $emailBodyText .= "Notes: " . htmlspecialchars($_POST['notes'] ?? '') . "\n";
+    } else {
+        $emailBodyText = htmlspecialchars($_POST['message'] ?? 'Please find the completed registration application attached as a PDF.');
     }
 
-    $tmpName = $_FILES['pdf_document']['tmp_name'];
-    if (!is_uploaded_file($tmpName)) {
-        throw new RuntimeException('Upload provenance check failed.');
+    $attachments = [];
+    if ($hasPdf) {
+        if (($_FILES['pdf_document']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
+            throw new RuntimeException('PDF document upload failed.');
+        }
+
+        $tmpName = $_FILES['pdf_document']['tmp_name'];
+        if (!is_uploaded_file($tmpName)) {
+            throw new RuntimeException('Upload provenance check failed.');
+        }
+
+        $pdfContent = file_get_contents($tmpName);
+        if ($pdfContent === false) {
+            throw new RuntimeException('Failed to read uploaded PDF.');
+        }
+        
+        $base64Pdf = base64_encode($pdfContent);
+        $attachments[] = [
+            'filename' => "application-{$submissionId}.pdf",
+            'content'  => $base64Pdf,
+        ];
     }
 
-    // Read the PDF content and Base64 encode it
-    $pdfContent = file_get_contents($tmpName);
-    if ($pdfContent === false) {
-        throw new RuntimeException('Failed to read uploaded PDF.');
+    if ($isBooking) {
+        $subject = "Salon Appointment Booking - {$applicantName}";
+        $htmlContent = "<p>{$applicantName} has paid a deposit for a new salon appointment.</p><p><strong>Booking Details:</strong><br/>" . nl2br($emailBodyText) . "</p>";
+    } else {
+        $subject = $isTuition ? "Tuition Payment Received - {$applicantName}" : "New Application (Paid) - {$applicantName}";
+        $htmlContent = $isTuition 
+            ? "<p>{$applicantName} has submitted a new tuition payment.</p><p><strong>Details:</strong><br/>" . nl2br($emailBodyText) . "</p>"
+            : "<p>{$applicantName} has submitted a new application.</p><p><strong>Message:</strong><br/>" . nl2br($emailBodyText) . "</p><p>The completed application and payment details are attached as a PDF.</p>";
     }
-    
-    $base64Pdf = base64_encode($pdfContent);
 
     $payload = [
         // Note: You may want to change this to your actual verified domain in Resend later
         'from' => 'Beauty Plus Academy <admissions@beautyplusacademyandsalon.com>',
         'to' => ['forresterpetagay30@gmail.com', $clientEmail], // Send to both admin and applicant
         'reply_to' => [$clientEmail], // Applicant's email so you can reply to them
-        'subject' => "New Application (Paid) - {$applicantName}",
-        'html' => "<p>{$applicantName} has submitted a new application.</p><p><strong>Message:</strong><br/>" . nl2br($emailBodyText) . "</p><p>The completed application and payment details are attached as a PDF.</p>",
-        'attachments' => [
-            [
-                'filename' => "application-{$submissionId}.pdf",
-                'content'  => $base64Pdf,
-            ],
-        ],
+        'subject' => $subject,
+        'html' => $htmlContent,
     ];
+
+    if (!empty($attachments)) {
+        $payload['attachments'] = $attachments;
+    }
 
     // Send the email via Resend
     resendRequest($payload, "application/{$submissionId}");

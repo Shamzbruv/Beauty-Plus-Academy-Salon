@@ -1312,7 +1312,7 @@
                                     </div>
                                     <div class="field">
                                         <label for="bookingEmail">Email Address</label>
-                                        <input id="bookingEmail" name="bookingEmail" type="email" placeholder="you@example.com">
+                                        <input id="bookingEmail" name="bookingEmail" type="email" placeholder="you@example.com" required>
                                     </div>
                                     <div class="field">
                                         <label for="bookingContactMethod">Preferred Contact Method</label>
@@ -1347,17 +1347,30 @@
                                             placeholder="Add style ideas, hair length, special requests, or anything the salon should know…"></textarea>
                                     </div>
                                 </div>
+                                
+                                <!-- Deposit Display -->
+                                <div id="depositContainer" style="display:none; margin-top:20px; padding:16px; border-radius:18px; background:rgba(214,168,61,0.15); border:1px solid rgba(214,168,61,0.3); text-align:center;">
+                                    <p style="color:var(--royal-blue); font-weight:700; margin-bottom:6px; font-size:0.95rem;">Required 50% Deposit to Secure Booking</p>
+                                    <h4 id="depositAmountDisplay" style="color:#594309; font-size:1.6rem; font-weight:900;">JMD $0</h4>
+                                    <p style="color:var(--muted); font-size:0.8rem; margin-top:4px;">*Services with variable pricing have a flat deposit of $1,500.</p>
+                                </div>
 
-                                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:18px;padding:16px;">
-                                    <i class="fa-brands fa-whatsapp"></i> Send Booking Request to WhatsApp
+                                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:18px;padding:16px;" id="bookingSubmitBtn">
+                                    <i class="fa-solid fa-credit-card"></i> Pay Deposit via WiPay
                                 </button>
-                                <p class="form-helper">Submitting opens WhatsApp with your completed booking request ready to send.</p>
+                                <p class="form-helper" style="text-align:center;">Your booking request and deposit receipt will be sent directly to you and the salon.</p>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
+        
+        <!-- SUCCESS TOAST -->
+        <div id="bookingToast" style="display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000; font-weight: 600; align-items: center; gap: 12px;">
+            <i class="fa-solid fa-circle-check" style="font-size: 1.2rem;"></i>
+            <span>Booking deposit successful! A confirmation email is being sent to you and the salon.</span>
+        </div>
 
         <!-- STICKY CTA -->
         <div class="sticky-cta">
@@ -1758,52 +1771,133 @@
                 bookingServiceCatalog.map(s => `<option value="${s.title}">${s.title} — ${s.category}</option>`).join("");
         }
 
+        function calculateDeposit(priceStr) {
+            // Default to $1,500 if price is variable or not found
+            let deposit = 1500;
+            if (priceStr && priceStr.includes("JMD $")) {
+                const numStr = priceStr.replace(/[^0-9]/g, "");
+                if (numStr) {
+                    const price = parseInt(numStr, 10);
+                    deposit = price / 2;
+                }
+            }
+            return deposit;
+        }
+
+        const depositContainer = document.getElementById("depositContainer");
+        const depositAmountDisplay = document.getElementById("depositAmountDisplay");
+        let currentDepositAmount = 0;
+
         bookingService.addEventListener("change", () => {
             const match = bookingServiceCatalog.find(s => s.title === bookingService.value);
             if (match) {
                 bookingSelectedService.textContent = match.title;
                 bookingSelectedMeta.textContent = `${match.category} | ${match.price} | ${match.time}`;
+                currentDepositAmount = calculateDeposit(match.price);
+                depositAmountDisplay.textContent = `JMD $${currentDepositAmount.toLocaleString()}`;
+                depositContainer.style.display = "block";
             } else {
                 bookingSelectedService.textContent = "No service selected yet.";
                 bookingSelectedMeta.textContent = "Choose from the dropdown or click a service card above.";
+                depositContainer.style.display = "none";
+                currentDepositAmount = 0;
             }
         });
 
         serviceSearch.addEventListener("input", renderServices);
         bookingDate.min = new Date().toISOString().split("T")[0];
 
-        const whatsappNumber = "18764580603";
+        // WiPay Integration for Booking
         bookingForm.addEventListener("submit", e => {
             e.preventDefault();
+            if(currentDepositAmount <= 0) return;
+
             const fd = new FormData(bookingForm);
             const selectedService = bookingServiceCatalog.find(s => s.title === fd.get("bookingService"));
-            const formatDate = v => {
-                if (!v) return "Not provided";
-                const d = new Date(`${v}T00:00:00`);
-                return isNaN(d.getTime()) ? v : d.toLocaleDateString("en-JM", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+            
+            const bookingData = {
+                name: fd.get("bookingName"),
+                phone: fd.get("bookingPhone"),
+                email: fd.get("bookingEmail"),
+                method: fd.get("bookingContactMethod"),
+                service: fd.get("bookingService"),
+                category: selectedService ? selectedService.category : "General",
+                priceGuide: selectedService ? selectedService.price : "To be confirmed",
+                date: fd.get("bookingDate"),
+                time: fd.get("bookingTime"),
+                notes: fd.get("bookingNotes"),
+                depositPaid: currentDepositAmount
             };
-            const msg = [
-                "*BEAUTY PLUS SALON | BOOKING REQUEST*", "",
-                "*Client Details*",
-                `Name: ${fd.get("bookingName") || "Not provided"}`,
-                `Phone / WhatsApp: ${fd.get("bookingPhone") || "Not provided"}`,
-                `Email: ${fd.get("bookingEmail") || "Not provided"}`,
-                `Preferred Contact: ${fd.get("bookingContactMethod") || "Not provided"}`, "",
-                "*Requested Service*",
-                `Service: ${fd.get("bookingService") || "Not specified"}`,
-                `Category: ${selectedService ? selectedService.category : "General"}`,
-                `Price Guide: ${selectedService ? selectedService.price : "To be confirmed"}`,
-                `Duration Guide: ${selectedService ? selectedService.time : "To be confirmed"}`, "",
-                "*Appointment Preference*",
-                `Preferred Date: ${formatDate(fd.get("bookingDate"))}`,
-                `Preferred Time: ${fd.get("bookingTime") || "Not provided"}`,
-                `Notes: ${fd.get("bookingNotes") || "None"}`, "",
-                "Please confirm availability and next steps."
-            ].join("\n");
 
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-            const popup = window.open(url, "_blank", "noopener");
-            if (!popup) window.location.href = url;
+            sessionStorage.setItem("wipay_booking_data", JSON.stringify(bookingData));
+
+            const orderId = "BKG-" + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const returnUrl = encodeURIComponent(window.location.origin + window.location.pathname);
+            
+            const wipayUrl = `https://jm.wipayfinancial.com/plugins/payments/request` +
+                `?account_number=8764580603` +
+                `&currency=JMD` +
+                `&environment=live` +
+                `&fee_structure=customer_pays` +
+                `&method=credit_card` +
+                `&order_id=${orderId}` +
+                `&origin=BeautyPlusSalon` +
+                `&response_url=${returnUrl}` +
+                `&total=${currentDepositAmount}`;
+                
+            window.location.href = wipayUrl;
+        });
+
+        async function processSuccessfulBooking(transactionId, bookingData) {
+            const formData = new FormData();
+            formData.append("is_booking", "true");
+            formData.append("name", bookingData.name);
+            formData.append("email", bookingData.email);
+            formData.append("phone", bookingData.phone);
+            formData.append("service", bookingData.service);
+            formData.append("date", bookingData.date);
+            formData.append("time", bookingData.time);
+            formData.append("depositPaid", bookingData.depositPaid);
+            formData.append("transactionId", transactionId);
+            formData.append("notes", bookingData.notes);
+
+            try {
+                await fetch('api/submit-application.php', {
+                    method: 'POST',
+                    body: formData
+                });
+            } catch (err) {
+                console.error("Booking email dispatch failed:", err);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get("status");
+            const transactionId = urlParams.get("transaction_id");
+
+            if (status === "success" && transactionId) {
+                const bookingDataStr = sessionStorage.getItem("wipay_booking_data");
+                if (bookingDataStr) {
+                    const bookingData = JSON.parse(bookingDataStr);
+                    sessionStorage.removeItem("wipay_booking_data");
+                    
+                    document.getElementById("bookingToast").style.display = "flex";
+                    
+                    processSuccessfulBooking(transactionId, bookingData);
+                    
+                    setTimeout(() => {
+                        document.getElementById("bookingToast").style.display = "none";
+                    }, 6000);
+                }
+                
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+                document.getElementById("book").scrollIntoView({ behavior: "smooth" });
+            } else if (status === "failed") {
+                alert("Payment failed or was cancelled. Please try booking again.");
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
         });
 
         /* ── NAV ── */

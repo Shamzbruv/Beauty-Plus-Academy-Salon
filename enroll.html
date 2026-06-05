@@ -1361,6 +1361,12 @@
                                         <label for="courseSelect">Select ONE class to enroll in for 2026</label>
                                         <select id="courseSelect" name="courseSelect" required></select>
                                     </div>
+                                    <div class="field full" id="kitOptionContainer" style="display:none; margin-top: -4px;">
+                                        <label class="terms-check" style="background: rgba(214,168,61,0.1); border-color: rgba(214,168,61,0.3);">
+                                            <input type="checkbox" id="kitOption" name="kitOption" value="Yes">
+                                            <span id="kitOptionText">Include Training Kit</span>
+                                        </label>
+                                    </div>
                                     <div class="field full">
                                         <label>Select the class time that best suits you</label>
                                         <div class="schedule-options" id="scheduleOptions"></div>
@@ -1432,6 +1438,79 @@
                                 </a>
                             </div>
                         </aside>
+                    </div>
+                </div>
+            </section>
+            <!-- TUITION PAYMENT SECTION -->
+            <section class="registration-section" id="pay-tuition" style="padding-top: 20px;">
+                <div class="container">
+                    <div class="section-heading reveal">
+                        <div class="section-kicker"><i class="fa-solid fa-credit-card"></i> Tuition Payment</div>
+                        <h2>Pay Tuition Fee.</h2>
+                        <p>Already registered or paying your balance? Select your course below and enter the amount you wish to pay.</p>
+                    </div>
+
+                    <div class="form-shell" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+                        <form class="form-card reveal" id="tuitionForm">
+                            <div class="form-top" style="background: linear-gradient(135deg, var(--gold-2), var(--gold)); color: var(--royal-blue);">
+                                <h3 style="color: var(--royal-blue); font-family: 'Cinzel', serif; font-size: 1.45rem; margin-bottom: 8px;">Tuition Payment Form</h3>
+                                <p style="color: rgba(7,26,82,0.8); line-height: 1.6;">Pay your tuition balance securely online via WiPay.</p>
+                            </div>
+                            <div class="form-body form-body-dark">
+                                <div class="form-section-title"><i class="fa-solid fa-user"></i> Student Information</div>
+                                <div class="form-grid">
+                                    <div class="field">
+                                        <label for="tFirstName">First Name</label>
+                                        <input id="tFirstName" name="tFirstName" type="text" placeholder="First name" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="tLastName">Last Name</label>
+                                        <input id="tLastName" name="tLastName" type="text" placeholder="Last name" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="tEmail">Email Address</label>
+                                        <input id="tEmail" name="tEmail" type="email" placeholder="you@example.com" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="tPhone">Phone Number</label>
+                                        <input id="tPhone" name="tPhone" type="tel" placeholder="876-000-0000" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-section-title"><i class="fa-solid fa-book-open-reader"></i> Course Selection</div>
+                                <div class="form-grid">
+                                    <div class="field full">
+                                        <label for="tCourseSelect">Select the class you are paying for</label>
+                                        <select id="tCourseSelect" name="tCourseSelect" required></select>
+                                    </div>
+                                    <div class="field full" id="tKitOptionContainer" style="display:none; margin-top: -4px;">
+                                        <label class="terms-check" style="background: rgba(214,168,61,0.1); border-color: rgba(214,168,61,0.3);">
+                                            <input type="checkbox" id="tKitOption" name="tKitOption" value="Yes">
+                                            <span id="tKitOptionText">Include Training Kit</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-section-title"><i class="fa-solid fa-money-bill-wave"></i> Payment Details</div>
+                                <div class="form-grid">
+                                    <div class="field full">
+                                        <label>Payment Type</label>
+                                        <div class="radio-grid">
+                                            <label class="radio-card"><input type="radio" name="tPaymentType" value="full" checked> Pay Full Amount</label>
+                                            <label class="radio-card"><input type="radio" name="tPaymentType" value="custom"> Pay Custom Amount</label>
+                                        </div>
+                                    </div>
+                                    <div class="field full" id="tAmountContainer">
+                                        <label for="tAmount">Amount to Pay (JMD)</label>
+                                        <input id="tAmount" name="tAmount" type="number" min="1" step="0.01" placeholder="e.g. 20000" required readonly style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6);">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:22px;padding:16px;border-radius:18px;">
+                                    <i class="fa-solid fa-credit-card"></i> Proceed to Payment
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -1588,7 +1667,7 @@
         /* ── COURSES DATA ── */
         const academyCourses = [
             { title: "Professional Makeup Artistry", category: "makeup", price: "JMD $65,000", original: "+ JMD $5,000 reg fee", start: "June 2026", schedule: "Mondays only • 9am–1pm or 5pm–8pm (Choose morning or evening)", desc: "Professional makeup artistry training for polished occasion, glam, and beauty services. <br><br><a href=\"https://wa.me/18764580603?text=Hi,%20I'd%20like%20to%20ask%20about%20the%20training%20kit%20for%20the%20Professional%20Makeup%20Artistry%20class.\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--gold-2);text-decoration:underline;font-weight:700;\"><i class=\"fa-brands fa-whatsapp\"></i> Ask about our Training Kit</a>", icon: "fa-brush" },
-            { title: "Full Body Wax Aesthetic", category: "skin", price: "JMD $75,000", original: "", start: "June 2026", schedule: "Sundays only • 11am–2pm", desc: "Full body waxing technique, client care, service confidence, and professional beauty standards. <strong style=\"color:var(--gold-2);\">With training kit, it's JMD $120,000.</strong>", icon: "fa-leaf" },
+            { title: "Full Body Wax Aesthetic", category: "skin", price: "JMD $75,000", original: "", kitPrice: "JMD $120,000", start: "June 2026", schedule: "Sundays only • 11am–2pm", desc: "Full body waxing technique, client care, service confidence, and professional beauty standards. <strong style=\"color:var(--gold-2);\">With training kit, it's JMD $120,000.</strong>", icon: "fa-leaf" },
             { title: "Spa Mani & Pedi + Gel X Nails Enhancement", category: "nails", price: "JMD $75,000", original: "+ JMD $5,000 reg fee", start: "June 2026", schedule: "Fridays only • 9am–1pm or 5pm–8pm (Choose morning or evening)", desc: "Comprehensive nail training covering spa manicure, pedicure, and gel X extensions. <br><br><a href=\"https://wa.me/18764580603?text=Hi,%20I'd%20like%20to%20ask%20about%20the%20training%20kit%20for%20the%20Spa%20Mani%20%26%20Pedi%20class.\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--gold-2);text-decoration:underline;font-weight:700;\"><i class=\"fa-brands fa-whatsapp\"></i> Ask about our Training Kit</a>", icon: "fa-hand-sparkles" },
             { title: "Braiding", category: "hair", price: "JMD $50,000", original: "+ JMD $5,000 reg fee", start: "June 2026", schedule: "Tuesdays & Wednesdays • 9am–1pm or 5pm–8pm", desc: "Braiding training for clean, professional protective styles. Online or face-to-face available. <br><br><a href=\"https://wa.me/18764580603?text=Hi,%20I'd%20like%20to%20ask%20about%20the%20training%20kit%20for%20the%20Braiding%20class.\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--gold-2);text-decoration:underline;font-weight:700;\"><i class=\"fa-brands fa-whatsapp\"></i> Ask about our Training Kit</a>", icon: "fa-grip-lines" },
             { title: "Wig Making", category: "hair", price: "JMD $60,000", original: "+ JMD $5,000 reg fee", start: "June 2026", schedule: "Tuesdays & Wednesdays • 9am–1pm or 5pm–8pm", desc: "Wigmaking training for students who want to create and style wigs professionally. <br><br><a href=\"https://wa.me/18764580603?text=Hi,%20I'd%20like%20to%20ask%20about%20the%20training%20kit%20for%20the%20Wig%20Making%20class.\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--gold-2);text-decoration:underline;font-weight:700;\"><i class=\"fa-brands fa-whatsapp\"></i> Ask about our Training Kit</a>", icon: "fa-hat-wizard" },
@@ -1597,9 +1676,9 @@
             { title: "Fusion Lash Artistry", category: "makeup", price: "JMD $65,000", original: "+ JMD $5,000 reg fee", start: "June 2026", schedule: "Saturdays only • 5pm–8pm", desc: "Professional lash extension training focusing on fusion lash application and styling techniques. <br><br><a href=\"https://wa.me/18764580603?text=Hi,%20I'd%20like%20to%20ask%20about%20the%20training%20kit%20for%20the%20Fusion%20Lash%20Artistry%20class.\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--gold-2);text-decoration:underline;font-weight:700;\"><i class=\"fa-brands fa-whatsapp\"></i> Ask about our Training Kit</a>", icon: "fa-eye" },
             
             // Teens
-            { title: "Teens Braiding Class", category: "teens", price: "JMD $28,000", original: "With kit: JMD $41,000", start: "July 6–8 & 13–15", schedule: "8am–12pm & 1pm–4pm", desc: "Learn foundational braiding skills this summer. (No payment plans).", icon: "fa-grip-lines" },
-            { title: "Teens Makeup", category: "teens", price: "JMD $28,000", original: "With kit: JMD $50,000", start: "July 9–11 & 16–18", schedule: "8am–12pm & 1pm–4pm", desc: "Learn age-appropriate makeup techniques. (No payment plans).", icon: "fa-brush" },
-            { title: "Teens Gelx Nails Application", category: "teens", price: "JMD $28,000", original: "With kit: JMD $46,000", start: "July 20–22 & 27–29", schedule: "8am–12pm & 1pm–4pm", desc: "Learn GelX nail extensions for beautiful summer nails. (No payment plans).", icon: "fa-hand-sparkles" }
+            { title: "Teens Braiding Class", category: "teens", price: "JMD $25,000", original: "With kit: JMD $38,000", kitPrice: "JMD $38,000", start: "July 6–8 & 13–15", schedule: "8am–12pm & 1pm–4pm", desc: "Learn foundational braiding skills this summer. (No payment plans).", icon: "fa-grip-lines" },
+            { title: "Teens Makeup", category: "teens", price: "JMD $28,000", original: "With mini-kit: JMD $40,000", kitPrice: "JMD $40,000", start: "July 9–11 & 16–18", schedule: "8am–12pm & 1pm–4pm", desc: "Learn age-appropriate makeup techniques. (No payment plans).", icon: "fa-brush" },
+            { title: "Teens Gelx Nails Application", category: "teens", price: "JMD $25,000", original: "With gelx kit: JMD $41,000", kitPrice: "JMD $41,000", start: "July 20–22 & 27–29", schedule: "8am–12pm & 1pm–4pm", desc: "Learn GelX nail extensions for beautiful summer nails. (No payment plans).", icon: "fa-hand-sparkles" }
         ];
 
         const classTimeOptions = [
@@ -1714,6 +1793,10 @@
             });
         }
 
+        const kitOptionContainer = document.getElementById("kitOptionContainer");
+        const kitOption = document.getElementById("kitOption");
+        const kitOptionText = document.getElementById("kitOptionText");
+
         function updateSchedule() {
             const idx = courseSelect.value;
             if (idx === "") {
@@ -1722,6 +1805,12 @@
                 summaryCourse.textContent = "Not selected";
                 summaryPrice.textContent = "JMD $0";
                 summaryTime.textContent = "Not selected";
+                
+                if (kitOptionContainer) {
+                    kitOptionContainer.style.display = "none";
+                    kitOption.checked = false;
+                }
+                
                 updateApproachAvailability();
                 return;
             }
@@ -1732,9 +1821,28 @@
             });
             writtenTime.value = matched ? matched.value : course.schedule;
             summaryCourse.textContent = course.title;
-            summaryPrice.textContent = course.price;
+            
+            if (kitOptionContainer && course.kitPrice) {
+                kitOptionContainer.style.display = "block";
+                kitOptionText.innerHTML = `Include Training Kit (${course.kitPrice})`;
+            } else if (kitOptionContainer) {
+                kitOptionContainer.style.display = "none";
+                kitOption.checked = false;
+            }
+            
+            summaryPrice.textContent = (course.kitPrice && kitOption.checked) ? course.kitPrice : course.price;
             summaryTime.textContent = writtenTime.value || "Not selected";
             updateApproachAvailability();
+        }
+
+        if (kitOption) {
+            kitOption.addEventListener("change", () => {
+                const idx = courseSelect.value;
+                if (idx !== "") {
+                    const course = academyCourses[Number(idx)];
+                    summaryPrice.textContent = (course.kitPrice && kitOption.checked) ? course.kitPrice : course.price;
+                }
+            });
         }
 
         courseSelect.addEventListener("change", updateSchedule);
@@ -1831,7 +1939,8 @@ TRN: ${data.trn || "Not provided"}
 
 Course Selection:
 Course: ${course ? course.title : "Not selected"}
-Course Fee: ${course ? course.price : "Not selected"}
+Training Kit Included: ${data.kitOption ? "Yes" : "No"}
+Course Fee: ${course ? (data.kitOption && course.kitPrice ? course.kitPrice : course.price) : "Not selected"}
 Registration Fee: JMD $5,000 (PAID)
 Preferred Class Time: ${data.scheduleSelect || data.writtenTime || "Not selected"}
 Learning Approach: ${approach}
@@ -1931,6 +2040,228 @@ ${data.notes || "None"}
             }
         });
 
+        /* ── TUITION FORM ── */
+        const tCourseSelect = document.getElementById("tCourseSelect");
+        const tKitOptionContainer = document.getElementById("tKitOptionContainer");
+        const tKitOption = document.getElementById("tKitOption");
+        const tKitOptionText = document.getElementById("tKitOptionText");
+        const tPaymentRadios = document.querySelectorAll('input[name="tPaymentType"]');
+        const tAmountContainer = document.getElementById("tAmountContainer");
+        const tAmountInput = document.getElementById("tAmount");
+        const tuitionForm = document.getElementById("tuitionForm");
+
+        function populateTuitionForm() {
+            if (!tCourseSelect) return;
+            tCourseSelect.innerHTML = `<option value="">Choose a course</option>` +
+                academyCourses.map((c, i) => `<option value="${i}">${c.title}</option>`).join("");
+        }
+
+        function extractNumericPrice(priceStr) {
+            return Number(priceStr.replace(/[^0-9.-]+/g,""));
+        }
+
+        function updateTuitionAmount() {
+            if (!tCourseSelect) return;
+            const idx = tCourseSelect.value;
+            const paymentTypeEl = document.querySelector('input[name="tPaymentType"]:checked');
+            const paymentType = paymentTypeEl ? paymentTypeEl.value : 'full';
+            
+            if (paymentType === "custom") {
+                tAmountInput.readOnly = false;
+                tAmountInput.style.background = "rgba(255,255,255,0.09)";
+                tAmountInput.style.color = "#fff";
+            } else {
+                tAmountInput.readOnly = true;
+                tAmountInput.style.background = "rgba(255,255,255,0.05)";
+                tAmountInput.style.color = "rgba(255,255,255,0.6)";
+            }
+
+            if (idx === "") {
+                if (paymentType !== "custom") tAmountInput.value = "";
+                return;
+            }
+
+            const course = academyCourses[Number(idx)];
+            let fullPrice = extractNumericPrice(course.price);
+
+            if (tKitOption && tKitOption.checked && course.kitPrice) {
+                fullPrice = extractNumericPrice(course.kitPrice);
+            }
+            
+            if (paymentType === "full") {
+                tAmountInput.value = fullPrice;
+            }
+        }
+
+        if (tCourseSelect) {
+            tCourseSelect.addEventListener("change", () => {
+                const idx = tCourseSelect.value;
+                const customRadio = document.querySelector('input[name="tPaymentType"][value="custom"]');
+                const customLabel = customRadio ? customRadio.closest('.radio-card') : null;
+
+                if (idx === "") {
+                    tKitOptionContainer.style.display = "none";
+                    tKitOption.checked = false;
+                    if (customRadio) {
+                        customRadio.disabled = false;
+                        if (customLabel) {
+                            customLabel.style.opacity = "1";
+                            customLabel.style.cursor = "pointer";
+                            customLabel.title = "";
+                        }
+                    }
+                } else {
+                    const course = academyCourses[Number(idx)];
+                    if (course.kitPrice) {
+                        tKitOptionContainer.style.display = "block";
+                        tKitOptionText.innerHTML = `Include Training Kit (${course.kitPrice})`;
+                    } else {
+                        tKitOptionContainer.style.display = "none";
+                        tKitOption.checked = false;
+                    }
+
+                    if (course.title.toLowerCase().includes("teens")) {
+                        document.querySelector('input[name="tPaymentType"][value="full"]').checked = true;
+                        if (customRadio) {
+                            customRadio.disabled = true;
+                            if (customLabel) {
+                                customLabel.style.opacity = "0.5";
+                                customLabel.style.cursor = "not-allowed";
+                                customLabel.title = "Teen packages must be paid in full.";
+                            }
+                        }
+                    } else {
+                        if (customRadio) {
+                            customRadio.disabled = false;
+                            if (customLabel) {
+                                customLabel.style.opacity = "1";
+                                customLabel.style.cursor = "pointer";
+                                customLabel.title = "";
+                            }
+                        }
+                    }
+                }
+                updateTuitionAmount();
+            });
+        }
+
+        if (tKitOption) tKitOption.addEventListener("change", updateTuitionAmount);
+        if (tPaymentRadios) tPaymentRadios.forEach(r => r.addEventListener("change", updateTuitionAmount));
+
+        if (tuitionForm) {
+            tuitionForm.addEventListener("submit", async e => {
+                e.preventDefault();
+                
+                if (!tAmountInput.value || Number(tAmountInput.value) <= 0) {
+                    showToast("Please enter a valid amount.", true);
+                    return;
+                }
+
+                const submitBtn = tuitionForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = "Redirecting to WiPay...";
+                submitBtn.disabled = true;
+
+                try {
+                    const fd = new FormData(tuitionForm);
+                    const dataObj = {};
+                    fd.forEach((value, key) => dataObj[key] = value);
+                    
+                    // Save form data to session storage
+                    sessionStorage.setItem("wipay_tuition_data", JSON.stringify(dataObj));
+                    
+                    const orderId = 'BP-TUI-' + Date.now();
+                    const returnUrl = window.location.origin + window.location.pathname;
+
+                    const wipayData = new URLSearchParams();
+                    wipayData.append("account_number", "1597653235");
+                    wipayData.append("country_code", "JM");
+                    wipayData.append("currency", "JMD");
+                    wipayData.append("environment", "live");
+                    wipayData.append("fee_structure", "customer_pay");
+                    wipayData.append("method", "credit_card");
+                    wipayData.append("order_id", orderId);
+                    wipayData.append("origin", "BeautyPlusAcademy");
+                    wipayData.append("response_url", returnUrl);
+                    // Fix the total value to max 2 decimal places
+                    wipayData.append("total", Number(dataObj.tAmount).toFixed(2));
+
+                    const response = await fetch("https://jm.wipayfinancial.com/plugins/payments/request", {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: wipayData.toString()
+                    });
+
+                    const result = await response.json();
+                    if (result.url) {
+                        window.location.href = result.url;
+                    } else {
+                        throw new Error("Invalid WiPay response: " + JSON.stringify(result));
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showToast("An error occurred. Please try again.", true);
+                } finally {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        async function processSuccessfulTuition(data, transactionId) {
+            try {
+                const name = `${(data.tFirstName||"").trim()} ${(data.tLastName||"").trim()}`.trim() || "Not provided";
+                const idx = data.tCourseSelect;
+                const course = idx !== "" ? academyCourses[Number(idx)] : null;
+                
+                const emailMessage = `
+Tuition Payment Received for ${name}
+
+Student Information:
+Phone: ${data.tPhone || "Not provided"}
+Email: ${data.tEmail || "Not provided"}
+
+Course Details:
+Course: ${course ? course.title : "Not selected"}
+Training Kit Included: ${data.tKitOption ? "Yes" : "No"}
+
+Payment Details:
+Amount Paid: JMD $${Number(data.tAmount).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+Payment Type: ${data.tPaymentType === 'full' ? 'Full Balance' : 'Custom Amount'}
+WiPay Transaction ID: ${transactionId}
+`;
+                const formData = new FormData();
+                const submissionId = crypto.randomUUID ? crypto.randomUUID() : 'bp-tui-' + Date.now();
+                formData.append("submission_id", submissionId);
+                formData.append("applicant_name", name);
+                formData.append("client_email", data.tEmail || "no-reply@example.com");
+                formData.append("message", emailMessage);
+                formData.append("is_tuition", "true");
+
+                const response = await fetch("api/submit-application.php", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    if (tuitionForm) tuitionForm.reset();
+                    updateTuitionAmount();
+                    sessionStorage.removeItem("wipay_tuition_data");
+                    
+                    showToast("Tuition payment successful! An email receipt will be sent shortly.");
+                } else {
+                    throw new Error(result.message || "Failed to submit tuition data.");
+                }
+            } catch (err) {
+                console.error(err);
+                showToast("An error occurred recording the payment. Please contact us with your WiPay transaction ID.", true);
+            }
+        }
+
         // Check for return from WiPay
         document.addEventListener("DOMContentLoaded", () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -1939,6 +2270,7 @@ ${data.notes || "None"}
             
             if (status === "success" && transactionId) {
                 const savedData = sessionStorage.getItem("wipay_enroll_data");
+                const savedTuitionData = sessionStorage.getItem("wipay_tuition_data");
                 if (savedData) {
                     try {
                         const data = JSON.parse(savedData);
@@ -1969,13 +2301,22 @@ ${data.notes || "None"}
                     } catch (e) {
                         console.error("Error parsing saved form data:", e);
                     }
+                } else if (savedTuitionData) {
+                    try {
+                        const data = JSON.parse(savedTuitionData);
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                        processSuccessfulTuition(data, transactionId);
+                    } catch (e) {
+                        console.error("Error parsing saved tuition data:", e);
+                    }
                 }
             } else if (status === "failed" || status === "error") {
-                showToast("Payment failed or was canceled. Please try submitting your registration again.", true);
+                showToast("Payment failed or was canceled. Please try submitting your form again.", true);
                 window.history.replaceState({}, document.title, window.location.pathname);
                 
                 // Repopulate form with saved data if available
                 const savedData = sessionStorage.getItem("wipay_enroll_data");
+                const savedTuitionData = sessionStorage.getItem("wipay_tuition_data");
                 if (savedData) {
                     try {
                         const data = JSON.parse(savedData);
@@ -1999,6 +2340,29 @@ ${data.notes || "None"}
                         updateSchedule();
                     } catch (e) {
                         console.error("Error restoring form data:", e);
+                    }
+                } else if (savedTuitionData) {
+                    try {
+                        const data = JSON.parse(savedTuitionData);
+                        Object.keys(data).forEach(key => {
+                            const field = tuitionForm.elements[key];
+                            if (field) {
+                                if (field.type === 'checkbox' || field.type === 'radio') {
+                                    if (field.length && field[0].type === 'radio') {
+                                        for (let i = 0; i < field.length; i++) {
+                                            if (field[i].value === data[key]) field[i].checked = true;
+                                        }
+                                    } else {
+                                        field.checked = (data[key] === 'on' || data[key] === 'true');
+                                    }
+                                } else {
+                                    field.value = data[key];
+                                }
+                            }
+                        });
+                        updateTuitionAmount();
+                    } catch (e) {
+                        console.error("Error restoring tuition form data:", e);
                     }
                 }
             }
@@ -2030,6 +2394,7 @@ ${data.notes || "None"}
         document.getElementById("year").textContent = new Date().getFullYear();
         renderCourses();
         populateRegistration();
+        populateTuitionForm();
 
         // Fallback for browsers without closedby support
         const successDialog = document.getElementById('successDialog');
