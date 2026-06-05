@@ -1756,8 +1756,7 @@
                     const match = bookingServiceCatalog.find(s => s.title === title) || null;
                     if (match) {
                         bookingService.value = match.title;
-                        bookingSelectedService.textContent = match.title;
-                        bookingSelectedMeta.textContent = `${match.category} | ${match.price} | ${match.time}`;
+                        bookingService.dispatchEvent(new Event('change'));
                     }
                     document.getElementById("book").scrollIntoView({ behavior: "smooth" });
                 };
