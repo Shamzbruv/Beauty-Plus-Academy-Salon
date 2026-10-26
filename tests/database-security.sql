@@ -4,6 +4,8 @@ set local role anon;
 insert into public.bp_submissions(id,kind,content_id,name,email,phone,amount,payment_method,payment_status,data) values ('00000000-0000-4000-8000-000000000001','event','bp-qa-event','QA One','bp-qa-one@example.com','8760000000',1,'bank','paid','{"answers":{"q1":"None"}}');
 insert into public.bp_submissions(id,kind,content_id,name,email,phone,amount,payment_method,data) values ('00000000-0000-4000-8000-000000000002','event','bp-qa-event','QA Two','bp-qa-two@example.com','8760000000',1,'bank','{"answers":{"q1":"Vegetarian"}}');
 do $$begin
+ if (select amount from public.bp_request_quote('00000000-0000-4000-8000-000000000001'))<>1000 then raise exception 'TEST FAILED receipt amount mismatch';end if;
+ if (select status from public.bp_request_quote('00000000-0000-4000-8000-000000000002'))<>'waitlisted' then raise exception 'TEST FAILED waitlist receipt mismatch';end if;
  begin insert into public.bp_submissions(kind,content_id,name,email,payment_method,data) values('event','bp-qa-event','Missing Answer','bp-qa-missing@example.com','bank','{}');raise exception 'TEST FAILED required field accepted';exception when raise_exception then if sqlerrm like 'TEST FAILED%' then raise;end if;end;
  begin insert into public.bp_submissions(kind,content_id,name,email,payment_method,data) values('event','bp-qa-event','Duplicate Person','bp-qa-one@example.com','bank','{"answers":{"q1":"None"}}');raise exception 'TEST FAILED duplicate accepted';exception when unique_violation then null;end;
  begin perform * from public.bp_submissions;raise exception 'TEST FAILED private registrations exposed';exception when insufficient_privilege then null;end;

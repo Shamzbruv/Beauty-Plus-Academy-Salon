@@ -98,7 +98,7 @@ function nav() {
     .querySelector("footer .footer-bottom")
     ?.insertAdjacentHTML(
       "beforeend",
-      '<a href="admin/" class="bp-owner-link">Owner sign in</a>',
+      '<a href="admin/index.html" class="bp-owner-link">Owner sign in</a>',
     );
 }
 function promoActive(r) {
@@ -129,7 +129,10 @@ function promotions() {
       modal.dataset.bpPromo = r.id;
       modal.innerHTML = `<button class="bp-close" aria-label="Close offer">×</button>${body}`;
       document.body.append(modal);
-      modal.querySelector("button").onclick = () => modal.close();
+      modal.querySelector("button").onclick = () => {
+        sessionStorage.setItem("bp-promo-" + r.id + "-" + r.version, "1");
+        modal.close();
+      };
       modal.addEventListener("close", () =>
         sessionStorage.setItem("bp-promo-" + r.id + "-" + r.version, "1"),
       );
@@ -397,12 +400,28 @@ async function submit(form, record) {
       payment_reference: fd.get("bp_reference") || "",
     };
     await checked(db.from("bp_submissions").insert(record));
-    const p = settings.payments.find((p) => p.id === record.payment_method);
-    let url = record.data?.payment_url || p?.url;
+    const quote = await checked(db.rpc("bp_request_quote", { p_id: id }));
+    if (!quote?.length)
+      throw new Error(
+        "Your request is saved. Please contact the salon with reference " +
+          id +
+          " for payment instructions.",
+      );
+    record.amount = quote[0].amount;
+    const waitlisted = quote[0].status === "waitlisted";
+    const p = waitlisted
+      ? null
+      : settings.payments.find((p) => p.id === record.payment_method);
+    let url =
+      !p || ["bank", "cash"].includes(p.provider)
+        ? ""
+        : record.data?.payment_links?.[p.provider] ||
+          (p.provider === "custom" ? record.data?.payment_url : "") ||
+          p?.url;
     form.reset();
     const d = document.createElement("dialog");
     d.className = "bp-dialog";
-    d.innerHTML = `<button class="bp-close" aria-label="Close confirmation">×</button><p class="bp-kicker">REQUEST RECEIVED</p><h2>Thank you, ${esc(record.name.split(" ")[0])}.</h2><p>Your reference is <strong>${esc(id)}</strong>. Keep this for payment and follow-up.</p><p>${record.kind === "event" ? "The team will confirm your place or waitlist status." : "The team will review your request and confirm availability."}</p><p>${esc(p?.instructions || "Contact the salon to complete payment.")}</p><p><strong>Payment status: awaiting verification.</strong> A request or payment link is not proof of payment.</p><div id="bp-payment-action"></div><a class="bp-button" target="_blank" rel="noopener" href="https://wa.me/${esc(settings.whatsapp)}?text=${encodeURIComponent("Hello, my Beauty Plus request is " + id + ". Please confirm my place and payment instructions. Name: " + record.name)}">Contact Beauty Plus</a>`;
+    d.innerHTML = `<button class="bp-close" aria-label="Close confirmation">×</button><p class="bp-kicker">REQUEST RECEIVED</p><h2>Thank you, ${esc(record.name.split(" ")[0])}.</h2><p>Your reference is <strong>${esc(id)}</strong>. Keep this for payment and follow-up.</p><p>${record.kind === "event" ? (waitlisted ? "You are on the waitlist. Please wait for the team to offer a place before paying." : "Your registration is saved. The team will confirm your place.") : "The team will review your request and confirm availability."}</p><p>${esc(waitlisted ? "No payment is requested while you are on the waitlist." : p?.instructions || (Number(record.amount) === 0 ? "No payment is required for this request." : "Contact the salon to complete payment."))}</p><p><strong>${waitlisted ? "Waitlisted — please wait before paying." : Number(record.amount) === 0 ? "No payment required." : "Amount requested: " + money(record.amount) + " • awaiting verification."}</strong> A request or payment link is not proof of payment.</p><div id="bp-payment-action"></div><a class="bp-button" target="_blank" rel="noopener" href="https://wa.me/${esc(settings.whatsapp)}?text=${encodeURIComponent("Hello, my Beauty Plus request is " + id + ". Please confirm my place and payment instructions. Name: " + record.name)}">Contact Beauty Plus</a>`;
     document.body.append(d);
     d.querySelector("button").onclick = () => d.close();
     d.addEventListener("close", () => d.remove());
@@ -502,6 +521,11 @@ function wireForms() {
             notes: d.bookingNotes,
             preferred_contact: d.bookingContactMethod,
             payment_url: s.data.payment_url || "",
+            payment_links: {
+              wipay: s.data.wipay_link || "",
+              fygaro: s.data.fygaro_link || "",
+              ncb: s.data.ncb_link || "",
+            },
           },
         };
       } else {
@@ -530,6 +554,11 @@ function wireForms() {
               .filter(Boolean)
               .join(", "),
             payment_url: c.data.payment_url || "",
+            payment_links: {
+              wipay: c.data.wipay_link || "",
+              fygaro: c.data.fygaro_link || "",
+              ncb: c.data.ncb_link || "",
+            },
           },
         };
       }
@@ -546,13 +575,11 @@ function eventSignup(r) {
   const form = modal.querySelector("form");
   if (d.price > 0) paymentFields(form);
   else {
-    form
-      .querySelector('button[type="submit"]')
-      .before(
-        Object.assign(document.createElement("p"), {
-          textContent: settings.privacy_policy,
-        }),
-      );
+    form.querySelector('button[type="submit"]').before(
+      Object.assign(document.createElement("p"), {
+        textContent: settings.privacy_policy,
+      }),
+    );
   }
   modal.querySelector(".bp-close").onclick = () => modal.close();
   modal.addEventListener("close", () => modal.remove());
@@ -569,7 +596,16 @@ function eventSignup(r) {
       email: fd.get("email"),
       phone: fd.get("phone"),
       amount: d.price || 0,
-      data: { item: r.title, answers, payment_url: d.payment_url || "" },
+      data: {
+        item: r.title,
+        answers,
+        payment_url: d.payment_url || "",
+        payment_links: {
+          wipay: d.wipay_link || "",
+          fygaro: d.fygaro_link || "",
+          ncb: d.ncb_link || "",
+        },
+      },
     });
   };
   modal.showModal();

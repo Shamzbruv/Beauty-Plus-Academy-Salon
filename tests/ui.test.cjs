@@ -66,7 +66,17 @@ test("owner studio and public forms work on desktop and mobile with isolated API
         if (req.method() === "OPTIONS")
           return route.fulfill({ status: 200, headers: cors });
         let data = [];
-        if (url.pathname.includes("rpc/bp_is_admin")) data = true;
+        if (url.pathname.includes("rpc/bp_request_quote")) {
+          const row = submissions.find((s) => s.id === req.postDataJSON().p_id);
+          data = row
+            ? [
+                {
+                  amount: row.kind === "booking" ? 3100 : row.amount,
+                  status: row.status || "new",
+                },
+              ]
+            : [];
+        } else if (url.pathname.includes("rpc/bp_is_admin")) data = true;
         else if (url.pathname.includes("bp_content")) {
           if (req.method() === "POST") {
             const v = req.postDataJSON();
@@ -205,16 +215,14 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     await page
       .locator("#editor [name=title]")
       .fill("A beautiful transformation");
-    await page
-      .locator("#editor [data-upload=image]")
-      .setInputFiles({
-        name: "work.png",
-        mimeType: "image/png",
-        buffer: Buffer.from(
-          "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/lTkAAAAASUVORK5CYII=",
-          "base64",
-        ),
-      });
+    await page.locator("#editor [data-upload=image]").setInputFiles({
+      name: "work.png",
+      mimeType: "image/png",
+      buffer: Buffer.from(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/lTkAAAAASUVORK5CYII=",
+        "base64",
+      ),
+    });
     await page.waitForFunction(() =>
       document
         .querySelector("#editor [name=image]")
@@ -274,6 +282,11 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     await page.locator("#bookingSubmitBtn").click();
     await page.waitForSelector(".bp-dialog[open]");
     assert.equal(submissions.at(-1).amount, 3125);
+    assert.match(
+      await page.locator(".bp-dialog[open]").textContent(),
+      /3,100/,
+      "Confirmation uses the authoritative server amount",
+    );
     await page.locator(".bp-dialog[open] .bp-close").click();
     await page.goto("http://localhost/enroll.html");
     await page.waitForSelector("#bp-business");

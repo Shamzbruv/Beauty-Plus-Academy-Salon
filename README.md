@@ -1,7 +1,7 @@
 # Beauty Plus Academy & Salon
 
 Public website: https://beautyplusacademyandsalon.com
-Owner studio: https://beautyplusacademyandsalon.com/admin/
+Owner studio: https://beautyplusacademyandsalon.com/admin/index.html
 
 The owner studio manages the existing website without editing code: page copy, images and links; salon services and deposits; courses and kit-inclusive prices; scheduled promotions; events and custom registration forms; gallery stories; FAQs and testimonials; payment methods; business policies and section visibility. Each page includes an information button. Drafts and archived items are private. Saved edits have optimistic concurrency checks and version history.
 
@@ -26,7 +26,7 @@ Images are uploaded to the `bp-media` bucket, limited to 10 MB and supported ima
 
 Official setup links and step-by-step guidance are in the dashboard. The website never collects card numbers or secret payment credentials. Merchant approval and fees are managed by providers.
 
-**Payment verification is manual.** A redirect or customer-supplied receipt/reference does not mark a request paid. Check your bank/provider, then update the owner record. Promotions advertise an offer; their optional codes are display-only and do not calculate discounts. Change catalog prices separately when needed.
+**Payment verification is manual.** A redirect or customer-supplied receipt/reference does not mark a request paid. Checkout uses a short-lived lookup of the database-calculated amount and waitlist status, without exposing contact details; waitlisted attendees are not prompted to pay. Item-specific links are separate for WiPay, Fygaro, NCB, and other hosted providers. Check your bank/provider, then update the owner record. Promotions advertise an offer; their optional codes are display-only and do not calculate discounts. Change catalog prices separately when needed.
 
 New requests are stored in the dashboard immediately. They do not depend on the old email/PDF flow. The old unauthenticated email endpoint has been retired; automatic customer and owner email notifications are not configured by this change. Customer confirmations include a request reference and a WhatsApp follow-up link. Student records cover enrollment and tuition requests, not a calculated outstanding-balance ledger.
 

@@ -167,7 +167,10 @@ const schema = {
     ["duration", "Duration", "text", "e.g. 1 hr"],
     ["description", "Description", "textarea"],
     ["featured", "Featured service", "bool"],
-    ["payment_url", "Item-specific hosted payment link (optional)", "url"],
+    ["wipay_link", "WiPay link for this item (optional)", "url"],
+    ["fygaro_link", "Fygaro link for this item (optional)", "url"],
+    ["ncb_link", "NCB link for this item (optional)", "url"],
+    ["payment_url", "Other provider link for this item (optional)", "url"],
   ],
   course: [
     ["category", "Category", "text", "e.g. hair, nails, makeup"],
@@ -182,7 +185,10 @@ const schema = {
     ["schedule", "Class days and times", "text", "e.g. Mondays, 9am–1pm"],
     ["description", "What students will learn", "textarea"],
     ["flexible", "Allow online or face-to-face selection", "bool"],
-    ["payment_url", "Item-specific hosted payment link (optional)", "url"],
+    ["wipay_link", "WiPay link for this item (optional)", "url"],
+    ["fygaro_link", "Fygaro link for this item (optional)", "url"],
+    ["ncb_link", "NCB link for this item (optional)", "url"],
+    ["payment_url", "Other provider link for this item (optional)", "url"],
   ],
   promotion: [
     ["badge", "Small label", "text", "SPECIAL OFFER"],
@@ -216,7 +222,10 @@ const schema = {
     ["registration_open", "Accept registrations", "bool"],
     ["waitlist", "Allow a waitlist when full", "bool"],
     ["form_intro", "Introduction above the registration form", "textarea"],
-    ["payment_url", "Event-specific hosted payment link (optional)", "url"],
+    ["wipay_link", "WiPay link for this item (optional)", "url"],
+    ["fygaro_link", "Fygaro link for this item (optional)", "url"],
+    ["ncb_link", "NCB link for this item (optional)", "url"],
+    ["payment_url", "Other provider link for this item (optional)", "url"],
   ],
   gallery: [
     ["image", "Image", "image"],
@@ -844,7 +853,10 @@ function edit(rowOrKind) {
 function validateContent(kind, d, status) {
   for (const [k, v] of Object.entries(d)) {
     if (
-      (k === "url" || k === "payment_url" || k === "image") &&
+      (k === "url" ||
+        k === "payment_url" ||
+        k.endsWith("_link") ||
+        k === "image") &&
       v &&
       !safeURL(v, k === "image")
     )
@@ -960,7 +972,7 @@ function requestDetail(id) {
     ["Amount requested", money(s.amount)],
     ["Payment method", s.payment_method || "Free"],
     ...Object.entries(d)
-      .filter(([k]) => !["answers", "payment_url"].includes(k))
+      .filter(([k]) => !["answers", "payment_url", "payment_links"].includes(k))
       .map(([k, v]) => [
         k.replace(/_/g, " "),
         typeof v === "boolean" ? (v ? "Yes" : "No") : v,
@@ -1258,7 +1270,7 @@ async function handleAction(a) {
     if (!email) throw new Error("Enter your owner email address first.");
     await checked(
       db.auth.resetPasswordForEmail(email, {
-        redirectTo: location.origin + "/admin/",
+        redirectTo: location.origin + "/admin/index.html",
       }),
     );
     toast(
