@@ -1,0 +1,5126 @@
+[
+  {
+    "id": "service-1",
+    "kind": "service",
+    "title": "Graduation Makeup (with lashes)",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "category": "Make-up Services",
+      "description": "A flawless, picture-ready graduation makeup look complete with lashes for photos, ceremonies, and celebration moments.",
+      "duration": "1 hr",
+      "price": 5500,
+      "price_from": false,
+      "featured": true
+    }
+  },
+  {
+    "id": "service-2",
+    "kind": "service",
+    "title": "Retightening (SMALL) Locs Only Without Shampoo",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "category": "Locs Services",
+      "description": "Loc maintenance focused on new growth to keep small locs neat and polished between wash services.",
+      "duration": "1 hr",
+      "price": 9000,
+      "price_from": true,
+      "featured": true
+    }
+  },
+  {
+    "id": "service-3",
+    "kind": "service",
+    "title": "Pedicure Regular Service with Regular Polish",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "category": "Nail Services",
+      "description": "Classic foot care and polish for clean, refreshed, and neatly finished toes.",
+      "duration": "1 hr",
+      "price": 3500,
+      "price_from": false,
+      "featured": true
+    }
+  },
+  {
+    "id": "service-4",
+    "kind": "service",
+    "title": "Soft Glam Make-up",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "category": "Make-up Services",
+      "description": "A soft, elegant finish designed to enhance natural beauty while keeping the look fresh and camera-ready.",
+      "duration": "1 hr",
+      "price": 4500,
+      "price_from": false,
+      "featured": true
+    }
+  },
+  {
+    "id": "service-5",
+    "kind": "service",
+    "title": "Full Lower Leg & Upper Leg Waxing",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "category": "Waxing, Shaving & Tinting Services",
+      "description": "A smooth-leg waxing bundle for upper and lower legs.",
+      "duration": "2 hrs • 2 services",
+      "price": 7920,
+      "price_from": false,
+      "featured": true
+    }
+  },
+  {
+    "id": "service-6",
+    "kind": "service",
+    "title": "Nail Art Design Per Finger",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "category": "Nail Services",
+      "description": "Custom nail artistry to add personality, flair, and creative detail to individual nails.",
+      "duration": "1 hr",
+      "price": 150,
+      "price_from": false,
+      "featured": true
+    }
+  },
+  {
+    "id": "service-7",
+    "kind": "service",
+    "title": "Kids Piercing (6–12 years old with earrings) Earlobe",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "category": "Body Piercing",
+      "description": "A child-friendly earlobe piercing service including earrings.",
+      "duration": "1 hr",
+      "price": 2000,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-8",
+    "kind": "service",
+    "title": "Kids Piercing (6–12 years old without earrings) Earlobe",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "category": "Body Piercing",
+      "description": "A safe, gentle, and calm earlobe piercing service for kids ages 6 to 12.",
+      "duration": "1 hr",
+      "price": 1500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-9",
+    "kind": "service",
+    "title": "Toddlers Piercing (Newborn–5 years with earrings) Earlobe",
+    "status": "published",
+    "sort_order": 9,
+    "data": {
+      "category": "Body Piercing",
+      "description": "A gentle toddler earlobe piercing service including earrings.",
+      "duration": "1 hr",
+      "price": 1500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-10",
+    "kind": "service",
+    "title": "Toddlers Piercing (Newborn–5 years without earrings) Earlobe",
+    "status": "published",
+    "sort_order": 10,
+    "data": {
+      "category": "Body Piercing",
+      "description": "A comfortable first-piercing experience for toddlers and newborns.",
+      "duration": "1 hr",
+      "price": 1000,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-11",
+    "kind": "service",
+    "title": "Bridal Party Make-up (4–8)",
+    "status": "published",
+    "sort_order": 11,
+    "data": {
+      "category": "Make-up Services",
+      "description": "Cohesive bridal-party makeup that gives the entire group a polished and photo-ready finish.",
+      "duration": "1 hr",
+      "price": 5000,
+      "price_from": true,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-12",
+    "kind": "service",
+    "title": "Birthday Glam Make-up (with lashes)",
+    "status": "published",
+    "sort_order": 12,
+    "data": {
+      "category": "Make-up Services",
+      "description": "A fresh, glamorous birthday look with lashes for confidence, photos, and celebration.",
+      "duration": "1 hr",
+      "price": 6000,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-13",
+    "kind": "service",
+    "title": "Birthday Glam Make-up (without lashes)",
+    "status": "published",
+    "sort_order": 13,
+    "data": {
+      "category": "Make-up Services",
+      "description": "Professional birthday glam tailored to the client's unique style without lash add-on.",
+      "duration": "1 hr",
+      "price": 5500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-14",
+    "kind": "service",
+    "title": "Graduation Make-up (without lashes)",
+    "status": "published",
+    "sort_order": 14,
+    "data": {
+      "category": "Make-up Services",
+      "description": "Graduation makeup for a clean, radiant, photo-ready finish.",
+      "duration": "1 hr",
+      "price": 4500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-15",
+    "kind": "service",
+    "title": "Facial Massage with Light Therapy Treatment",
+    "status": "published",
+    "sort_order": 15,
+    "data": {
+      "category": "Facial & Full Body Massage",
+      "description": "A rejuvenating facial massage paired with light therapy treatment.",
+      "duration": "1 hr",
+      "price": 7500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-16",
+    "kind": "service",
+    "title": "Upper Back Scrub & Massage",
+    "status": "published",
+    "sort_order": 16,
+    "data": {
+      "category": "Facial & Full Body Massage",
+      "description": "A targeted upper-back treatment to exfoliate, refresh, and relax.",
+      "duration": "1 hr",
+      "price": 7800,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-17",
+    "kind": "service",
+    "title": "Full Body Massage Consultation",
+    "status": "published",
+    "sort_order": 17,
+    "data": {
+      "category": "Facial & Full Body Massage",
+      "description": "Speak with the salon team to match the massage or body treatment to your needs.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-18",
+    "kind": "service",
+    "title": "Fusion Lash Set",
+    "status": "published",
+    "sort_order": 18,
+    "data": {
+      "category": "Fusion Lash Set",
+      "description": "A lash enhancement service created to give the eyes definition, fullness, and polish.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-19",
+    "kind": "service",
+    "title": "Lash Consultation",
+    "status": "published",
+    "sort_order": 19,
+    "data": {
+      "category": "Fusion Lash Set",
+      "description": "Recommended before lash work to choose the correct look, length, and care routine.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-20",
+    "kind": "service",
+    "title": "Brow Lamination & Tinting",
+    "status": "published",
+    "sort_order": 20,
+    "data": {
+      "category": "Waxing, Shaving & Tinting Services",
+      "description": "Brow shaping enhancement with lamination and tinting for a fuller, polished brow look.",
+      "duration": "1 hr 25 mins",
+      "price": 6500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-21",
+    "kind": "service",
+    "title": "Waxing Consultation",
+    "status": "published",
+    "sort_order": 21,
+    "data": {
+      "category": "Waxing, Shaving & Tinting Services",
+      "description": "Confirm the best waxing or shaving service based on area, skin sensitivity, and goals.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-22",
+    "kind": "service",
+    "title": "Nail Service Consultation",
+    "status": "published",
+    "sort_order": 22,
+    "data": {
+      "category": "Nail Services",
+      "description": "Discuss nail style, length, art, polish type, and maintenance before booking.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-23",
+    "kind": "service",
+    "title": "Locs Retightening Service Only (Medium) Half Inch Growth",
+    "status": "published",
+    "sort_order": 23,
+    "data": {
+      "category": "Locs Services",
+      "description": "Medium loc retightening for approximately half-inch new growth.",
+      "duration": "1 hr",
+      "price": 7000,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-24",
+    "kind": "service",
+    "title": "Locs Hair and Scalp Consultation with Locs Demonstration",
+    "status": "published",
+    "sort_order": 24,
+    "data": {
+      "category": "Consultation for Hair and Scalp",
+      "description": "Consultation and demonstration to guide loc care, hair health, and maintenance.",
+      "duration": "1 hr",
+      "price": 4000,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-25",
+    "kind": "service",
+    "title": "Sew-In Consultation",
+    "status": "published",
+    "sort_order": 25,
+    "data": {
+      "category": "Sew-In",
+      "description": "Discuss leave-out, closure, desired finish, and maintenance before installation.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-26",
+    "kind": "service",
+    "title": "Sew-In Installation",
+    "status": "published",
+    "sort_order": 26,
+    "data": {
+      "category": "Sew-In",
+      "description": "A protective styling option installed based on client preference and hair needs.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-27",
+    "kind": "service",
+    "title": "Wig Styling Consultation",
+    "status": "published",
+    "sort_order": 27,
+    "data": {
+      "category": "Wig Services & Hairstyling",
+      "description": "Plan the right wig look, fit, styling finish, and maintenance routine.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-28",
+    "kind": "service",
+    "title": "Wig Making / Wig Styling",
+    "status": "published",
+    "sort_order": 28,
+    "data": {
+      "category": "Wig Services & Hairstyling",
+      "description": "Custom wig and styling services based on hair choice and desired finish.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-29",
+    "kind": "service",
+    "title": "Hair Colour Consultation",
+    "status": "published",
+    "sort_order": 29,
+    "data": {
+      "category": "Hair Coloring Service",
+      "description": "Consultation to assess hair health, desired colour, and safest service route.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-30",
+    "kind": "service",
+    "title": "Colour Service",
+    "status": "published",
+    "sort_order": 30,
+    "data": {
+      "category": "Hair Coloring Service",
+      "description": "Hair colouring service based on consultation, hair length, and target colour.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-31",
+    "kind": "service",
+    "title": "Trimmed Natural Hair",
+    "status": "published",
+    "sort_order": 31,
+    "data": {
+      "category": "Natural Hair Style",
+      "description": "Natural hair trimming service for cleaner ends and better shape.",
+      "duration": "25 mins",
+      "price": 1500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-32",
+    "kind": "service",
+    "title": "Natural Hair Styling",
+    "status": "published",
+    "sort_order": 32,
+    "data": {
+      "category": "Natural Hair Style",
+      "description": "Styling service designed around texture, occasion, and desired finish.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-33",
+    "kind": "service",
+    "title": "S Medium Knotless Braids",
+    "status": "published",
+    "sort_order": 33,
+    "data": {
+      "category": "Braiding Services",
+      "description": "Medium knotless braid service designed for a neat protective style.",
+      "duration": "5 hrs",
+      "price": 16500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-34",
+    "kind": "service",
+    "title": "Braiding Consultation",
+    "status": "published",
+    "sort_order": 34,
+    "data": {
+      "category": "Braiding Services",
+      "description": "Discuss braid size, length, hair quantity, and style direction before booking.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-35",
+    "kind": "service",
+    "title": "Hair and Scalp Consultation",
+    "status": "published",
+    "sort_order": 35,
+    "data": {
+      "category": "Consultation for Hair and Scalp",
+      "description": "A professional conversation to assess scalp, hair condition, goals, and recommended services.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-36",
+    "kind": "service",
+    "title": "Precision Female Hair Cut (Pixie Cut)",
+    "status": "published",
+    "sort_order": 36,
+    "data": {
+      "category": "Hair Cutting Services",
+      "description": "A precision cut service for a clean and polished pixie-style finish.",
+      "duration": "1 hr",
+      "price": 3500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-37",
+    "kind": "service",
+    "title": "Hair Cut Consultation",
+    "status": "published",
+    "sort_order": 37,
+    "data": {
+      "category": "Hair Cutting Services",
+      "description": "Recommended for clients deciding on a new cut, shape, or style direction.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-38",
+    "kind": "service",
+    "title": "Perm Relaxed Service (Jerry Curl) Over 8 Weeks New Growth",
+    "status": "published",
+    "sort_order": 38,
+    "data": {
+      "category": "Relaxer & Perm (jerry curl) Treatment",
+      "description": "Relaxed or jerry curl service for new growth over eight weeks.",
+      "duration": "1 hr 45 mins",
+      "price": 10500,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-39",
+    "kind": "service",
+    "title": "Relaxer / Perm Consultation",
+    "status": "published",
+    "sort_order": 39,
+    "data": {
+      "category": "Relaxer & Perm (jerry curl) Treatment",
+      "description": "Review hair condition, chemical history, and desired outcome before treatment.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-40",
+    "kind": "service",
+    "title": "Treatment and Styling Service",
+    "status": "published",
+    "sort_order": 40,
+    "data": {
+      "category": "Wet Services, Treatment & Styles",
+      "description": "Hair treatment and styling based on hair needs, length, and desired finish.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "service-41",
+    "kind": "service",
+    "title": "Wet Service Consultation",
+    "status": "published",
+    "sort_order": 41,
+    "data": {
+      "category": "Wet Services, Treatment & Styles",
+      "description": "Confirm the correct shampoo, treatment, and finishing service for the client.",
+      "duration": "By appointment",
+      "price": null,
+      "price_from": false,
+      "featured": false
+    }
+  },
+  {
+    "id": "course-1",
+    "kind": "course",
+    "title": "Professional Makeup Artistry",
+    "status": "published",
+    "sort_order": 0,
+    "data": {
+      "category": "makeup",
+      "description": "Professional makeup artistry training for polished occasion, glam, and beauty services. Ask about our Training Kit",
+      "price": 65000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Mondays only • 9am–1pm or 5pm–8pm (Choose morning or evening)",
+      "icon": "fa-brush",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-2",
+    "kind": "course",
+    "title": "Full Body Wax Aesthetic",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "category": "skin",
+      "description": "Full body waxing technique, client care, service confidence, and professional beauty standards. With training kit, it's JMD $120,000.",
+      "price": 75000,
+      "kit_price": 120000,
+      "start": "June 2026",
+      "schedule": "Sundays only • 11am–2pm",
+      "icon": "fa-leaf",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-3",
+    "kind": "course",
+    "title": "Spa Mani & Pedi + Gel X Nails Enhancement",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "category": "nails",
+      "description": "Comprehensive nail training covering spa manicure, pedicure, and gel X extensions. Ask about our Training Kit",
+      "price": 75000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Fridays only • 9am–1pm or 5pm–8pm (Choose morning or evening)",
+      "icon": "fa-hand-sparkles",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-4",
+    "kind": "course",
+    "title": "Braiding",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "category": "hair",
+      "description": "Braiding training for clean, professional protective styles. Online or face-to-face available. Ask about our Training Kit",
+      "price": 50000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Tuesdays & Wednesdays • 9am–1pm or 5pm–8pm",
+      "icon": "fa-grip-lines",
+      "flexible": true
+    }
+  },
+  {
+    "id": "course-5",
+    "kind": "course",
+    "title": "Wig Making",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "category": "hair",
+      "description": "Wigmaking training for students who want to create and style wigs professionally. Ask about our Training Kit",
+      "price": 60000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Tuesdays & Wednesdays • 9am–1pm or 5pm–8pm",
+      "icon": "fa-hat-wizard",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-6",
+    "kind": "course",
+    "title": "Loctician Course",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "category": "locs",
+      "description": "Loctician training covering loc care, retightening, maintenance, and professional services. Online or face-to-face available. Ask about our Training Kit",
+      "price": 75000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Thursdays only • 5pm–8pm",
+      "icon": "fa-crown",
+      "flexible": true
+    }
+  },
+  {
+    "id": "course-7",
+    "kind": "course",
+    "title": "Professional Barbering Course",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "category": "barbering",
+      "description": "Professional barbering training for modern cuts, fades, and client service. Ask about our Training Kit",
+      "price": 65000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Sundays • 9am–2pm",
+      "icon": "fa-scissors",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-8",
+    "kind": "course",
+    "title": "Fusion Lash Artistry",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "category": "makeup",
+      "description": "Professional lash extension training focusing on fusion lash application and styling techniques. Ask about our Training Kit",
+      "price": 65000,
+      "kit_price": null,
+      "start": "June 2026",
+      "schedule": "Saturdays only • 5pm–8pm",
+      "icon": "fa-eye",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-9",
+    "kind": "course",
+    "title": "Teens Braiding Class",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "category": "teens",
+      "description": "Learn foundational braiding skills this summer. (No payment plans).",
+      "price": 25000,
+      "kit_price": 38000,
+      "start": "July 6–8 & 13–15",
+      "schedule": "8am–12pm & 1pm–4pm",
+      "icon": "fa-grip-lines",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-10",
+    "kind": "course",
+    "title": "Teens Makeup",
+    "status": "published",
+    "sort_order": 9,
+    "data": {
+      "category": "teens",
+      "description": "Learn age-appropriate makeup techniques. (No payment plans).",
+      "price": 28000,
+      "kit_price": 40000,
+      "start": "July 9–11 & 16–18",
+      "schedule": "8am–12pm & 1pm–4pm",
+      "icon": "fa-brush",
+      "flexible": false
+    }
+  },
+  {
+    "id": "course-11",
+    "kind": "course",
+    "title": "Teens Gelx Nails Application",
+    "status": "published",
+    "sort_order": 10,
+    "data": {
+      "category": "teens",
+      "description": "Learn GelX nail extensions for beautiful summer nails. (No payment plans).",
+      "price": 25000,
+      "kit_price": 41000,
+      "start": "July 20–22 & 27–29",
+      "schedule": "8am–12pm & 1pm–4pm",
+      "icon": "fa-hand-sparkles",
+      "flexible": false
+    }
+  },
+  {
+    "id": "gallery-salon-0",
+    "kind": "gallery",
+    "title": "Locs & Braids Style",
+    "status": "published",
+    "sort_order": 0,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_49 PM (1).png",
+      "category": "salon",
+      "tag": "Protective Style",
+      "story": "",
+      "alt": "Locs & Braids Style",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-1",
+    "kind": "gallery",
+    "title": "Beauty Plus Artistry",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_50 PM (2).png",
+      "category": "salon",
+      "tag": "Salon Work",
+      "story": "",
+      "alt": "Beauty Plus Artistry",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-2",
+    "kind": "gallery",
+    "title": "Precision Styling",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_51 PM (3).png",
+      "category": "salon",
+      "tag": "Hair Services",
+      "story": "",
+      "alt": "Precision Styling",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-3",
+    "kind": "gallery",
+    "title": "Natural Hair Mastery",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_52 PM (4).png",
+      "category": "salon",
+      "tag": "Natural Look",
+      "story": "",
+      "alt": "Natural Hair Mastery",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-4",
+    "kind": "gallery",
+    "title": "Glam Finish",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_53 PM (5).png",
+      "category": "salon",
+      "tag": "Makeup & Glam",
+      "story": "",
+      "alt": "Glam Finish",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-5",
+    "kind": "gallery",
+    "title": "Royal Nail Art",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_54 PM (6).png",
+      "category": "salon",
+      "tag": "Nail Services",
+      "story": "",
+      "alt": "Royal Nail Art",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-6",
+    "kind": "gallery",
+    "title": "Studio Session",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_54 PM (7).png",
+      "category": "salon",
+      "tag": "Salon Work",
+      "story": "",
+      "alt": "Studio Session",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-7",
+    "kind": "gallery",
+    "title": "Colour & Cut",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_55 PM (8).png",
+      "category": "salon",
+      "tag": "Hair Services",
+      "story": "",
+      "alt": "Colour & Cut",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-8",
+    "kind": "gallery",
+    "title": "Braid Excellence",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_56 PM (9).png",
+      "category": "salon",
+      "tag": "Braiding",
+      "story": "",
+      "alt": "Braid Excellence",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-salon-9",
+    "kind": "gallery",
+    "title": "Full Glam Look",
+    "status": "published",
+    "sort_order": 9,
+    "data": {
+      "image": "Images of work/ChatGPT Image May 23, 2026, 08_14_57 PM (10).png",
+      "category": "salon",
+      "tag": "Makeup & Glam",
+      "story": "",
+      "alt": "Full Glam Look",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-0",
+    "kind": "gallery",
+    "title": "Graduation Day",
+    "status": "published",
+    "sort_order": 0,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_47 PM (1).png",
+      "category": "academy",
+      "tag": "Class of 2025",
+      "story": "",
+      "alt": "Graduation Day",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-1",
+    "kind": "gallery",
+    "title": "Academy Excellence",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_48 PM (2).png",
+      "category": "academy",
+      "tag": "Student Results",
+      "story": "",
+      "alt": "Academy Excellence",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-2",
+    "kind": "gallery",
+    "title": "Hands-On Training",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_50 PM (3).png",
+      "category": "academy",
+      "tag": "Practical Skills",
+      "story": "",
+      "alt": "Hands-On Training",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-3",
+    "kind": "gallery",
+    "title": "Certified & Ready",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_52 PM (4).png",
+      "category": "academy",
+      "tag": "Graduation",
+      "story": "",
+      "alt": "Certified & Ready",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-4",
+    "kind": "gallery",
+    "title": "Beauty Professionals",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_53 PM (5).png",
+      "category": "academy",
+      "tag": "Student Results",
+      "story": "",
+      "alt": "Beauty Professionals",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-5",
+    "kind": "gallery",
+    "title": "Studio Skills",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_54 PM (6).png",
+      "category": "academy",
+      "tag": "Practical Training",
+      "story": "",
+      "alt": "Studio Skills",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-6",
+    "kind": "gallery",
+    "title": "Future Artists",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_56 PM (7).png",
+      "category": "academy",
+      "tag": "Class of 2025",
+      "story": "",
+      "alt": "Future Artists",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-7",
+    "kind": "gallery",
+    "title": "Award Ceremony",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_57 PM (8).png",
+      "category": "academy",
+      "tag": "Graduation",
+      "story": "",
+      "alt": "Award Ceremony",
+      "consent": true
+    }
+  },
+  {
+    "id": "gallery-academy-8",
+    "kind": "gallery",
+    "title": "Ready to Work",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "image": "School Results/ChatGPT Image May 23, 2026, 08_42_58 PM (9).png",
+      "category": "academy",
+      "tag": "Certified",
+      "story": "",
+      "alt": "Ready to Work",
+      "consent": true
+    }
+  },
+  {
+    "id": "index-text-1",
+    "kind": "page",
+    "title": "2026 enrollment is now open — June main classes and July teens summer classes are filling fast. Secu",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "2026 enrollment is now open — June main classes and July teens summer classes are filling fast. Secure your spot today.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-2",
+    "kind": "page",
+    "title": "Beauty Plus\n                        Academy & Salon",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-image-3",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon Logo",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "page": "index",
+      "type": "image",
+      "value": "https://www.jotform.com/uploads/antwunwilson/form_files/clear_form_logo_background_colors_source_1771883276.jpg?nc=1",
+      "alt": "Beauty Plus Academy & Salon Logo",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-4",
+    "kind": "page",
+    "title": "Beauty Plus",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-5",
+    "kind": "page",
+    "title": "Academy & Salon",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Academy & Salon",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-6",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-7",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-8",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-9",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 9,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-10",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 10,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-11",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 11,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-12",
+    "kind": "page",
+    "title": "Contact",
+    "status": "published",
+    "sort_order": 12,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-13",
+    "kind": "page",
+    "title": "Contact",
+    "status": "published",
+    "sort_order": 13,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "#contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-14",
+    "kind": "page",
+    "title": "Enroll Now",
+    "status": "published",
+    "sort_order": 14,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Enroll Now",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-15",
+    "kind": "page",
+    "title": "Enroll Now",
+    "status": "published",
+    "sort_order": 15,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-16",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 16,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-17",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 17,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-18",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 18,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-19",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 19,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-20",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 20,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-21",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 21,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-22",
+    "kind": "page",
+    "title": "Contact",
+    "status": "published",
+    "sort_order": 22,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-23",
+    "kind": "page",
+    "title": "Contact",
+    "status": "published",
+    "sort_order": 23,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "#contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-24",
+    "kind": "page",
+    "title": "Royal Beauty • Professional Skills • Kingston",
+    "status": "published",
+    "sort_order": 24,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Royal Beauty • Professional Skills • Kingston",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-25",
+    "kind": "page",
+    "title": "Where beauty becomes",
+    "status": "published",
+    "sort_order": 25,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Where beauty becomes",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-26",
+    "kind": "page",
+    "title": "royalty.",
+    "status": "published",
+    "sort_order": 26,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "royalty.",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-27",
+    "kind": "page",
+    "title": "From flawless salon appointments to hands-on beauty training, Beauty Plus is where confidence is sty",
+    "status": "published",
+    "sort_order": 27,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "From flawless salon appointments to hands-on beauty training, Beauty Plus is where confidence is styled, talent is sharpened, and every client or student is treated with care, class, and intention.",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-28",
+    "kind": "page",
+    "title": "Book a Service",
+    "status": "published",
+    "sort_order": 28,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Book a Service",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-link-29",
+    "kind": "page",
+    "title": "Book a Service",
+    "status": "published",
+    "sort_order": 29,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "salon.html",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-30",
+    "kind": "page",
+    "title": "Enroll in a Program",
+    "status": "published",
+    "sort_order": 30,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Enroll in a Program",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-link-31",
+    "kind": "page",
+    "title": "Enroll in a Program",
+    "status": "published",
+    "sort_order": 31,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-32",
+    "kind": "page",
+    "title": "20+",
+    "status": "published",
+    "sort_order": 32,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "20+",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-33",
+    "kind": "page",
+    "title": "Years of beauty training experience",
+    "status": "published",
+    "sort_order": 33,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Years of beauty training experience",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-34",
+    "kind": "page",
+    "title": "Weeks of focused practical training",
+    "status": "published",
+    "sort_order": 34,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Weeks of focused practical training",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-35",
+    "kind": "page",
+    "title": "41",
+    "status": "published",
+    "sort_order": 35,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "41",
+      "section": "home",
+      "binding": "service_count"
+    }
+  },
+  {
+    "id": "index-text-36",
+    "kind": "page",
+    "title": "Beauty services available to request",
+    "status": "published",
+    "sort_order": 36,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty services available to request",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-37",
+    "kind": "page",
+    "title": "5.0",
+    "status": "published",
+    "sort_order": 37,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "5.0",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-38",
+    "kind": "page",
+    "title": "Average client rating",
+    "status": "published",
+    "sort_order": 38,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Average client rating",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-image-39",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon Logo",
+    "status": "published",
+    "sort_order": 39,
+    "data": {
+      "page": "index",
+      "type": "image",
+      "value": "https://www.jotform.com/uploads/antwunwilson/form_files/clear_form_logo_background_colors_source_1771883276.jpg?nc=1",
+      "alt": "Beauty Plus Academy & Salon Logo",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-40",
+    "kind": "page",
+    "title": "Beauty Plus Academy",
+    "status": "published",
+    "sort_order": 40,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus Academy",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-41",
+    "kind": "page",
+    "title": "Step into training that prepares you for real beauty work, real clients, and real opportunities, whe",
+    "status": "published",
+    "sort_order": 41,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Step into training that prepares you for real beauty work, real clients, and real opportunities, whether you want to join a salon team or build a brand of your own.",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-42",
+    "kind": "page",
+    "title": "Scroll",
+    "status": "published",
+    "sort_order": 42,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Scroll",
+      "section": "home"
+    }
+  },
+  {
+    "id": "index-text-43",
+    "kind": "page",
+    "title": "About The Brand",
+    "status": "published",
+    "sort_order": 43,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "About The Brand",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-44",
+    "kind": "page",
+    "title": "Beauty for clients. Training for future professionals.",
+    "status": "published",
+    "sort_order": 44,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty for clients. Training for future professionals.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-45",
+    "kind": "page",
+    "title": "Beauty Plus brings together polished salon services and practical beauty education in one trusted Ki",
+    "status": "published",
+    "sort_order": 45,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus brings together polished salon services and practical beauty education in one trusted Kingston brand, giving clients a place to glow and students a place to grow.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-46",
+    "kind": "page",
+    "title": "Made to feel polished, welcoming, and worth coming back to.",
+    "status": "published",
+    "sort_order": 46,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Made to feel polished, welcoming, and worth coming back to.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-47",
+    "kind": "page",
+    "title": "Whether someone is booking a beauty service or taking the first step toward a new career, Beauty Plu",
+    "status": "published",
+    "sort_order": 47,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Whether someone is booking a beauty service or taking the first step toward a new career, Beauty Plus makes the journey feel clearer, warmer, and easier to say yes to from the very beginning.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-48",
+    "kind": "page",
+    "title": "Royal Salon Care",
+    "status": "published",
+    "sort_order": 48,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Royal Salon Care",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-49",
+    "kind": "page",
+    "title": "From soft glam to nails, waxes, braids, locs, colour, and treatments, every service is designed to l",
+    "status": "published",
+    "sort_order": 49,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "From soft glam to nails, waxes, braids, locs, colour, and treatments, every service is designed to leave you feeling polished.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-50",
+    "kind": "page",
+    "title": "Beauty Academy",
+    "status": "published",
+    "sort_order": 50,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Academy",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-51",
+    "kind": "page",
+    "title": "Hands-on training for aspiring artists, stylists, and beauty entrepreneurs ready to build confidence",
+    "status": "published",
+    "sort_order": 51,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Hands-on training for aspiring artists, stylists, and beauty entrepreneurs ready to build confidence and skill.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-52",
+    "kind": "page",
+    "title": "Kingston Location",
+    "status": "published",
+    "sort_order": 52,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Kingston Location",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-53",
+    "kind": "page",
+    "title": "Visit us at 38a Hagley Park Road, Kingston 10 for appointments, classes, and consultations.",
+    "status": "published",
+    "sort_order": 53,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Visit us at 38a Hagley Park Road, Kingston 10 for appointments, classes, and consultations.",
+      "section": "about",
+      "binding": "address"
+    }
+  },
+  {
+    "id": "index-text-54",
+    "kind": "page",
+    "title": "Certification Pathway",
+    "status": "published",
+    "sort_order": 54,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Certification Pathway",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-55",
+    "kind": "page",
+    "title": "Serious students can pursue training aligned with HEART/NSTA Trust and NCTVET/NVQ-J certification pa",
+    "status": "published",
+    "sort_order": 55,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Serious students can pursue training aligned with HEART/NSTA Trust and NCTVET/NVQ-J certification pathways.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-56",
+    "kind": "page",
+    "title": "Luxury beauty, made easy to book.",
+    "status": "published",
+    "sort_order": 56,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Luxury beauty, made easy to book.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-57",
+    "kind": "page",
+    "title": "Explore by category, discover the service that fits your moment, and send your booking request in mi",
+    "status": "published",
+    "sort_order": 57,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Explore by category, discover the service that fits your moment, and send your booking request in minutes with no clutter and no confusion.",
+      "section": "about"
+    }
+  },
+  {
+    "id": "index-text-58",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 58,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-59",
+    "kind": "page",
+    "title": "Every beauty service you need, in one place.",
+    "status": "published",
+    "sort_order": 59,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Every beauty service you need, in one place.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-60",
+    "kind": "page",
+    "title": "From flawless makeup and creative nail art to loc retightening, knotless braids, waxing, and precisi",
+    "status": "published",
+    "sort_order": 60,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "From flawless makeup and creative nail art to loc retightening, knotless braids, waxing, and precision cuts — Beauty Plus offers over 41 services for every beauty moment.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-61",
+    "kind": "page",
+    "title": "Makeup & Glam",
+    "status": "published",
+    "sort_order": 61,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Makeup & Glam",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-62",
+    "kind": "page",
+    "title": "Soft glam, birthday glam, graduation looks, and bridal party makeup — all from JMD $4,500.",
+    "status": "published",
+    "sort_order": 62,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Soft glam, birthday glam, graduation looks, and bridal party makeup — all from JMD $4,500.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-64",
+    "kind": "page",
+    "title": "Expert loc retightening, knotless braids, consultations, and professional protective styles.",
+    "status": "published",
+    "sort_order": 64,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Expert loc retightening, knotless braids, consultations, and professional protective styles.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-65",
+    "kind": "page",
+    "title": "Nails & Waxing",
+    "status": "published",
+    "sort_order": 65,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Nails & Waxing",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-66",
+    "kind": "page",
+    "title": "Pedicures, nail art, brow lamination, full leg waxing, and more body care services.",
+    "status": "published",
+    "sort_order": 66,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Pedicures, nail art, brow lamination, full leg waxing, and more body care services.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-67",
+    "kind": "page",
+    "title": "Hair Services",
+    "status": "published",
+    "sort_order": 67,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Hair Services",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-68",
+    "kind": "page",
+    "title": "Cuts, colour, relaxers, treatments, wigs, sew-ins, and wet services by trained professionals.",
+    "status": "published",
+    "sort_order": 68,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Cuts, colour, relaxers, treatments, wigs, sew-ins, and wet services by trained professionals.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-69",
+    "kind": "page",
+    "title": "Lash Services",
+    "status": "published",
+    "sort_order": 69,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Lash Services",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-70",
+    "kind": "page",
+    "title": "Fusion lash sets and lash consultations for fuller, more defined eyes.",
+    "status": "published",
+    "sort_order": 70,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Fusion lash sets and lash consultations for fuller, more defined eyes.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-71",
+    "kind": "page",
+    "title": "Facials & Massage",
+    "status": "published",
+    "sort_order": 71,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Facials & Massage",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-72",
+    "kind": "page",
+    "title": "Facial massage with light therapy, upper back scrubs, and full body massage consultations.",
+    "status": "published",
+    "sort_order": 72,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Facial massage with light therapy, upper back scrubs, and full body massage consultations.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-73",
+    "kind": "page",
+    "title": "View All Services & Book an Appointment",
+    "status": "published",
+    "sort_order": 73,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "View All Services & Book an Appointment",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-link-74",
+    "kind": "page",
+    "title": "View All Services & Book an Appointment",
+    "status": "published",
+    "sort_order": 74,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "salon.html",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-75",
+    "kind": "page",
+    "title": "Browse current services, prices, and appointment requests on our salon page.",
+    "status": "published",
+    "sort_order": 75,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Browse current services, prices, and appointment requests on our salon page.",
+      "section": "salon"
+    }
+  },
+  {
+    "id": "index-text-76",
+    "kind": "page",
+    "title": "Beauty Plus Academy",
+    "status": "published",
+    "sort_order": 76,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus Academy",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-77",
+    "kind": "page",
+    "title": "Turn your passion for beauty into a profession.",
+    "status": "published",
+    "sort_order": 77,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Turn your passion for beauty into a profession.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-78",
+    "kind": "page",
+    "title": "Practical beauty training, built around your goals. Beauty Plus Academy has spent over 20 years help",
+    "status": "published",
+    "sort_order": 78,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Practical beauty training, built around your goals. Beauty Plus Academy has spent over 20 years helping aspiring artists become confident, certified beauty professionals.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-79",
+    "kind": "page",
+    "title": "Why Students Choose Beauty Plus",
+    "status": "published",
+    "sort_order": 79,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Why Students Choose Beauty Plus",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-80",
+    "kind": "page",
+    "title": "Trained and licensed instructors. Hands-on practical skills. HEART/NCTVET-aligned certification path",
+    "status": "published",
+    "sort_order": 80,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Trained and licensed instructors. Hands-on practical skills. HEART/NCTVET-aligned certification pathways. A supportive environment that's been building beauty careers for over 20 years.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-81",
+    "kind": "page",
+    "title": "Whether you're building a career or launching a business, our courses are designed to prepare you fo",
+    "status": "published",
+    "sort_order": 81,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Whether you're building a career or launching a business, our courses are designed to prepare you for real work, real clients, and real results.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-82",
+    "kind": "page",
+    "title": "Students must be 16 years and older.",
+    "status": "published",
+    "sort_order": 82,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Students must be 16 years and older.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-83",
+    "kind": "page",
+    "title": "Age 16+",
+    "status": "published",
+    "sort_order": 83,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Age 16+",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-84",
+    "kind": "page",
+    "title": "One day per week — mornings (9am–1pm) or evenings (5pm–8pm).",
+    "status": "published",
+    "sort_order": 84,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "One day per week — mornings (9am–1pm) or evenings (5pm–8pm).",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-85",
+    "kind": "page",
+    "title": "8 Weeks",
+    "status": "published",
+    "sort_order": 85,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "8 Weeks",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-86",
+    "kind": "page",
+    "title": "Pay by bank transfer or in person on the day of class.",
+    "status": "published",
+    "sort_order": 86,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Pay by bank transfer or in person on the day of class.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-87",
+    "kind": "page",
+    "title": "JMD $5,000 Registration",
+    "status": "published",
+    "sort_order": 87,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "JMD $5,000 Registration",
+      "section": "academy",
+      "binding": "registration_fee"
+    }
+  },
+  {
+    "id": "index-text-88",
+    "kind": "page",
+    "title": "NVQ-J certification pathway available for qualifying students.",
+    "status": "published",
+    "sort_order": 88,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "NVQ-J certification pathway available for qualifying students.",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-89",
+    "kind": "page",
+    "title": "HEART/NCTVET Aligned",
+    "status": "published",
+    "sort_order": 89,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "HEART/NCTVET Aligned",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-text-90",
+    "kind": "page",
+    "title": "View All Courses & Enroll",
+    "status": "published",
+    "sort_order": 90,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "View All Courses & Enroll",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-link-91",
+    "kind": "page",
+    "title": "View All Courses & Enroll",
+    "status": "published",
+    "sort_order": 91,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "academy"
+    }
+  },
+  {
+    "id": "index-link-112",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 112,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-113",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 113,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-114",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 114,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "#home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-115",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon",
+    "status": "published",
+    "sort_order": 115,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-116",
+    "kind": "page",
+    "title": "Professional beauty services for clients and practical beauty training for students ready to grow.",
+    "status": "published",
+    "sort_order": 116,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Professional beauty services for clients and practical beauty training for students ready to grow.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-117",
+    "kind": "page",
+    "title": "38a Hagley Park Road, Kingston 10",
+    "status": "published",
+    "sort_order": 117,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "38a Hagley Park Road, Kingston 10",
+      "section": "Navigation & footer",
+      "binding": "address"
+    }
+  },
+  {
+    "id": "index-text-118",
+    "kind": "page",
+    "title": "Location:",
+    "status": "published",
+    "sort_order": 118,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Location:",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-119",
+    "kind": "page",
+    "title": "Quick Links",
+    "status": "published",
+    "sort_order": 119,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Quick Links",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-120",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 120,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-121",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 121,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-122",
+    "kind": "page",
+    "title": "Beauty Plus Academy",
+    "status": "published",
+    "sort_order": 122,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus Academy",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-123",
+    "kind": "page",
+    "title": "Beauty Plus Academy",
+    "status": "published",
+    "sort_order": 123,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-124",
+    "kind": "page",
+    "title": "Enrollment Form",
+    "status": "published",
+    "sort_order": 124,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Enrollment Form",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-125",
+    "kind": "page",
+    "title": "Enrollment Form",
+    "status": "published",
+    "sort_order": 125,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "enroll.html#register",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-126",
+    "kind": "page",
+    "title": "Book Online (Fresha)",
+    "status": "published",
+    "sort_order": 126,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Book Online (Fresha)",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-127",
+    "kind": "page",
+    "title": "Book Online (Fresha)",
+    "status": "published",
+    "sort_order": 127,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "https://www.fresha.com/a/beauty-plus-academy-salon-kingston-38a-hagley-park-road-e358wrqc",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-128",
+    "kind": "page",
+    "title": "Academy Contact",
+    "status": "published",
+    "sort_order": 128,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Academy Contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-129",
+    "kind": "page",
+    "title": "WhatsApp: 876-458-0603",
+    "status": "published",
+    "sort_order": 129,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "WhatsApp: 876-458-0603",
+      "section": "Navigation & footer",
+      "binding": "phone"
+    }
+  },
+  {
+    "id": "index-link-130",
+    "kind": "page",
+    "title": "WhatsApp: 876-458-0603",
+    "status": "published",
+    "sort_order": 130,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-132",
+    "kind": "page",
+    "title": "Classes: One day weekly for 8 weeks",
+    "status": "published",
+    "sort_order": 132,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Classes: One day weekly for 8 weeks",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-133",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon. All Rights Reserved.",
+    "status": "published",
+    "sort_order": 133,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon. All Rights Reserved.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-134",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon serves clients, trains professionals, and celebrates beauty with purpose",
+    "status": "published",
+    "sort_order": 134,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon serves clients, trains professionals, and celebrates beauty with purpose.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-135",
+    "kind": "page",
+    "title": "Powered by",
+    "status": "published",
+    "sort_order": 135,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "Powered by",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-text-136",
+    "kind": "page",
+    "title": "iCreate Solutions & Services",
+    "status": "published",
+    "sort_order": 136,
+    "data": {
+      "page": "index",
+      "type": "text",
+      "value": "iCreate Solutions & Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "index-link-137",
+    "kind": "page",
+    "title": "iCreate Solutions & Services",
+    "status": "published",
+    "sort_order": 137,
+    "data": {
+      "page": "index",
+      "type": "link",
+      "value": "https://icreatesolutionsandservices.com",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-1",
+    "kind": "page",
+    "title": "Book your appointment online at Fresha or send a WhatsApp request directly to the salon.",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Book your appointment online at Fresha or send a WhatsApp request directly to the salon.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-2",
+    "kind": "page",
+    "title": "Beauty Plus\n                        Academy & Salon",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-image-3",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon Logo",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "page": "salon",
+      "type": "image",
+      "value": "https://www.jotform.com/uploads/antwunwilson/form_files/clear_form_logo_background_colors_source_1771883276.jpg?nc=1",
+      "alt": "Beauty Plus Academy & Salon Logo",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-4",
+    "kind": "page",
+    "title": "Beauty Plus",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Beauty Plus",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-5",
+    "kind": "page",
+    "title": "Academy & Salon",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Academy & Salon",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-6",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-7",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-8",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-9",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 9,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-10",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 10,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-11",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 11,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-12",
+    "kind": "page",
+    "title": "Enroll Now",
+    "status": "published",
+    "sort_order": 12,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Enroll Now",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-13",
+    "kind": "page",
+    "title": "Enroll Now",
+    "status": "published",
+    "sort_order": 13,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-14",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 14,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-15",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 15,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-16",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 16,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-17",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 17,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-18",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 18,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-19",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 19,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-20",
+    "kind": "page",
+    "title": "Salon Services • Kingston, Jamaica",
+    "status": "published",
+    "sort_order": 20,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Salon Services • Kingston, Jamaica",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-21",
+    "kind": "page",
+    "title": "Where every visit feels",
+    "status": "published",
+    "sort_order": 21,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Where every visit feels",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-22",
+    "kind": "page",
+    "title": "royal.",
+    "status": "published",
+    "sort_order": 22,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "royal.",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-23",
+    "kind": "page",
+    "title": "Explore every service we offer — from flawless makeup and nail art to locs, braiding, waxing, and pr",
+    "status": "published",
+    "sort_order": 23,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Explore every service we offer — from flawless makeup and nail art to locs, braiding, waxing, and precision cuts. Click any service below to send your booking request directly to Beauty Plus on WhatsApp.",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-24",
+    "kind": "page",
+    "title": "5.0 Average Rating",
+    "status": "published",
+    "sort_order": 24,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "5.0 Average Rating",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-25",
+    "kind": "page",
+    "title": "41+ Services Available",
+    "status": "published",
+    "sort_order": 25,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "41+ Services Available",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-26",
+    "kind": "page",
+    "title": "WhatsApp Booking",
+    "status": "published",
+    "sort_order": 26,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "WhatsApp Booking",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-image-27",
+    "kind": "page",
+    "title": "Beauty Plus Logo",
+    "status": "published",
+    "sort_order": 27,
+    "data": {
+      "page": "salon",
+      "type": "image",
+      "value": "https://www.jotform.com/uploads/antwunwilson/form_files/clear_form_logo_background_colors_source_1771883276.jpg?nc=1",
+      "alt": "Beauty Plus Logo",
+      "section": "top"
+    }
+  },
+  {
+    "id": "salon-text-28",
+    "kind": "page",
+    "title": "Our Work",
+    "status": "published",
+    "sort_order": 28,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Our Work",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "salon-text-29",
+    "kind": "page",
+    "title": "Crafted with skill. Finished with confidence.",
+    "status": "published",
+    "sort_order": 29,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Crafted with skill. Finished with confidence.",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "salon-text-30",
+    "kind": "page",
+    "title": "Every look in this gallery was created at Beauty Plus. From intricate loc styles to precision cuts, ",
+    "status": "published",
+    "sort_order": 30,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Every look in this gallery was created at Beauty Plus. From intricate loc styles to precision cuts, bold braids, and polished makeup — this is what our hands produce.",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "salon-text-31",
+    "kind": "page",
+    "title": "View Full Gallery",
+    "status": "published",
+    "sort_order": 31,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "View Full Gallery",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "salon-text-32",
+    "kind": "page",
+    "title": "Full Service Menu",
+    "status": "published",
+    "sort_order": 32,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Full Service Menu",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-33",
+    "kind": "page",
+    "title": "Find the service that fits your beauty moment.",
+    "status": "published",
+    "sort_order": 33,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Find the service that fits your beauty moment.",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-34",
+    "kind": "page",
+    "title": "Browse by category and click any service card to instantly open the booking form, pre-filled with yo",
+    "status": "published",
+    "sort_order": 34,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Browse by category and click any service card to instantly open the booking form, pre-filled with your selection, ready to send to Beauty Plus on WhatsApp.",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-35",
+    "kind": "page",
+    "title": "Service Categories",
+    "status": "published",
+    "sort_order": 35,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Service Categories",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-36",
+    "kind": "page",
+    "title": "Book Online",
+    "status": "published",
+    "sort_order": 36,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Book Online",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-link-37",
+    "kind": "page",
+    "title": "Book Online",
+    "status": "published",
+    "sort_order": 37,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "https://www.fresha.com/a/beauty-plus-academy-salon-kingston-38a-hagley-park-road-e358wrqc",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-38",
+    "kind": "page",
+    "title": "Featured",
+    "status": "published",
+    "sort_order": 38,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Featured",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-39",
+    "kind": "page",
+    "title": "A few client favourites to help you start browsing.",
+    "status": "published",
+    "sort_order": 39,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "A few client favourites to help you start browsing.",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-40",
+    "kind": "page",
+    "title": "Prices, durations, and availability can change depending on hair length, size, add-ons, product use,",
+    "status": "published",
+    "sort_order": 40,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Prices, durations, and availability can change depending on hair length, size, add-ons, product use, and your final consultation. If you do not see exactly what you want, send a request and the salon will guide you to the best option.",
+      "section": "services"
+    }
+  },
+  {
+    "id": "salon-text-41",
+    "kind": "page",
+    "title": "Booking Request",
+    "status": "published",
+    "sort_order": 41,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Booking Request",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-42",
+    "kind": "page",
+    "title": "Ready to book? Send your request now.",
+    "status": "published",
+    "sort_order": 42,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Ready to book? Send your request now.",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-43",
+    "kind": "page",
+    "title": "Fill in your details below and submit. Your booking request will open WhatsApp pre-filled and ready ",
+    "status": "published",
+    "sort_order": 43,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Fill in your details below and submit. Your booking request will open WhatsApp pre-filled and ready to send directly to Beauty Plus.",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-44",
+    "kind": "page",
+    "title": "Salon Booking Request",
+    "status": "published",
+    "sort_order": 44,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Salon Booking Request",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-45",
+    "kind": "page",
+    "title": "Click any service card above to pre-fill your service selection here, or choose from the dropdown be",
+    "status": "published",
+    "sort_order": 45,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Click any service card above to pre-fill your service selection here, or choose from the dropdown below.",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-46",
+    "kind": "page",
+    "title": "No service selected yet.",
+    "status": "published",
+    "sort_order": 46,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "No service selected yet.",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-47",
+    "kind": "page",
+    "title": "Click a service card above or choose from the dropdown below to auto-select.",
+    "status": "published",
+    "sort_order": 47,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Click a service card above or choose from the dropdown below to auto-select.",
+      "section": "book"
+    }
+  },
+  {
+    "id": "salon-text-48",
+    "kind": "page",
+    "title": "Booking deposit successful! A confirmation email is being sent to you and the salon.",
+    "status": "published",
+    "sort_order": 48,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Booking deposit successful! A confirmation email is being sent to you and the salon.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-49",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 49,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "#book",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-50",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 50,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-51",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 51,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "#top",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-52",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon",
+    "status": "published",
+    "sort_order": 52,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-53",
+    "kind": "page",
+    "title": "Professional beauty services for clients and practical beauty training for students ready to grow.",
+    "status": "published",
+    "sort_order": 53,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Professional beauty services for clients and practical beauty training for students ready to grow.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-54",
+    "kind": "page",
+    "title": "38a Hagley Park Road, Kingston 10",
+    "status": "published",
+    "sort_order": 54,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "38a Hagley Park Road, Kingston 10",
+      "section": "Navigation & footer",
+      "binding": "address"
+    }
+  },
+  {
+    "id": "salon-text-55",
+    "kind": "page",
+    "title": "Location:",
+    "status": "published",
+    "sort_order": 55,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Location:",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-56",
+    "kind": "page",
+    "title": "Quick Links",
+    "status": "published",
+    "sort_order": 56,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Quick Links",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-57",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 57,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-58",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 58,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-59",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 59,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-60",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 60,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-61",
+    "kind": "page",
+    "title": "Enroll in a Course",
+    "status": "published",
+    "sort_order": 61,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Enroll in a Course",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-62",
+    "kind": "page",
+    "title": "Enroll in a Course",
+    "status": "published",
+    "sort_order": 62,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-63",
+    "kind": "page",
+    "title": "Book Online (Fresha)",
+    "status": "published",
+    "sort_order": 63,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Book Online (Fresha)",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-64",
+    "kind": "page",
+    "title": "Book Online (Fresha)",
+    "status": "published",
+    "sort_order": 64,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "https://www.fresha.com/a/beauty-plus-academy-salon-kingston-38a-hagley-park-road-e358wrqc",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-65",
+    "kind": "page",
+    "title": "Contact",
+    "status": "published",
+    "sort_order": 65,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-66",
+    "kind": "page",
+    "title": "WhatsApp: 876-458-0603",
+    "status": "published",
+    "sort_order": 66,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "WhatsApp: 876-458-0603",
+      "section": "Navigation & footer",
+      "binding": "phone"
+    }
+  },
+  {
+    "id": "salon-link-67",
+    "kind": "page",
+    "title": "WhatsApp: 876-458-0603",
+    "status": "published",
+    "sort_order": 67,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-68",
+    "kind": "page",
+    "title": "Mon–Sat: By Appointment",
+    "status": "published",
+    "sort_order": 68,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Mon–Sat: By Appointment",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-69",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon. All Rights Reserved.",
+    "status": "published",
+    "sort_order": 69,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon. All Rights Reserved.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-70",
+    "kind": "page",
+    "title": "Celebrating beauty with purpose, class, and intention.",
+    "status": "published",
+    "sort_order": 70,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Celebrating beauty with purpose, class, and intention.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-71",
+    "kind": "page",
+    "title": "Powered by",
+    "status": "published",
+    "sort_order": 71,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Powered by",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-72",
+    "kind": "page",
+    "title": "iCreate Solutions & Services",
+    "status": "published",
+    "sort_order": 72,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "iCreate Solutions & Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-link-73",
+    "kind": "page",
+    "title": "iCreate Solutions & Services",
+    "status": "published",
+    "sort_order": 73,
+    "data": {
+      "page": "salon",
+      "type": "link",
+      "value": "https://icreatesolutionsandservices.com",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-image-74",
+    "kind": "page",
+    "title": "Gallery visual",
+    "status": "published",
+    "sort_order": 74,
+    "data": {
+      "page": "salon",
+      "type": "image",
+      "value": "",
+      "alt": "Gallery visual",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "salon-text-75",
+    "kind": "page",
+    "title": "Full Gallery",
+    "status": "published",
+    "sort_order": 75,
+    "data": {
+      "page": "salon",
+      "type": "text",
+      "value": "Full Gallery",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-1",
+    "kind": "page",
+    "title": "2026 enrollment is now open — June main classes and July teens summer classes are filling fast. Secu",
+    "status": "published",
+    "sort_order": 1,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "2026 enrollment is now open — June main classes and July teens summer classes are filling fast. Secure your spot today.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-2",
+    "kind": "page",
+    "title": "Beauty Plus\n                        Academy & Salon",
+    "status": "published",
+    "sort_order": 2,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-image-3",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon Logo",
+    "status": "published",
+    "sort_order": 3,
+    "data": {
+      "page": "enroll",
+      "type": "image",
+      "value": "https://www.jotform.com/uploads/antwunwilson/form_files/clear_form_logo_background_colors_source_1771883276.jpg?nc=1",
+      "alt": "Beauty Plus Academy & Salon Logo",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-4",
+    "kind": "page",
+    "title": "Beauty Plus",
+    "status": "published",
+    "sort_order": 4,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Beauty Plus",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-5",
+    "kind": "page",
+    "title": "Academy & Salon",
+    "status": "published",
+    "sort_order": 5,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Academy & Salon",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-6",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 6,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-7",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 7,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-8",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 8,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-9",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 9,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-10",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 10,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-11",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 11,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-12",
+    "kind": "page",
+    "title": "Register Now",
+    "status": "published",
+    "sort_order": 12,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Register Now",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-13",
+    "kind": "page",
+    "title": "Register Now",
+    "status": "published",
+    "sort_order": 13,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "#register",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-14",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 14,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-15",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 15,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-16",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 16,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-17",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 17,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-18",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 18,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-19",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 19,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-20",
+    "kind": "page",
+    "title": "Register Now",
+    "status": "published",
+    "sort_order": 20,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Register Now",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-21",
+    "kind": "page",
+    "title": "Register Now",
+    "status": "published",
+    "sort_order": 21,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "#register",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-22",
+    "kind": "page",
+    "title": "Beauty Plus Academy • Kingston, Jamaica",
+    "status": "published",
+    "sort_order": 22,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Beauty Plus Academy • Kingston, Jamaica",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-23",
+    "kind": "page",
+    "title": "Train. Grow.",
+    "status": "published",
+    "sort_order": 23,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Train. Grow.",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-24",
+    "kind": "page",
+    "title": "Graduate.",
+    "status": "published",
+    "sort_order": 24,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Graduate.",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-25",
+    "kind": "page",
+    "title": "Beauty Plus Academy has been transforming aspiring beauty artists into confident professionals for o",
+    "status": "published",
+    "sort_order": 25,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Beauty Plus Academy has been transforming aspiring beauty artists into confident professionals for over 20 years. Join our 2026 intake and learn from licensed, certified instructors who care about your success.",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-26",
+    "kind": "page",
+    "title": "Register for 2026",
+    "status": "published",
+    "sort_order": 26,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Register for 2026",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-link-27",
+    "kind": "page",
+    "title": "Register for 2026",
+    "status": "published",
+    "sort_order": 27,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "#register",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-28",
+    "kind": "page",
+    "title": "View All Courses",
+    "status": "published",
+    "sort_order": 28,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "View All Courses",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-link-29",
+    "kind": "page",
+    "title": "View All Courses",
+    "status": "published",
+    "sort_order": 29,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "#courses",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-30",
+    "kind": "page",
+    "title": "2026 Quick Facts",
+    "status": "published",
+    "sort_order": 30,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "2026 Quick Facts",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-31",
+    "kind": "page",
+    "title": "June & July 2026 Start Dates",
+    "status": "published",
+    "sort_order": 31,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "June & July 2026 Start Dates",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-32",
+    "kind": "page",
+    "title": "Classes begin from June & July 2026",
+    "status": "published",
+    "sort_order": 32,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Classes begin from June & July 2026",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-33",
+    "kind": "page",
+    "title": "8 Weeks of Training",
+    "status": "published",
+    "sort_order": 33,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "8 Weeks of Training",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-34",
+    "kind": "page",
+    "title": "One day per week — mornings or evenings",
+    "status": "published",
+    "sort_order": 34,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "One day per week — mornings or evenings",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-35",
+    "kind": "page",
+    "title": "JMD $5,000 Registration Fee",
+    "status": "published",
+    "sort_order": 35,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "JMD $5,000 Registration Fee",
+      "section": "top",
+      "binding": "registration_fee"
+    }
+  },
+  {
+    "id": "enroll-text-36",
+    "kind": "page",
+    "title": "Pay by bank transfer or in person",
+    "status": "published",
+    "sort_order": 36,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Pay by bank transfer or in person",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-37",
+    "kind": "page",
+    "title": "HEART / NCTVET Aligned",
+    "status": "published",
+    "sort_order": 37,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "HEART / NCTVET Aligned",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-38",
+    "kind": "page",
+    "title": "NVQ-J certification pathways available",
+    "status": "published",
+    "sort_order": 38,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "NVQ-J certification pathways available",
+      "section": "top"
+    }
+  },
+  {
+    "id": "enroll-text-39",
+    "kind": "page",
+    "title": "School Results",
+    "status": "published",
+    "sort_order": 39,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "School Results",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "enroll-text-40",
+    "kind": "page",
+    "title": "Real students. Real results.",
+    "status": "published",
+    "sort_order": 40,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Real students. Real results.",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "enroll-text-41",
+    "kind": "page",
+    "title": "Every image below represents a Beauty Plus Academy graduate — trained, certified, and ready to work.",
+    "status": "published",
+    "sort_order": 41,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Every image below represents a Beauty Plus Academy graduate — trained, certified, and ready to work. This is what 8 weeks of hands-on learning looks like.",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "enroll-text-42",
+    "kind": "page",
+    "title": "View Full Gallery",
+    "status": "published",
+    "sort_order": 42,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "View Full Gallery",
+      "section": "gallery"
+    }
+  },
+  {
+    "id": "enroll-text-43",
+    "kind": "page",
+    "title": "Why Beauty Plus",
+    "status": "published",
+    "sort_order": 43,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Why Beauty Plus",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-44",
+    "kind": "page",
+    "title": "More than training. A career foundation.",
+    "status": "published",
+    "sort_order": 44,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "More than training. A career foundation.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-45",
+    "kind": "page",
+    "title": "We've been shaping beauty professionals since before beauty school was a trend. Here's what sets our",
+    "status": "published",
+    "sort_order": 45,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "We've been shaping beauty professionals since before beauty school was a trend. Here's what sets our academy apart.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-46",
+    "kind": "page",
+    "title": "Licensed Instructors",
+    "status": "published",
+    "sort_order": 46,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Licensed Instructors",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-47",
+    "kind": "page",
+    "title": "All training is led by licensed, certified beauty professionals with real salon and industry experie",
+    "status": "published",
+    "sort_order": 47,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "All training is led by licensed, certified beauty professionals with real salon and industry experience.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-48",
+    "kind": "page",
+    "title": "Hands-On Practice",
+    "status": "published",
+    "sort_order": 48,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Hands-On Practice",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-49",
+    "kind": "page",
+    "title": "Our training focuses on practical skills — not just theory. You'll work on real clients and real tec",
+    "status": "published",
+    "sort_order": 49,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Our training focuses on practical skills — not just theory. You'll work on real clients and real techniques.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-50",
+    "kind": "page",
+    "title": "Certification Pathway",
+    "status": "published",
+    "sort_order": 50,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Certification Pathway",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-51",
+    "kind": "page",
+    "title": "Complete your course and you'll be on track toward HEART/NSTA Trust and NCTVET/NVQ-J recognition.",
+    "status": "published",
+    "sort_order": 51,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Complete your course and you'll be on track toward HEART/NSTA Trust and NCTVET/NVQ-J recognition.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-52",
+    "kind": "page",
+    "title": "Career-Ready Outcomes",
+    "status": "published",
+    "sort_order": 52,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Career-Ready Outcomes",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-53",
+    "kind": "page",
+    "title": "Whether you want to join a salon team or launch your own business, we prepare you for both paths.",
+    "status": "published",
+    "sort_order": 53,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Whether you want to join a salon team or launch your own business, we prepare you for both paths.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-54",
+    "kind": "page",
+    "title": "Flexible Scheduling",
+    "status": "published",
+    "sort_order": 54,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Flexible Scheduling",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-55",
+    "kind": "page",
+    "title": "Classes run once a week for 8 weeks with morning and evening options — built around your life.",
+    "status": "published",
+    "sort_order": 55,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Classes run once a week for 8 weeks with morning and evening options — built around your life.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-56",
+    "kind": "page",
+    "title": "Supportive Environment",
+    "status": "published",
+    "sort_order": 56,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Supportive Environment",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-57",
+    "kind": "page",
+    "title": "20+ years of building confidence alongside skills. Beauty Plus is a place where students feel seen a",
+    "status": "published",
+    "sort_order": 57,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "20+ years of building confidence alongside skills. Beauty Plus is a place where students feel seen and supported.",
+      "section": "why"
+    }
+  },
+  {
+    "id": "enroll-text-58",
+    "kind": "page",
+    "title": "What You'll Need",
+    "status": "published",
+    "sort_order": 58,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "What You'll Need",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-59",
+    "kind": "page",
+    "title": "Enrollment requirements.",
+    "status": "published",
+    "sort_order": 59,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Enrollment requirements.",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-60",
+    "kind": "page",
+    "title": "To register for a 2026 Beauty Plus Academy course, please ensure you have the following ready before",
+    "status": "published",
+    "sort_order": 60,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "To register for a 2026 Beauty Plus Academy course, please ensure you have the following ready before completing your form.",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-61",
+    "kind": "page",
+    "title": "Age Requirement",
+    "status": "published",
+    "sort_order": 61,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Age Requirement",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-62",
+    "kind": "page",
+    "title": "Students must be 16 years and older to enroll in any program.",
+    "status": "published",
+    "sort_order": 62,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Students must be 16 years and older to enroll in any program.",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-63",
+    "kind": "page",
+    "title": "Passport Photos",
+    "status": "published",
+    "sort_order": 63,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Passport Photos",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-64",
+    "kind": "page",
+    "title": "Two passport-size pictures are required for registration.",
+    "status": "published",
+    "sort_order": 64,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Two passport-size pictures are required for registration.",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-65",
+    "kind": "page",
+    "title": "Valid Identification",
+    "status": "published",
+    "sort_order": 65,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Valid Identification",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-66",
+    "kind": "page",
+    "title": "Your TRN and a valid government-issued ID are required to register.",
+    "status": "published",
+    "sort_order": 66,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Your TRN and a valid government-issued ID are required to register.",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-67",
+    "kind": "page",
+    "title": "Registration Fee",
+    "status": "published",
+    "sort_order": 67,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Registration Fee",
+      "section": "requirements"
+    }
+  },
+  {
+    "id": "enroll-text-68",
+    "kind": "page",
+    "title": "JMD $5,000 registration fee payable by bank transfer or in person before or on the day of class.",
+    "status": "published",
+    "sort_order": 68,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "JMD $5,000 registration fee payable by bank transfer or in person before or on the day of class.",
+      "section": "requirements",
+      "binding": "registration_fee"
+    }
+  },
+  {
+    "id": "enroll-text-69",
+    "kind": "page",
+    "title": "2026 Courses",
+    "status": "published",
+    "sort_order": 69,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "2026 Courses",
+      "section": "courses"
+    }
+  },
+  {
+    "id": "enroll-text-70",
+    "kind": "page",
+    "title": "Choose your path.",
+    "status": "published",
+    "sort_order": 70,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Choose your path.",
+      "section": "courses"
+    }
+  },
+  {
+    "id": "enroll-text-71",
+    "kind": "page",
+    "title": "Explore our current courses, intakes, and class schedules. Each one is designed to give you the skil",
+    "status": "published",
+    "sort_order": 71,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Explore our current courses, intakes, and class schedules. Each one is designed to give you the skills to work professionally from day one.",
+      "section": "courses"
+    }
+  },
+  {
+    "id": "enroll-text-80",
+    "kind": "page",
+    "title": "Registration Form",
+    "status": "published",
+    "sort_order": 80,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Registration Form",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-81",
+    "kind": "page",
+    "title": "Register for Beauty Plus Academy.",
+    "status": "published",
+    "sort_order": 81,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Register for Beauty Plus Academy.",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-82",
+    "kind": "page",
+    "title": "Complete the form below. When you submit, WhatsApp will open with your registration details pre-fill",
+    "status": "published",
+    "sort_order": 82,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Complete the form below. When you submit, WhatsApp will open with your registration details pre-filled and ready to send directly to Beauty Plus.",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-83",
+    "kind": "page",
+    "title": "Enrollment Summary",
+    "status": "published",
+    "sort_order": 83,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Enrollment Summary",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-84",
+    "kind": "page",
+    "title": "Updates as you fill in the form",
+    "status": "published",
+    "sort_order": 84,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Updates as you fill in the form",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-85",
+    "kind": "page",
+    "title": "Selected Course",
+    "status": "published",
+    "sort_order": 85,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Selected Course",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-87",
+    "kind": "page",
+    "title": "Course Fee",
+    "status": "published",
+    "sort_order": 87,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Course Fee",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-89",
+    "kind": "page",
+    "title": "Registration Fee",
+    "status": "published",
+    "sort_order": 89,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Registration Fee",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-90",
+    "kind": "page",
+    "title": "JMD $5,000",
+    "status": "published",
+    "sort_order": 90,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "JMD $5,000",
+      "section": "register",
+      "binding": "registration_fee"
+    }
+  },
+  {
+    "id": "enroll-text-91",
+    "kind": "page",
+    "title": "Preferred Time",
+    "status": "published",
+    "sort_order": 91,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Preferred Time",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-103",
+    "kind": "page",
+    "title": "WhatsApp Beauty Plus",
+    "status": "published",
+    "sort_order": 103,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "WhatsApp Beauty Plus",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-link-104",
+    "kind": "page",
+    "title": "WhatsApp Beauty Plus",
+    "status": "published",
+    "sort_order": 104,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "register"
+    }
+  },
+  {
+    "id": "enroll-text-105",
+    "kind": "page",
+    "title": "Tuition Payment",
+    "status": "published",
+    "sort_order": 105,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Tuition Payment",
+      "section": "pay-tuition"
+    }
+  },
+  {
+    "id": "enroll-text-106",
+    "kind": "page",
+    "title": "Pay Tuition Fee.",
+    "status": "published",
+    "sort_order": 106,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Pay Tuition Fee.",
+      "section": "pay-tuition"
+    }
+  },
+  {
+    "id": "enroll-text-107",
+    "kind": "page",
+    "title": "Already registered or paying your balance? Select your course below and enter the amount you wish to",
+    "status": "published",
+    "sort_order": 107,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Already registered or paying your balance? Select your course below and enter the amount you wish to pay.",
+      "section": "pay-tuition"
+    }
+  },
+  {
+    "id": "enroll-link-108",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 108,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "#register",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-109",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 109,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-110",
+    "kind": "page",
+    "title": "Link",
+    "status": "published",
+    "sort_order": 110,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "#top",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-111",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon",
+    "status": "published",
+    "sort_order": 111,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-112",
+    "kind": "page",
+    "title": "Professional beauty services for clients and practical beauty training for aspiring professionals.",
+    "status": "published",
+    "sort_order": 112,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Professional beauty services for clients and practical beauty training for aspiring professionals.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-113",
+    "kind": "page",
+    "title": "38a Hagley Park Road, Kingston 10",
+    "status": "published",
+    "sort_order": 113,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "38a Hagley Park Road, Kingston 10",
+      "section": "Navigation & footer",
+      "binding": "address"
+    }
+  },
+  {
+    "id": "enroll-text-114",
+    "kind": "page",
+    "title": "Location:",
+    "status": "published",
+    "sort_order": 114,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Location:",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-115",
+    "kind": "page",
+    "title": "Quick Links",
+    "status": "published",
+    "sort_order": 115,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Quick Links",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-116",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 116,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Home",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-117",
+    "kind": "page",
+    "title": "Home",
+    "status": "published",
+    "sort_order": 117,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "index.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-118",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 118,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Salon Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-119",
+    "kind": "page",
+    "title": "Salon Services",
+    "status": "published",
+    "sort_order": 119,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "salon.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-120",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 120,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Academy & Enroll",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-121",
+    "kind": "page",
+    "title": "Academy & Enroll",
+    "status": "published",
+    "sort_order": 121,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "enroll.html",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-122",
+    "kind": "page",
+    "title": "Book Online (Fresha)",
+    "status": "published",
+    "sort_order": 122,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Book Online (Fresha)",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-123",
+    "kind": "page",
+    "title": "Book Online (Fresha)",
+    "status": "published",
+    "sort_order": 123,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "https://www.fresha.com/a/beauty-plus-academy-salon-kingston-38a-hagley-park-road-e358wrqc",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-124",
+    "kind": "page",
+    "title": "Academy Contact",
+    "status": "published",
+    "sort_order": 124,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Academy Contact",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-125",
+    "kind": "page",
+    "title": "WhatsApp: 876-458-0603",
+    "status": "published",
+    "sort_order": 125,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "WhatsApp: 876-458-0603",
+      "section": "Navigation & footer",
+      "binding": "phone"
+    }
+  },
+  {
+    "id": "enroll-link-126",
+    "kind": "page",
+    "title": "WhatsApp: 876-458-0603",
+    "status": "published",
+    "sort_order": 126,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "https://wa.me/18764580603",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-127",
+    "kind": "page",
+    "title": "Registration Fee: JMD $5,000",
+    "status": "published",
+    "sort_order": 127,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Registration Fee: JMD $5,000",
+      "section": "Navigation & footer",
+      "binding": "registration_fee"
+    }
+  },
+  {
+    "id": "enroll-text-128",
+    "kind": "page",
+    "title": "Classes: One day weekly for 8 weeks",
+    "status": "published",
+    "sort_order": 128,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Classes: One day weekly for 8 weeks",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-129",
+    "kind": "page",
+    "title": "Beauty Plus Academy & Salon. All Rights Reserved.",
+    "status": "published",
+    "sort_order": 129,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Beauty Plus Academy & Salon. All Rights Reserved.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-130",
+    "kind": "page",
+    "title": "Empowering beauty. Transforming futures.",
+    "status": "published",
+    "sort_order": 130,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Empowering beauty. Transforming futures.",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-131",
+    "kind": "page",
+    "title": "Powered by",
+    "status": "published",
+    "sort_order": 131,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Powered by",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-132",
+    "kind": "page",
+    "title": "iCreate Solutions & Services",
+    "status": "published",
+    "sort_order": 132,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "iCreate Solutions & Services",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-link-133",
+    "kind": "page",
+    "title": "iCreate Solutions & Services",
+    "status": "published",
+    "sort_order": 133,
+    "data": {
+      "page": "enroll",
+      "type": "link",
+      "value": "https://icreatesolutionsandservices.com",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-image-134",
+    "kind": "page",
+    "title": "School result image",
+    "status": "published",
+    "sort_order": 134,
+    "data": {
+      "page": "enroll",
+      "type": "image",
+      "value": "",
+      "alt": "School result image",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "enroll-text-135",
+    "kind": "page",
+    "title": "Full Gallery",
+    "status": "published",
+    "sort_order": 135,
+    "data": {
+      "page": "enroll",
+      "type": "text",
+      "value": "Full Gallery",
+      "section": "Navigation & footer"
+    }
+  },
+  {
+    "id": "site-settings",
+    "kind": "settings",
+    "title": "Business settings",
+    "status": "published",
+    "sort_order": 0,
+    "data": {
+      "name": "Beauty Plus Academy & Salon",
+      "email": "forresterpetagay30@gmail.com",
+      "phone": "876-458-0603",
+      "whatsapp": "18764580603",
+      "address": "38A Hagley Park Road, Kingston, Jamaica",
+      "hours": "Monday–Saturday, by appointment",
+      "registration_fee": 5000,
+      "deposit_percent": 50,
+      "variable_deposit": 1500,
+      "cancellation_policy": "Please contact us before your appointment to discuss changes or cancellations.",
+      "privacy_policy": "We use your contact details to manage your request. Contact the salon to request a correction or removal.",
+      "payments": [
+        {
+          "id": "wipay",
+          "label": "WiPay — debit / credit card",
+          "provider": "wipay",
+          "enabled": true,
+          "url": "",
+          "instructions": "Use WiPay’s secure checkout after saving your request. Keep your request reference and provider receipt. The team checks payment before confirming your place.",
+          "account_number": "1597653235",
+          "fee_structure": "customer_pay"
+        },
+        {
+          "id": "bank",
+          "label": "Bank transfer",
+          "provider": "bank",
+          "enabled": true,
+          "url": "",
+          "instructions": "Bank: Scotiabank, New Kingston\nAccount name: Hair for You LLC trading as Beauty Plus\nAccount type: Business\nAccount number: 975400\nBranch transit: 50575\nCurrency: JMD\nInclude your request reference and send your receipt to Beauty Plus on WhatsApp. The team will check the transfer."
+        },
+        {
+          "id": "fygaro",
+          "label": "Fygaro",
+          "provider": "fygaro",
+          "enabled": false,
+          "url": "",
+          "instructions": ""
+        },
+        {
+          "id": "ncb",
+          "label": "NCB Payment Button",
+          "provider": "ncb",
+          "enabled": false,
+          "url": "",
+          "instructions": ""
+        },
+        {
+          "id": "cash",
+          "label": "Pay at the salon",
+          "provider": "cash",
+          "enabled": true,
+          "url": "",
+          "instructions": "Pay at the salon. Your place is confirmed by the team."
+        }
+      ],
+      "hidden_sections": []
+    }
+  }
+]
