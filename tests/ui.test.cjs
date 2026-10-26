@@ -295,6 +295,35 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     assert.match(await page.locator("#summaryPrice").textContent(), /65,000/);
     await page.locator("#tCourseSelect").selectOption("course-2");
     assert.equal(await page.locator("#tAmount").inputValue(), "75000");
+    await page.locator("#firstName").fill("Student");
+    await page.locator("#lastName").fill("Applicant");
+    await page.locator("#email").fill("student@example.com");
+    await page.locator("#phone").fill("8765550003");
+    await page.locator("#street1").fill("Test Street");
+    await page.locator("#city").fill("Kingston");
+    await page.locator("#trn").fill("000000000");
+    await page
+      .locator("#registrationForm [name=bp_payment]")
+      .selectOption("bank");
+    await page.locator("#registrationForm .bp-consent input").check();
+    await page.locator("#registrationForm button[type=submit]").click();
+    await page.waitForSelector(".bp-dialog[open]");
+    assert.equal(submissions.at(-1).kind, "enrollment");
+    assert.equal(submissions.at(-1).data.trn, "000000000");
+    await page.goto("http://localhost/admin/#students");
+    await page.waitForSelector(".table-wrap");
+    const [exported] = await Promise.all([
+      page.waitForEvent("download"),
+      page.locator("[data-action=export-csv]").click(),
+    ]);
+    const exportedCSV = fs.readFileSync(await exported.path(), "utf8");
+    assert.match(exportedCSV, /000000000/);
+    const csvLines = exportedCSV.split("\r\n");
+    assert.equal(
+      csvLines[0].match(/"(?:[^"]|"")*"/g).length,
+      csvLines[1].match(/"(?:[^"]|"")*"/g).length,
+      "CSV headers align with private enrollment fields",
+    );
     await page.goto("http://localhost/events.html");
     await page.waitForSelector("[data-event]");
     await page.locator("[data-event]").click();

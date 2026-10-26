@@ -64,8 +64,17 @@ function applyPages() {
   document
     .querySelectorAll('a[href="mailto:forresterpetagay30@gmail.com"]')
     .forEach((a) => (a.href = "mailto:" + settings.email));
-  for (const id of settings.hidden_sections || [])
-    document.getElementById(id)?.setAttribute("hidden", "");
+  for (const id of settings.hidden_sections || []) {
+    const target =
+      id === "school-gallery"
+        ? page === "enroll"
+          ? document.getElementById("gallery")
+          : null
+        : id === "gallery" && page === "enroll"
+          ? null
+          : document.getElementById(id);
+    target?.setAttribute("hidden", "");
+  }
   document
     .querySelectorAll("[data-bp-section]")
     .forEach(
@@ -550,6 +559,7 @@ function wireForms() {
             kit: kind === "tuition" ? !!d.tKitOption : !!d.kitOption,
             approach: d.approach || "Scheduled class",
             notes: d.notes || "",
+            trn: d.trn || "",
             address: [d.street1, d.street2, d.city, d.state, d.zip]
               .filter(Boolean)
               .join(", "),
