@@ -6,6 +6,8 @@ Owner and employee workspace: https://beautyplusacademyandsalon.com/admin/index.
 
 Store: https://beautyplusacademyandsalon.com/shop.html
 
+Standalone register: https://beautyplusacademyandsalon.com/admin/pos.html
+
 The owner studio controls website pages, salon services and deposits, courses and kits, promotions, events and editable signup forms, gallery stories, products, inventory, delivery, employee access, invoices, verified payments, financial reporting, customer email templates, and notifications. Each workspace page has an information button. Public drafts remain private; catalog edits retain version checks and history.
 
 ## Start here
@@ -20,6 +22,8 @@ The owner studio controls website pages, salon services and deposits, courses an
 8. On a supported browser, open **Your notifications** to install the admin app and enable push. iPhone/iPad users should first add the admin page to the Home Screen. Only the admin workspace is a PWA.
 
 ## POS, bookings, and invoices
+
+Point of sale opens a separate, full-height terminal at `/admin/pos.html`, outside the CMS sidebar. Products, the basket, and totals have independent scrolling. A separate payment screen provides a keypad, cash presets, live change, and verified card/bank/split tender; completed sales open a receipt screen. Use F2 to search, F4 to charge, and the full-screen control when desired. On a phone, Products and Sale are separate views so Charge remains visible.
 
 The owner and permitted employees use the same POS: open a till with starting cash, search or scan products, add quantities, take cash/external card/bank or split payments, and save the sale. Cash change is calculated. Hold and resume baskets, close the till with counted cash, and use the receipt's print/PDF controls. Card entries record payments already taken on a separate terminal; this site never collects card numbers.
 
@@ -63,6 +67,8 @@ Setup links and instructions are also in the dashboard. Provider return URLs are
 Privileged account and delivery operations run in the `bp-business` Edge Function. JWT verification stays enabled. Its service client can execute only the narrow server commands it needs; secrets live in `bp_private.runtime_config` and function environment variables. The worker's internal authorization and Web Push VAPID keys are server-only. The first authenticated function request initializes the worker gateway internally. Cron retries delivery each minute; database events also wake it immediately.
 
 Migrations in `supabase/migrations/` have been applied to the configured project. Do not rerun the initial schema/seed on the same database. `supabase/seed-content.json` contains the original imported content. The `bp-media` public bucket allows owner image uploads up to 10 MB; do not place private documents there.
+
+The admin sidebar stays mounted across tab changes. Its menu scroll position is retained per user, including when returning from the register; the brand and profile remain fixed.
 
 The admin service worker caches only the workspace shell/assets. Customer records, Supabase APIs, passwords, and payment operations are not cached. Checkout requires a connection. Signing out clears the active workspace and removes that browser's push subscription.
 

@@ -4,7 +4,7 @@ const crypto = require("node:crypto");
 const esbuild = require("esbuild");
 const root = path.resolve(__dirname, "..");
 Promise.all(
-  ["site", "admin", "invoice"].map((name) =>
+  ["site", "admin", "invoice", "pos"].map((name) =>
     esbuild.build({
       entryPoints: [path.join(root, "assets", name + "-source.js")],
       outfile: path.join(root, "assets", name + ".js"),
@@ -26,6 +26,8 @@ Promise.all(
       "admin.js",
       "admin.css",
       "invoice.js",
+      "pos.js",
+      "pos.css",
     ])
       hash.update(fs.readFileSync(path.join(root, "assets", file)));
     const release = hash.digest("hex").slice(0, 12);
@@ -38,12 +40,13 @@ Promise.all(
       "invoice.html",
       "payment-return.html",
       "admin/index.html",
+      "admin/pos.html",
     ]) {
       const full = path.join(root, file);
       const html = fs
         .readFileSync(full, "utf8")
         .replace(
-          /((?:src|href)=["'])(\/?assets\/(?:site|admin|invoice)\.(?:js|css))(?:\?[^"']*)?(["'])/g,
+          /((?:src|href)=["'])(\/?assets\/(?:site|admin|invoice|pos)\.(?:js|css))(?:\?[^"']*)?(["'])/g,
           `$1$2?v=${release}$3`,
         )
         .replace(

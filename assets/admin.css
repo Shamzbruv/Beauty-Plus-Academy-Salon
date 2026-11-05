@@ -1846,3 +1846,29 @@ dialog::backdrop {
     padding: 22px;
   }
 }
+
+/* Keep the navigation mounted and scroll only the menu, not the brand/profile. */
+.sidebar {
+  overflow: hidden;
+  height: 100dvh;
+  padding: 26px 15px 15px;
+}
+.sidebar > .brand {
+  flex-shrink: 0;
+  padding: 0 10px 23px;
+}
+.sidebar > nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: #bac6bc transparent;
+}
+.sidebar > .sidebar-bottom {
+  flex-shrink: 0;
+  padding-top: 15px;
+  margin-top: 12px;
+  background: #fff;
+}

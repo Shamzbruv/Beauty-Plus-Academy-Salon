@@ -34,6 +34,7 @@ test("owner studio and public forms work on desktop and mobile with isolated API
       invoices = [],
       shifts = [],
       savedSale = null;
+    const held = [];
     const staff = [],
       deliveries = [
         {
@@ -201,6 +202,17 @@ test("owner studio and public forms work on desktop and mobile with isolated API
             };
             shifts.push(sh);
             data = sh;
+          } else if (a === "hold_cart") {
+            held.push({
+              id: "90000000-0000-4000-8000-000000000001",
+              label: p.label,
+              cart: p.cart,
+              created_at: new Date().toISOString(),
+            });
+            data = { ok: true };
+          } else if (a === "resume_cart") {
+            const index = held.findIndex((h) => h.id === p.id);
+            data = index < 0 ? null : held.splice(index, 1)[0].cart;
           } else if (a === "sale") {
             savedSale = p;
             const invoice = {
@@ -233,7 +245,17 @@ test("owner studio and public forms work on desktop and mobile with isolated API
               created_at: new Date().toISOString(),
             });
             products[0].stock_qty = 8;
-            data = { invoice_id: invoice.id, change: 500 };
+            data = {
+              invoice_id: invoice.id,
+              total: invoice.total,
+              change: Math.max(
+                0,
+                Number(p.cash_received) -
+                  p.payments
+                    .filter((v) => v.method === "cash")
+                    .reduce((n, v) => n + v.amount, 0),
+              ),
+            };
           } else if (a === "finance")
             data = {
               gross_received: 6500,
@@ -289,6 +311,7 @@ test("owner studio and public forms work on desktop and mobile with isolated API
         else if (url.pathname.includes("bp_invoices")) data = invoices;
         else if (url.pathname.includes("bp_staff")) data = staff;
         else if (url.pathname.includes("bp_shifts")) data = shifts;
+        else if (url.pathname.includes("bp_held_carts")) data = held;
         else if (url.pathname.includes("rpc/bp_request_quote")) {
           const row = submissions.find((s) => s.id === req.postDataJSON().p_id);
           data = row
@@ -628,6 +651,12 @@ test("owner studio and public forms work on desktop and mobile with isolated API
       "Popup dismissed for this session",
     );
     await page.setViewportSize({ width: 1440, height: 1050 });
+    await page.goto("http://localhost/admin/pos.html");
+    await page.waitForSelector(".pos-catalog-empty");
+    assert(
+      (await page.locator(".pos-catalog-empty").boundingBox()).width > 400,
+      "Empty catalog uses the entire product pane",
+    );
     await page.goto("http://localhost/admin/#products");
     await page.waitForSelector("[data-studio=product-new]");
     await page.locator("[data-studio=product-new]").click();
@@ -641,28 +670,163 @@ test("owner studio and public forms work on desktop and mobile with isolated API
       .click();
     await page.waitForFunction(() => !document.querySelector("#editor").open);
     assert.equal(products[0].name, "Everyday shampoo");
+    // Extra products exist only inside this isolated API fixture.
+    for (const [index, name, category] of [
+      [3, "Curl cream", "Hair care"],
+      [4, "Nail care oil", "Nail care"],
+      [5, "Detangling brush", "Tools"],
+      [6, "Skin cleanser", "Skin care"],
+      [7, "Beauty pouch", "Accessories"],
+      [8, "Hair serum", "Hair care"],
+    ])
+      products.push({
+        id: "30000000-0000-4000-8000-" + String(index).padStart(12, "0"),
+        name,
+        category,
+        sku: "FIXTURE-" + index,
+        price: 1000 + index * 100,
+        tax_rate: 0,
+        stock_qty: 20,
+        low_stock: 5,
+        track_stock: true,
+        status: "published",
+        barcode: "QA000" + index,
+      });
+
     await page
       .getByRole("button", { name: "Point of sale", exact: true })
       .click();
-    await page.locator("[data-studio=shift-open]").click();
-    await page.locator("#studio-form [name=opening_cash]").fill("500");
+    await page.waitForURL("**/admin/pos.html");
+    await page.waitForSelector(".pos-product");
+    assert.equal(
+      await page.locator(".sidebar").count(),
+      0,
+      "POS is a separate terminal without the admin sidebar",
+    );
+    await page.locator("[data-pos=open-till]").click();
+    await page.locator("#pos-dialog [name=opening_cash]").fill("500");
     await page.getByRole("button", { name: "Open till", exact: true }).click();
-    await page.waitForFunction(() => !document.querySelector("#editor").open);
-    await page.locator(".pos-product").first().click();
+    await page.waitForFunction(
+      () => !document.querySelector("#pos-dialog").open,
+    );
+    await page
+      .locator('[data-pos=category][data-category="Hair care"]')
+      .click();
+    assert.equal(await page.locator(".pos-product").count(), 2);
+    await page.locator('[data-pos=category][data-category=""]').click();
+    await page.locator("#pos-search").fill("BP-SHAMPOO-001");
+    await page.locator("#pos-search").press("Enter");
+    assert.equal(await page.locator("#pos-search").inputValue(), "");
     await page.locator(".pos-product").first().click();
     assert.match(await page.locator(".pos-grand").textContent(), /2,000/);
     if (process.env.BP_SCREENSHOTS)
-      await page.screenshot({ path: "/tmp/bp-pos.png", fullPage: true });
-    await page.locator("[data-studio=pos-checkout]").click();
-    await page.locator("#studio-form [name=cash_received]").fill("2500");
+      await page.screenshot({
+        path: "/tmp/bp-pos-terminal.png",
+        fullPage: true,
+      });
+    await page.locator("[data-pos=pay]").click();
+    await page.locator("#pos-discount").fill("");
+    await page.locator("#pos-discount").pressSequentially("0.50");
+    assert.equal(
+      await page.locator("#pos-discount").inputValue(),
+      "0.50",
+      "Decimal discount typing is preserved",
+    );
+    assert.match(await page.locator(".pos-grand").textContent(), /1,999.50/);
+    await page.locator("#pos-discount").fill("0");
+    for (const key of ["2", "5", "0", "0"])
+      await page.locator(`[data-pos=key][data-key="${key}"]`).click();
+    assert.equal(await page.locator("#pos-received").inputValue(), "2500");
     assert.match(await page.locator("#cash-change").textContent(), /500/);
-    await page
-      .getByRole("button", { name: "Confirm sale & receipt", exact: true })
-      .click();
-    await page.waitForSelector("#invoice-preview");
+    if (process.env.BP_SCREENSHOTS)
+      await page.screenshot({
+        path: "/tmp/bp-pos-payment.png",
+        fullPage: true,
+      });
+    await page.getByRole("button", { name: /Complete sale/ }).click();
+    await page.waitForSelector("#pos-paper-receipt");
     assert.equal(savedSale.items[0].qty, 2);
     assert.equal(savedSale.payments[0].amount, 2000);
-    await page.locator("#editor .dialog-close").click();
+    assert.match(
+      await page.locator(".pos-completion-change").textContent(),
+      /500/,
+    );
+    await page.locator("[data-pos=new-sale]").click();
+    await page.locator(".pos-product").first().click();
+    await page.locator("[data-pos=hold]").click();
+    await page.locator("#pos-dialog [name=label]").fill("Customer coming back");
+    await page
+      .getByRole("button", { name: "Hold sale", exact: true })
+      .last()
+      .click();
+    await page.waitForFunction(
+      () => !document.querySelector("#pos-dialog").open,
+    );
+    await page.getByRole("button", { name: "Held", exact: true }).click();
+    await page.locator("[data-pos=resume]").click();
+    await page.waitForSelector(".pos-basket-line");
+    await page.locator(".pos-product").first().click();
+    await page.locator("[data-pos=pay]").click();
+    await page.locator("[data-pos=method][data-method=split]").click();
+    await page.locator("#pos-cash").fill("600");
+    await page.locator("#pos-card").fill("1400");
+    await page.locator("#pos-received").fill("1000");
+    await page.getByRole("button", { name: /Complete sale/ }).click();
+    assert.match(
+      await page.locator(".pos-form-error").textContent(),
+      /Confirm/,
+    );
+    await page.locator("#pos-confirmed").check();
+    await page.getByRole("button", { name: /Complete sale/ }).click();
+    await page.waitForSelector("#pos-paper-receipt");
+    assert.equal(savedSale.payments.length, 2);
+    assert.match(
+      await page.locator(".pos-completion-change").textContent(),
+      /400/,
+    );
+    await page.locator("[data-pos=new-sale]").click();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.locator(".pos-product").first().click();
+    await page.locator("[data-pos=mobile-cart]").click();
+    assert(
+      await page.locator("[data-pos=pay]").isVisible(),
+      "Phone has a dedicated basket view",
+    );
+    const charge = await page.locator("[data-pos=pay]").boundingBox();
+    assert(
+      charge.y + charge.height <= 845,
+      "Charge stays within the phone viewport",
+    );
+    assert(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+      "Terminal does not overflow horizontally on a phone",
+    );
+    if (process.env.BP_SCREENSHOTS)
+      await page.screenshot({ path: "/tmp/bp-pos-mobile.png", fullPage: true });
+    await page.setViewportSize({ width: 1440, height: 1050 });
+    await page
+      .getByRole("link", { name: "Back to studio", exact: true })
+      .click();
+    await page.waitForSelector(".sidebar nav");
+    await page
+      .getByRole("button", { name: "Business settings", exact: true })
+      .click();
+    const menuPosition = await page
+      .locator(".sidebar nav")
+      .evaluate((el) => el.scrollTop);
+    assert(menuPosition > 100, "A lower menu item is in view");
+    await page
+      .getByRole("button", { name: "Activity & backups", exact: true })
+      .click();
+    const afterPosition = await page
+      .locator(".sidebar nav")
+      .evaluate((el) => el.scrollTop);
+    assert(
+      Math.abs(afterPosition - menuPosition) < 10,
+      "Tab changes preserve the menu scroll position",
+    );
     await page
       .getByRole("button", { name: "Financial overview", exact: true })
       .click();
@@ -695,7 +859,7 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     await page.goto("http://localhost/shop.html");
     await page.waitForSelector(".shop-product");
     assert.match(
-      await page.locator(".shop-product").textContent(),
+      await page.locator(".shop-product").first().textContent(),
       /Everyday shampoo/,
     );
     await page.locator("[data-shop=add]").first().click();
@@ -719,7 +883,7 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     );
     staffMode = true;
     await page.goto("http://localhost/admin/#pos");
-    await page.waitForSelector(".pos-layout");
+    await page.waitForSelector(".pos-sale-layout");
     assert.equal(
       await page
         .getByRole("button", { name: "Financial overview", exact: true })
@@ -737,7 +901,7 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     assert.equal(await page.locator(".finance-line").count(), 0);
     assert.deepEqual(errors, []);
     console.log(
-      "Verified owner/staff permissions, CMS help, booking and secure course flow, event forms, product management, POS/change, finance charts, employee/email setup, storefront, PDF download, and mobile navigation.",
+      "Verified owner/staff permissions, CMS help, booking and secure course flow, event forms, product management, standalone POS/keypad/split tenders/held sales/mobile basket/menu scroll, finance charts, employee/email setup, storefront, PDF download, and mobile navigation.",
     );
   } finally {
     await browser.close();

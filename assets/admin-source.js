@@ -301,8 +301,32 @@ async function fetchAll(table, key, ascending) {
     from += 1000;
   }
 }
+function menuScrollKey() {
+  return "bp-studio-menu-" + (user?.id || "guest");
+}
+function rememberMenu() {
+  const menu = document.querySelector(".sidebar nav");
+  if (menu) sessionStorage.setItem(menuScrollKey(), String(menu.scrollTop));
+}
 function shell() {
+  if (active === "pos") {
+    rememberMenu();
+    location.assign("/admin/pos.html");
+    return;
+  }
   const title = sections.find((x) => x[0] === active)?.[1] || "Overview";
+  if (app.querySelector(".layout")) {
+    document
+      .querySelectorAll(".nav-button[data-nav]")
+      .forEach((button) =>
+        button.classList.toggle("active", button.dataset.nav === active),
+      );
+    const breadcrumb = document.querySelector(".breadcrumb b");
+    if (breadcrumb) breadcrumb.textContent = "/ " + title;
+    document.querySelector(".sidebar")?.classList.remove("open");
+    render();
+    return;
+  }
   app.innerHTML = `<div class="layout"><aside class="sidebar"><a class="brand" href="#dashboard"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small>The owner studio</small></div></a><nav>${sections
     .filter(([id]) => studio.allowed(id))
     .map(
@@ -312,6 +336,9 @@ function shell() {
     .join(
       "",
     )}</nav><div class="sidebar-bottom"><div class="profile"><span class="avatar">P</span><div><strong>${esc(studio.context.staff?.name || "Studio owner")}</strong><br><small>${esc(user.email)}</small></div></div><button class="button small" data-action="logout">${icon("logout")} Sign out</button></div></aside><main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="button mobile-toggle" data-action="menu" aria-label="Open navigation">${icon("menu")}</button><span class="breadcrumb">Owner studio <b>/ ${esc(title)}</b></span></div><div class="topbar-actions">${studio.header()}<span class="live-dot">Connected to your website</span><a class="button" href="/" target="_blank" rel="noopener">View website ↗</a></div></header><div class="content" id="content"></div></main></div>`;
+  const menu = document.querySelector(".sidebar nav");
+  menu.scrollTop = Number(sessionStorage.getItem(menuScrollKey()) || 0);
+  menu.addEventListener("scroll", rememberMenu, { passive: true });
   render();
 }
 function dashboard() {
@@ -1207,6 +1234,10 @@ async function start() {
       return;
     }
     if (!studio.allowed(active)) active = context.can_pos ? "pos" : "desk";
+    if (active === "pos") {
+      location.replace("/admin/pos.html");
+      return;
+    }
     await load();
     shell();
     studio.live();

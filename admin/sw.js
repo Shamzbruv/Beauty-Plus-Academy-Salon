@@ -1,8 +1,11 @@
-const RELEASE = "bccf97d37e18";
+const RELEASE = "6f13c2257746";
 const CACHE = "beauty-plus-admin-" + RELEASE;
 const SHELL = [
   "/admin/",
   "/admin/index.html",
+  "/admin/pos.html",
+  "/assets/pos.css?v=" + RELEASE,
+  "/assets/pos.js?v=" + RELEASE,
   "/assets/admin.css?v=" + RELEASE,
   "/assets/admin.js?v=" + RELEASE,
   "/admin/icons/icon-192.png",
