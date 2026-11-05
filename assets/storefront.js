@@ -237,6 +237,29 @@ export async function initStore(args) {
     if (!n.querySelector('[href="shop.html"]'))
       n.insertAdjacentHTML("beforeend", '<a href="shop.html">Shop</a>');
   });
+  if ($("#home-shop")) {
+    if (shop.shop_title) $("#home-shop-title").textContent = shop.shop_title;
+    if (shop.shop_intro) $("#home-shop-intro").textContent = shop.shop_intro;
+    checked(
+      db
+        .from("bp_products")
+        .select("id,name,category,price,tax_rate,image")
+        .eq("status", "published")
+        .order("sort_order")
+        .limit(3),
+    )
+      .then((items) => {
+        $("#home-shop-products").innerHTML = items.length
+          ? items
+              .map(
+                (p) =>
+                  `<a class="home-shop-product" href="shop.html">${img(p)}<div><small>${esc(p.category)}</small><h3>${esc(p.name)}</h3><strong>${money(p.price)}${Number(p.tax_rate) > 0 ? " + tax" : ""}</strong><span>View in the shop →</span></div></a>`,
+              )
+              .join("")
+          : '<p class="home-store-note">The collection is being prepared. Published products will appear here as the salon adds them. <a href="shop.html">Explore the store →</a></p>';
+      })
+      .catch(() => {});
+  }
   if ($("#shop-root")) {
     [products, deliveries] = await Promise.all([
       checked(

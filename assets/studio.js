@@ -1570,8 +1570,53 @@ function live() {
     .subscribe();
   if ("serviceWorker" in navigator)
     navigator.serviceWorker
-      .register("/admin/sw.js", { scope: "/admin/" })
+      .register("/admin/sw.js", { scope: "/admin/", updateViaCache: "none" })
       .catch(() => {});
+}
+function overview() {
+  if (!context.is_admin) return "";
+  const published = state.products.filter(
+    (p) => p.status === "published",
+  ).length;
+  const cards = [
+    [
+      "desk",
+      "Bookings & invoices",
+      "Book a customer, manage appointments, and open their linked invoice.",
+      "Open booking desk",
+    ],
+    [
+      "team",
+      "Your employees",
+      "Create logins, choose permissions, reset passwords, and manage your team.",
+      "Manage employees",
+    ],
+    [
+      "finance",
+      "Financial reports",
+      "See sales, booking and course payments, refunds, and financial charts.",
+      "View financial reports",
+    ],
+    [
+      "emails",
+      "Emails & branding",
+      "Edit customer emails and invoice branding, connect delivery, and review the sending log.",
+      "Manage customer emails",
+    ],
+    [
+      "course",
+      "Academy & events",
+      "Manage courses, student requests, events, and editable signup forms.",
+      "Manage courses",
+    ],
+    [
+      "gallery",
+      "Gallery & stories",
+      "Share images of your work and the story behind each result.",
+      "Manage your gallery",
+    ],
+  ];
+  return `<section class="workspace-hub" aria-label="Store and business controls"><div class="workspace-hub-header"><div><span class="eyebrow">YOUR CONNECTED WORKSPACE</span><h2>Your salon, academy & online store.</h2><p>Open the area you want to manage. Every page includes a help button.</p></div><a class="button" href="/shop.html" target="_blank" rel="noopener">View your public shop ↗</a></div><div class="workspace-hub-grid"><article class="workspace-hub-card is-store"><span>${published} published products · online store</span><h3>Products, prices & delivery.</h3><p>Your ecommerce controls are here. Add product photos, set prices and stock, manage online orders, and choose your delivery or collection options.</p><div class="studio-actions"><button class="button" data-nav="products">Manage products</button><button class="button" data-nav="deliveries">Delivery options</button><button class="button" data-nav="orders">Store orders</button></div></article><article class="workspace-hub-card"><span>IN-STORE CHECKOUT</span><h3>Point of sale.</h3><p>The same simple checkout for you and your permitted employees, with cash, card, split payments, stock updates, and receipts.</p><div class="studio-actions"><button class="button primary" data-nav="pos">Open POS checkout</button></div></article>${cards.map(([view, title, note, label]) => `<article class="workspace-hub-card"><span>BEAUTY PLUS</span><h3>${title}</h3><p>${note}</p><div class="studio-actions"><button class="button" data-nav="${view}">${label}</button>${view === "emails" ? '<button class="button" data-nav="notifications">Notifications & app</button>' : ""}</div></article>`).join("")}</div>${!published ? '<p class="workspace-store-notice"><strong>Your shop is connected and ready for its first product.</strong> Open Manage products, choose Add product, enter its price and stock, then set its visibility to Published. It will appear on the website automatically.</p>' : ""}</section>`;
 }
 export const studio = {
   views,
@@ -1586,6 +1631,7 @@ export const studio = {
     refreshBase = onRefresh;
   },
   refresh,
+  overview,
   render,
   mount,
   live,

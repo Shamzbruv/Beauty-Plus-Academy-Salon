@@ -104,12 +104,13 @@ function nav() {
     if (!el.querySelector('[href="events.html"]'))
       el.insertAdjacentHTML("beforeend", '<a href="events.html">Events</a>');
   });
-  document
-    .querySelector("footer .footer-bottom")
-    ?.insertAdjacentHTML(
-      "beforeend",
-      '<a href="admin/index.html" class="bp-owner-link">Owner sign in</a>',
-    );
+  if (!document.querySelector("footer .bp-owner-link"))
+    document
+      .querySelector("footer .footer-bottom")
+      ?.insertAdjacentHTML(
+        "beforeend",
+        '<a href="admin/index.html" class="bp-owner-link">Owner sign in</a>',
+      );
 }
 function promoActive(r) {
   const d = r.data,

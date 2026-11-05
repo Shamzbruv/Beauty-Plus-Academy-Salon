@@ -56,7 +56,7 @@ const icon = (name = "grid") => {
 };
 const sections = [
   ["dashboard", "Overview", "grid", "STUDIO"],
-  ["pos", "Point of sale", "card", "COUNTER & STORE"],
+  ["pos", "Point of sale", "card", "ONLINE STORE & POS"],
   ["desk", "Booking desk", "calendar"],
   ["products", "Products & inventory", "tag"],
   ["orders", "Store orders", "card"],
@@ -344,6 +344,7 @@ function dashboard() {
   const payments = config().payments || [];
   return (
     top("A beautiful day to grow.") +
+    studio.overview() +
     `<section class="intro-card"><div><div class="eyebrow">WELCOME TO YOUR SPACE</div><h2>A little less admin.<br>A lot more possibility.</h2><p>From your next special to your next student, you’re in control. Let’s make something beautiful happen.</p></div><div><button class="button gold" data-new="promotion">${icon("plus")} Create a special</button></div></section><div class="stats">${stats.map(([n, l, note, ic]) => `<div class="stat"><div class="stat-top">${l}${icon(ic)}</div><div class="stat-value">${n}</div><small>${note}</small></div>`).join("")}</div><div class="dashboard-columns"><div><section class="panel"><div class="panel-header"><h3>What would you like to do?</h3><span class="eyebrow">QUICK ACTIONS</span></div><div class="quick-grid">${[
       ["service", "spark", "Add a service", "Keep your menu fresh"],
       ["course", "book", "Create a course", "Share your expertise"],
@@ -658,6 +659,7 @@ function settingsPage() {
       ["home", "Homepage hero"],
       ["about", "About the business"],
       ["salon", "Homepage salon introduction"],
+      ["home-shop", "Homepage online store"],
       ["academy", "Homepage academy introduction"],
       ["gallery", "Salon gallery"],
       ["school-gallery", "Academy gallery"],
@@ -1157,7 +1159,7 @@ function passwordDialog() {
   editor.showModal();
 }
 function login() {
-  app.innerHTML = `<main class="login"><section class="login-art"><a class="brand" href="/"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small style="color:#c9b181">THE OWNER STUDIO</small></div></a><div><span class="eyebrow">YOUR BUSINESS. BEAUTIFULLY IN HAND.</span><h1>A space to create.<br>Room to grow.</h1><p>Manage the little details that make your beauty business extraordinary. All in one calm, considered place.</p></div><small style="color:#97afa2;font-size:9px">BEAUTY PLUS ACADEMY & SALON • KINGSTON, JAMAICA</small><span class="big-flower">✳</span></section><section class="login-form"><div class="login-box"><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h2>Beautiful things<br>start here.</h2><p>Sign in to care for your website and your community.</p><form id="login-form"><label class="field">Email address<input type="email" name="email" required autocomplete="username" placeholder="Your studio email"></label><label class="field">Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label><button type="submit" class="button primary">Open my studio ${icon("arrow")}</button><button type="button" class="text-button" data-action="reset-password">Forgot your password?</button></form><div class="notice">First visit? Open the private owner setup link provided with your website, then choose your password. This studio is for approved owner and employee accounts.</div><p style="font-size:10px;text-align:center"><a href="/">← Back to Beauty Plus</a></p></div></section></main>`;
+  app.innerHTML = `<main class="login"><section class="login-art"><a class="brand" href="/"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small style="color:#c9b181">THE OWNER STUDIO</small></div></a><div><span class="eyebrow">YOUR BUSINESS. BEAUTIFULLY IN HAND.</span><h1>A space to create.<br>Room to grow.</h1><p>Manage your website, online store, bookings, courses, employees, and payments from one connected workspace.</p><div class="login-capabilities"><span>Online store</span><span>Point of sale</span><span>Bookings & invoices</span><span>Your team</span><span>Financial reports</span><span>Emails & alerts</span></div></div><small style="color:#97afa2;font-size:9px">BEAUTY PLUS ACADEMY & SALON • KINGSTON, JAMAICA</small><span class="big-flower">✳</span></section><section class="login-form"><div class="login-box"><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h2>Beautiful things<br>start here.</h2><p>Sign in to care for your website and your community.</p><form id="login-form"><label class="field">Email address<input type="email" name="email" required autocomplete="username" placeholder="Your studio email"></label><label class="field">Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label><button type="submit" class="button primary">Open my studio ${icon("arrow")}</button><button type="button" class="text-button" data-action="reset-password">Forgot your password?</button></form><div class="notice">First visit? Open the private owner setup link provided with your website, then choose your password. This studio is for approved owner and employee accounts.</div><p style="font-size:10px;text-align:center"><a href="/">← Back to Beauty Plus</a></p></div></section></main>`;
   $("#login-form").onsubmit = async (e) => {
     e.preventDefault();
     const b = e.target.querySelector("button[type=submit]");
