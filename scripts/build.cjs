@@ -2,7 +2,7 @@ const path = require("node:path");
 const esbuild = require("esbuild");
 const root = path.resolve(__dirname, "..");
 Promise.all(
-  ["site", "admin"].map((name) =>
+  ["site", "admin", "invoice"].map((name) =>
     esbuild.build({
       entryPoints: [path.join(root, "assets", name + "-source.js")],
       outfile: path.join(root, "assets", name + ".js"),

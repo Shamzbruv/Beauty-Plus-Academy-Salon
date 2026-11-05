@@ -1,0 +1,5 @@
+project_id = "beauty-plus-academy-salon"
+
+[functions.bp-business]
+verify_jwt = true
+entrypoint = "./functions/bp-business/index.ts"

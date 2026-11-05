@@ -27,9 +27,64 @@ test("owner studio and public forms work on desktop and mobile with isolated API
       })),
       submissions = [],
       errors = [];
+    let enrollmentDocument = null;
+    let staffMode = false,
+      products = [],
+      orders = [],
+      invoices = [],
+      shifts = [],
+      savedSale = null;
+    const staff = [],
+      deliveries = [
+        {
+          id: "30000000-0000-4000-8000-000000000009",
+          name: "Collect at the salon",
+          type: "pickup",
+          fee: 0,
+          areas: [],
+          active: true,
+          updated_at: new Date().toISOString(),
+        },
+      ];
+    const doc = () => ({
+      invoice: invoices[0] || {
+        id: "50000000-0000-4000-8000-000000000001",
+        number: 1,
+        customer_name: "Test Client",
+        customer_email: "test@example.com",
+        customer_phone: "8765550000",
+        source_kind: "booking",
+        total: 6500,
+        subtotal: 6500,
+        tax: 0,
+        discount: 0,
+        delivery_fee: 0,
+        paid: 0,
+        refunded: 0,
+        due_now: 3100,
+        status: "unpaid",
+        created_at: new Date().toISOString(),
+        items: [
+          {
+            name: "Beauty appointment",
+            quantity: 1,
+            unit_price: 6500,
+            line_total: 6500,
+          },
+        ],
+      },
+      business: rows.find((r) => r.id === "site-settings").data,
+      branding: {
+        invoice_accent: "#183d3c",
+        invoice_footer: "Thank you for choosing Beauty Plus.",
+      },
+      access_token: "60000000-0000-4000-8000-000000000001",
+    });
+
     const context = await browser.newContext({
       viewport: { width: 1440, height: 1100 },
     });
+    await context.routeWebSocket("wss://**", (socket) => socket.close());
     await context.route("**/*", async (route) => {
       const req = route.request(),
         url = new URL(req.url());
@@ -66,7 +121,175 @@ test("owner studio and public forms work on desktop and mobile with isolated API
         if (req.method() === "OPTIONS")
           return route.fulfill({ status: 200, headers: cors });
         let data = [];
-        if (url.pathname.includes("rpc/bp_request_quote")) {
+        if (url.pathname.includes("rpc/bp_access_context"))
+          data = staffMode
+            ? {
+                is_admin: false,
+                can_pos: true,
+                can_book: true,
+                staff: {
+                  id: "70000000-0000-4000-8000-000000000001",
+                  name: "Fixture employee",
+                  active: true,
+                  force_password_change: false,
+                  can_pos: true,
+                  can_book: true,
+                },
+              }
+            : { is_admin: true, can_pos: true, can_book: true, staff: null };
+        else if (url.pathname.includes("rpc/bp_command")) {
+          const { p_action: a, p } = req.postDataJSON();
+          if (a === "product_costs") data = {};
+          else if (a === "slots") data = ["09:00", "10:00", "11:00"];
+          else if (a === "receipt") {
+            const r = submissions.find((s) => s.id === p.id);
+            if (r?.kind === "enrollment")
+              enrollmentDocument = {
+                ...doc(),
+                access_token: "60000000-0000-4000-8000-000000000003",
+                invoice: {
+                  ...doc().invoice,
+                  customer_name: r.name,
+                  customer_email: r.email,
+                  customer_phone: r.phone,
+                  source_kind: "course",
+                  total: 70000,
+                  subtotal: 70000,
+                  paid: 5000,
+                },
+                request: { kind: "enrollment", content_id: r.content_id },
+              };
+            data = {
+              amount: r?.kind === "booking" ? 3100 : r?.amount || 0,
+              status: "new",
+              invoice_id: doc().invoice.id,
+              access_token: ["enrollment", "tuition"].includes(r?.kind)
+                ? "60000000-0000-4000-8000-000000000003"
+                : doc().access_token,
+            };
+          } else if (a === "document" || a === "invoice_for")
+            data =
+              p.token === "60000000-0000-4000-8000-000000000003"
+                ? enrollmentDocument
+                : doc();
+          else if (a === "save_product") {
+            const row = {
+              ...p,
+              id: p.id || "30000000-0000-4000-8000-000000000001",
+              price: Number(p.price),
+              tax_rate: Number(p.tax_rate),
+              stock_qty: Number(p.stock_qty),
+              low_stock: Number(p.low_stock),
+              updated_at: new Date().toISOString(),
+            };
+            products = products.filter((v) => v.id !== row.id).concat(row);
+            data = { id: row.id };
+          } else if (a === "save_delivery") {
+            const row = {
+              ...p,
+              id: p.id || "30000000-0000-4000-8000-000000000002",
+            };
+            deliveries.push(row);
+            data = { id: row.id };
+          } else if (a === "shift_open") {
+            const sh = {
+              id: "40000000-0000-4000-8000-000000000001",
+              operator_id: "00000000-0000-4000-8000-000000000001",
+              opening_cash: Number(p.opening_cash),
+              closed_at: null,
+              opened_at: new Date().toISOString(),
+            };
+            shifts.push(sh);
+            data = sh;
+          } else if (a === "sale") {
+            savedSale = p;
+            const invoice = {
+              ...doc().invoice,
+              id: "50000000-0000-4000-8000-000000000002",
+              number: 2,
+              total: 2000,
+              subtotal: 2000,
+              paid: 2000,
+              status: "paid",
+              source_kind: "store",
+              items: [
+                {
+                  name: "Everyday shampoo",
+                  quantity: 2,
+                  unit_price: 1000,
+                  line_total: 2000,
+                },
+              ],
+            };
+            invoices.unshift(invoice);
+            orders.unshift({
+              id: "80000000-0000-4000-8000-000000000001",
+              number: 1,
+              channel: "pos",
+              customer_name: "Walk-in customer",
+              customer_email: "",
+              total: 2000,
+              status: "completed",
+              created_at: new Date().toISOString(),
+            });
+            products[0].stock_qty = 8;
+            data = { invoice_id: invoice.id, change: 500 };
+          } else if (a === "finance")
+            data = {
+              gross_received: 6500,
+              refunds: 500,
+              net_received: 6000,
+              outstanding: 12000,
+              invoices_issued: 4,
+              daily: [
+                { day: "2026-11-01", amount: 1000 },
+                { day: "2026-11-02", amount: 2000 },
+                { day: "2026-11-03", amount: 3000 },
+              ],
+              categories: [
+                { source_kind: "store", amount: 3000 },
+                { source_kind: "course", amount: 2000 },
+                { source_kind: "booking", amount: 1000 },
+              ],
+              methods: [
+                { method: "cash", amount: 3000 },
+                { method: "bank", amount: 3000 },
+              ],
+              top_products: [
+                {
+                  name: "Everyday shampoo",
+                  units: 2,
+                  sales: 2000,
+                  margin_before_discounts: 1200,
+                },
+              ],
+              staff_sales: [{ name: "Owner", sales: 1, total: 2000 }],
+              transactions: [],
+            };
+          else data = { ok: true };
+        } else if (url.pathname.includes("/functions/v1/bp-business")) {
+          const { action, data: p } = req.postDataJSON();
+          if (action === "email_status") data = { configured: false };
+          else if (action === "email_preview")
+            data = {
+              subject: "Your Beauty Plus booking",
+              html: "<html><body><h1>Your appointment invoice</h1></body></html>",
+            };
+          else if (action === "staff_save") {
+            staff.push({
+              ...p,
+              id: "70000000-0000-4000-8000-000000000001",
+              user_id: "00000000-0000-4000-8000-000000000002",
+            });
+            data = { ok: true };
+          } else data = { ok: true };
+        } else if (url.pathname.includes("bp_products")) data = products;
+        else if (url.pathname.includes("bp_deliveries")) data = deliveries;
+        else if (url.pathname.includes("bp_orders")) data = orders;
+        else if (url.pathname.includes("bp_invoices")) data = invoices;
+        else if (url.pathname.includes("bp_staff")) data = staff;
+        else if (url.pathname.includes("bp_shifts")) data = shifts;
+        else if (url.pathname.includes("rpc/bp_request_quote")) {
           const row = submissions.find((s) => s.id === req.postDataJSON().p_id);
           data = row
             ? [
@@ -276,7 +499,7 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     await page.locator("#bookingEmail").fill("test@example.com");
     await page.locator("#bookingContactMethod").selectOption("Email");
     await page.locator("#bookingDate").fill("2027-03-01");
-    await page.locator("#bookingTime").selectOption("Flexible");
+    await page.locator("#bookingTime").selectOption("10:00");
     await page.locator("#bookingForm [name=bp_payment]").selectOption("bank");
     await page.locator("#bookingForm .bp-consent input").check();
     await page.locator("#bookingSubmitBtn").click();
@@ -310,6 +533,28 @@ test("owner studio and public forms work on desktop and mobile with isolated API
     await page.waitForSelector(".bp-dialog[open]");
     assert.equal(submissions.at(-1).kind, "enrollment");
     assert.equal(submissions.at(-1).data.trn, "000000000");
+    await page.locator(".bp-dialog[open] .bp-close").click();
+    await page.waitForFunction(() =>
+      document
+        .querySelector("#tuition-invoice-help")
+        .textContent.includes("65,000"),
+    );
+    assert.equal(await page.locator("#tFirstName").inputValue(), "Student");
+    assert.equal(await page.locator("#tCourseSelect").inputValue(), "course-1");
+    assert.equal(await page.locator("#tAmount").inputValue(), "65000");
+    await page.locator("[name=tPaymentType][value=custom]").check();
+    await page.locator("#tAmount").fill("10000");
+    await page.locator("#tuitionForm [name=bp_payment]").selectOption("bank");
+    await page.locator("#tuitionForm .bp-consent input").check();
+    await page.locator("#tuitionForm button[type=submit]").click();
+    await page.waitForSelector(".bp-dialog[open]");
+    assert.equal(submissions.at(-1).kind, "tuition");
+    assert.equal(
+      submissions.at(-1).data.enrollment_token,
+      "60000000-0000-4000-8000-000000000003",
+    );
+    assert.equal(submissions.at(-1).amount, 10000);
+
     await page.goto("http://localhost/admin/#students");
     await page.waitForSelector(".table-wrap");
     const [exported] = await Promise.all([
@@ -382,9 +627,117 @@ test("owner studio and public forms work on desktop and mobile with isolated API
       0,
       "Popup dismissed for this session",
     );
+    await page.setViewportSize({ width: 1440, height: 1050 });
+    await page.goto("http://localhost/admin/#products");
+    await page.waitForSelector("[data-studio=product-new]");
+    await page.locator("[data-studio=product-new]").click();
+    await page.locator("#studio-form [name=name]").fill("Everyday shampoo");
+    await page.locator("#studio-form [name=sku]").fill("BP-SHAMPOO-001");
+    await page.locator("#studio-form [name=price]").fill("1000");
+    await page.locator("#studio-form [name=stock_qty]").fill("10");
+    await page.locator("#studio-form [name=status]").selectOption("published");
+    await page
+      .getByRole("button", { name: "Save product", exact: true })
+      .click();
+    await page.waitForFunction(() => !document.querySelector("#editor").open);
+    assert.equal(products[0].name, "Everyday shampoo");
+    await page
+      .getByRole("button", { name: "Point of sale", exact: true })
+      .click();
+    await page.locator("[data-studio=shift-open]").click();
+    await page.locator("#studio-form [name=opening_cash]").fill("500");
+    await page.getByRole("button", { name: "Open till", exact: true }).click();
+    await page.waitForFunction(() => !document.querySelector("#editor").open);
+    await page.locator(".pos-product").first().click();
+    await page.locator(".pos-product").first().click();
+    assert.match(await page.locator(".pos-grand").textContent(), /2,000/);
+    if (process.env.BP_SCREENSHOTS)
+      await page.screenshot({ path: "/tmp/bp-pos.png", fullPage: true });
+    await page.locator("[data-studio=pos-checkout]").click();
+    await page.locator("#studio-form [name=cash_received]").fill("2500");
+    assert.match(await page.locator("#cash-change").textContent(), /500/);
+    await page
+      .getByRole("button", { name: "Confirm sale & receipt", exact: true })
+      .click();
+    await page.waitForSelector("#invoice-preview");
+    assert.equal(savedSale.items[0].qty, 2);
+    assert.equal(savedSale.payments[0].amount, 2000);
+    await page.locator("#editor .dialog-close").click();
+    await page
+      .getByRole("button", { name: "Financial overview", exact: true })
+      .click();
+    await page.waitForSelector(".finance-line");
+    assert.match(await page.locator("#finance-report").textContent(), /6,000/);
+    if (process.env.BP_SCREENSHOTS)
+      await page.screenshot({ path: "/tmp/bp-finance.png", fullPage: true });
+    await page
+      .getByRole("button", { name: "Your employees", exact: true })
+      .click();
+    await page.locator("[data-studio=staff-new]").click();
+    await page.locator("#studio-form [name=name]").fill("Beauty Plus Cashier");
+    await page.locator("#studio-form [name=email]").fill("cashier@example.com");
+    await page
+      .locator("#studio-form [name=password]")
+      .fill("TemporaryFixturePassword123!");
+    await page
+      .getByRole("button", { name: "Save employee account", exact: true })
+      .click();
+    await page.waitForFunction(() => !document.querySelector("#editor").open);
+    assert.equal(staff[0].can_pos, true);
+    await page
+      .getByRole("button", { name: "Emails & branding", exact: true })
+      .click();
+    await page.waitForSelector("#email-status");
+    assert.match(
+      await page.locator("#email-status").textContent(),
+      /setup|Checking/,
+    );
+    await page.goto("http://localhost/shop.html");
+    await page.waitForSelector(".shop-product");
+    assert.match(
+      await page.locator(".shop-product").textContent(),
+      /Everyday shampoo/,
+    );
+    await page.locator("[data-shop=add]").first().click();
+    await page.locator("[data-shop=cart]").click();
+    assert.match(await page.locator(".shop-cart-total").textContent(), /1,000/);
+    await page.locator(".shop-dialog .bp-close").click();
+    await page.goto(
+      "http://localhost/invoice.html?token=" + doc().access_token,
+    );
+    await page.waitForSelector(".invoice-sheet");
+    const [pdf] = await Promise.all([
+      page.waitForEvent("download"),
+      page.locator("#invoice-download").click(),
+    ]);
+    assert.equal(
+      fs
+        .readFileSync(await pdf.path())
+        .subarray(0, 4)
+        .toString(),
+      "%PDF",
+    );
+    staffMode = true;
+    await page.goto("http://localhost/admin/#pos");
+    await page.waitForSelector(".pos-layout");
+    assert.equal(
+      await page
+        .getByRole("button", { name: "Financial overview", exact: true })
+        .count(),
+      0,
+    );
+    assert.equal(
+      await page
+        .getByRole("button", { name: "Website pages", exact: true })
+        .count(),
+      0,
+    );
+    await page.evaluate(() => (location.hash = "finance"));
+    await page.waitForTimeout(150);
+    assert.equal(await page.locator(".finance-line").count(), 0);
     assert.deepEqual(errors, []);
     console.log(
-      "Verified dashboard, 14 sections and help, price edit, event form builder, payment settings, public booking, tuition totals, signup answers, homepage catalog, mobile menu.",
+      "Verified owner/staff permissions, CMS help, booking and secure course flow, event forms, product management, POS/change, finance charts, employee/email setup, storefront, PDF download, and mobile navigation.",
     );
   } finally {
     await browser.close();

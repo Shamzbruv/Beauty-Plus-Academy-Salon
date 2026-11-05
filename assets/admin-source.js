@@ -1,3 +1,4 @@
+import { studio, command as studioCommand } from "./studio.js";
 import {
   db,
   esc,
@@ -55,7 +56,19 @@ const icon = (name = "grid") => {
 };
 const sections = [
   ["dashboard", "Overview", "grid", "STUDIO"],
-  ["pages", "Website pages", "globe"],
+  ["pos", "Point of sale", "card", "COUNTER & STORE"],
+  ["desk", "Booking desk", "calendar"],
+  ["products", "Products & inventory", "tag"],
+  ["orders", "Store orders", "card"],
+  ["deliveries", "Delivery & collection", "globe"],
+  ["invoices", "Invoices & payments", "book", "MONEY & REPORTS"],
+  ["finance", "Financial overview", "grid"],
+  ["team", "Your employees", "users", "TEAM & MESSAGES"],
+  ["emails", "Emails & branding", "mail"],
+  ["shop-settings", "Store & booking settings", "settings"],
+  ["notifications", "Your notifications", "clock"],
+  ["account", "My account", "users"],
+  ["pages", "Website pages", "globe", "WEBSITE & ACADEMY"],
   ["service", "Salon services", "spark"],
   ["course", "Training & courses", "book"],
   ["promotion", "Specials & promotions", "tag"],
@@ -136,7 +149,7 @@ const helps = {
   students: [
     "Enrollment and tuition requests show the selected course, learning approach, schedule, kit choice, and customer notes.",
     "The amount on an enrollment request is the registration fee. Tuition records show the submitted payment amount; verify it with your provider.",
-    "Use private notes and statuses to organise follow-up. This is a request and payment register, not a student balance ledger.",
+    "Use private notes and statuses to organise follow-up. Open a linked invoice to see the full course charge, verified payments, and remaining balance.",
   ],
   testimonials: [
     "Publish testimonials only when you have permission. Add the person’s name, quote, and relationship to your business.",
@@ -269,6 +282,7 @@ async function load() {
     fetchAll("bp_content", "sort_order", true),
     fetchAll("bp_submissions", "created_at", false),
   ]);
+  if (studio.ready) await studio.refresh();
 }
 async function fetchAll(table, key, ascending) {
   let out = [],
@@ -289,7 +303,15 @@ async function fetchAll(table, key, ascending) {
 }
 function shell() {
   const title = sections.find((x) => x[0] === active)?.[1] || "Overview";
-  app.innerHTML = `<div class="layout"><aside class="sidebar"><a class="brand" href="#dashboard"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small>The owner studio</small></div></a><nav>${sections.map(([id, name, ic, group]) => `${group ? `<div class="nav-group">${group}</div>` : ""}<button class="nav-button ${active === id ? "active" : ""}" data-nav="${id}">${icon(ic)}${name}</button>`).join("")}</nav><div class="sidebar-bottom"><div class="profile"><span class="avatar">P</span><div><strong>Studio owner</strong><br><small>${esc(user.email)}</small></div></div><button class="button small" data-action="logout">${icon("logout")} Sign out</button></div></aside><main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="button mobile-toggle" data-action="menu" aria-label="Open navigation">${icon("menu")}</button><span class="breadcrumb">Owner studio <b>/ ${esc(title)}</b></span></div><div class="topbar-actions"><span class="live-dot">Connected to your website</span><a class="button" href="/" target="_blank" rel="noopener">View website ↗</a></div></header><div class="content" id="content"></div></main></div>`;
+  app.innerHTML = `<div class="layout"><aside class="sidebar"><a class="brand" href="#dashboard"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small>The owner studio</small></div></a><nav>${sections
+    .filter(([id]) => studio.allowed(id))
+    .map(
+      ([id, name, ic, group]) =>
+        `${group ? `<div class="nav-group">${group}</div>` : ""}<button class="nav-button ${active === id ? "active" : ""}" data-nav="${id}">${icon(ic)}${name}</button>`,
+    )
+    .join(
+      "",
+    )}</nav><div class="sidebar-bottom"><div class="profile"><span class="avatar">P</span><div><strong>${esc(studio.context.staff?.name || "Studio owner")}</strong><br><small>${esc(user.email)}</small></div></div><button class="button small" data-action="logout">${icon("logout")} Sign out</button></div></aside><main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="button mobile-toggle" data-action="menu" aria-label="Open navigation">${icon("menu")}</button><span class="breadcrumb">Owner studio <b>/ ${esc(title)}</b></span></div><div class="topbar-actions">${studio.header()}<span class="live-dot">Connected to your website</span><a class="button" href="/" target="_blank" rel="noopener">View website ↗</a></div></header><div class="content" id="content"></div></main></div>`;
   render();
 }
 function dashboard() {
@@ -669,8 +691,9 @@ function historyPage() {
 function render() {
   const target = $("#content");
   if (!target) return;
-  target.innerHTML =
-    active === "dashboard"
+  target.innerHTML = studio.views.includes(active)
+    ? studio.render(active)
+    : active === "dashboard"
       ? dashboard()
       : active === "pages"
         ? pages()
@@ -691,6 +714,7 @@ function render() {
                       listContent(collection)
                     : dashboard();
   if (active === "history") loadHistory();
+  studio.mount(active);
   $("#search")?.addEventListener("input", (e) => {
     search = e.target.value;
     const pos = e.target.selectionStart;
@@ -964,7 +988,7 @@ async function savePayments() {
 function requestDetail(id) {
   const s = submissions.find((r) => r.id === id);
   const d = s.data;
-  editor.innerHTML = `<form id="request-form"><div class="dialog-header"><div><span class="eyebrow">${esc(s.kind)} RECORD</span><h2>${esc(s.name)}</h2><p>${esc(d.item || s.kind)}</p></div><button class="dialog-close" type="button" data-close>×</button></div><div class="dialog-body"><div class="notice">Check the transaction in your bank / provider dashboard before marking Paid. A customer reference is not payment confirmation.</div><div class="detail-grid">${[
+  editor.innerHTML = `<form id="request-form"><div class="dialog-header"><div><span class="eyebrow">${esc(s.kind)} RECORD</span><h2>${esc(s.name)}</h2><p>${esc(d.item || s.kind)}</p></div><button class="dialog-close" type="button" data-close>×</button></div><div class="dialog-body"><button type="button" class="button" data-studio="request-invoice" data-id="${s.id}">Open linked invoice</button><div class="notice">Check the transaction in your bank / provider dashboard before marking Paid. A customer reference is not payment confirmation.</div><div class="detail-grid">${[
     ["Email", s.email],
     ["Phone", s.phone],
     ["Reference", s.id],
@@ -992,22 +1016,12 @@ function requestDetail(id) {
     e.preventDefault();
     const f = e.target;
     try {
-      const updated = await checked(
-        db
-          .from("bp_submissions")
-          .update({
-            status: f.elements.status.value,
-            payment_status: f.elements.payment_status.value,
-            admin_notes: f.elements.admin_notes.value,
-          })
-          .eq("id", s.id)
-          .eq("updated_at", s.updated_at)
-          .select(),
-      );
-      if (!updated.length)
-        throw new Error(
-          "This record changed in another session. Refresh and try again.",
-        );
+      await studioCommand("request_update", {
+        id: s.id,
+        status: f.elements.status.value,
+        payment_status: f.elements.payment_status.value,
+        notes: f.elements.admin_notes.value,
+      });
       editor.close();
       await load();
       toast("Record updated.");
@@ -1143,7 +1157,7 @@ function passwordDialog() {
   editor.showModal();
 }
 function login() {
-  app.innerHTML = `<main class="login"><section class="login-art"><a class="brand" href="/"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small style="color:#c9b181">THE OWNER STUDIO</small></div></a><div><span class="eyebrow">YOUR BUSINESS. BEAUTIFULLY IN HAND.</span><h1>A space to create.<br>Room to grow.</h1><p>Manage the little details that make your beauty business extraordinary. All in one calm, considered place.</p></div><small style="color:#97afa2;font-size:9px">BEAUTY PLUS ACADEMY & SALON • KINGSTON, JAMAICA</small><span class="big-flower">✳</span></section><section class="login-form"><div class="login-box"><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h2>Beautiful things<br>start here.</h2><p>Sign in to care for your website and your community.</p><form id="login-form"><label class="field">Email address<input type="email" name="email" required autocomplete="username" placeholder="Your owner email"></label><label class="field">Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label><button type="submit" class="button primary">Open my studio ${icon("arrow")}</button><button type="button" class="text-button" data-action="reset-password">Forgot your password?</button></form><div class="notice">First visit? Open the private owner setup link provided with your website, then choose your password. This studio is for approved owner accounts.</div><p style="font-size:10px;text-align:center"><a href="/">← Back to Beauty Plus</a></p></div></section></main>`;
+  app.innerHTML = `<main class="login"><section class="login-art"><a class="brand" href="/"><span class="brand-mark">b<span>+</span></span><div><strong>Beauty Plus</strong><small style="color:#c9b181">THE OWNER STUDIO</small></div></a><div><span class="eyebrow">YOUR BUSINESS. BEAUTIFULLY IN HAND.</span><h1>A space to create.<br>Room to grow.</h1><p>Manage the little details that make your beauty business extraordinary. All in one calm, considered place.</p></div><small style="color:#97afa2;font-size:9px">BEAUTY PLUS ACADEMY & SALON • KINGSTON, JAMAICA</small><span class="big-flower">✳</span></section><section class="login-form"><div class="login-box"><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h2>Beautiful things<br>start here.</h2><p>Sign in to care for your website and your community.</p><form id="login-form"><label class="field">Email address<input type="email" name="email" required autocomplete="username" placeholder="Your studio email"></label><label class="field">Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter your password"></label><button type="submit" class="button primary">Open my studio ${icon("arrow")}</button><button type="button" class="text-button" data-action="reset-password">Forgot your password?</button></form><div class="notice">First visit? Open the private owner setup link provided with your website, then choose your password. This studio is for approved owner and employee accounts.</div><p style="font-size:10px;text-align:center"><a href="/">← Back to Beauty Plus</a></p></div></section></main>`;
   $("#login-form").onsubmit = async (e) => {
     e.preventDefault();
     const b = e.target.querySelector("button[type=submit]");
@@ -1171,13 +1185,29 @@ async function start() {
       login();
       return;
     }
-    if (!(await checked(db.rpc("bp_is_admin")))) {
+    const context = await checked(db.rpc("bp_access_context"));
+    if (!context.is_admin && !context.staff?.active) {
       await db.auth.signOut();
       login();
-      throw new Error("This email does not have owner access to Beauty Plus.");
+      throw new Error("This account does not have active studio access.");
     }
+    studio.init(
+      context,
+      user,
+      () => ({ content, submissions }),
+      async () => {
+        await load();
+        render();
+      },
+    );
+    if (context.staff?.force_password_change) {
+      studio.changePassword(true);
+      return;
+    }
+    if (!studio.allowed(active)) active = context.can_pos ? "pos" : "desk";
     await load();
     shell();
+    studio.live();
     if (accountRecovery) passwordDialog();
   } catch (e) {
     toast(e.message, true);
@@ -1186,6 +1216,7 @@ async function start() {
 }
 async function handleAction(a) {
   if (a === "logout") {
+    await studio.logout();
     await db.auth.signOut();
     user = null;
     login();
@@ -1289,6 +1320,7 @@ document.addEventListener("click", async (e) => {
       return;
     }
     if (b.dataset.nav) {
+      if (!studio.allowed(b.dataset.nav)) return;
       active = b.dataset.nav;
       search = "";
       viewFilter = "active";
@@ -1436,7 +1468,11 @@ document.addEventListener("change", async (e) => {
 window.addEventListener("hashchange", () => {
   if (user) {
     const next = location.hash.slice(1);
-    if (sections.some((s) => s[0] === next) && active !== next) {
+    if (
+      sections.some((s) => s[0] === next) &&
+      studio.allowed(next) &&
+      active !== next
+    ) {
       active = next;
       shell();
     }

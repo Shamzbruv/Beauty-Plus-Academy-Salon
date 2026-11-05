@@ -1,3 +1,4 @@
+import { initStore } from "./storefront.js";
 import { db, esc, money, date, safeURL, checked, toast } from "./core.js";
 const $ = (s) => document.querySelector(s);
 let rows = [],
@@ -352,6 +353,7 @@ function courseCatalog() {
     update();
   };
   $("#kitOption").onchange = update;
+  let tuitionDocument = null;
   function tuition() {
     const c = courses.find((c) => c.id === $("#tCourseSelect").value);
     $("#tKitOptionContainer").style.display = c?.data.kit_price
@@ -360,9 +362,14 @@ function courseCatalog() {
     $("#tKitOptionText").textContent =
       "Include training kit — " + money(c?.data.kit_price);
     const max =
-      c?.data.kit_price && $("#tKitOption").checked
-        ? c.data.kit_price
-        : c?.data.price || 0;
+      tuitionDocument?.request?.content_id === c?.id
+        ? Math.max(
+            0,
+            tuitionDocument.invoice.total - tuitionDocument.invoice.paid,
+          )
+        : c?.data.kit_price && $("#tKitOption").checked
+          ? c.data.kit_price
+          : c?.data.price || 0;
     $("#tAmount").max = max;
     $("#tAmount").readOnly =
       $('[name="tPaymentType"]:checked').value === "full";
@@ -376,6 +383,46 @@ function courseCatalog() {
   document
     .querySelectorAll('[name="tPaymentType"]')
     .forEach((e) => (e.onchange = tuition));
+  const invoiceInput = $("#tEnrollmentInvoice");
+  async function loadEnrollmentInvoice() {
+    try {
+      const value = invoiceInput.value.trim();
+      const token = value.match(
+        /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i,
+      )?.[0];
+      if (!token)
+        throw new Error("Paste your full private invoice link or code.");
+      const doc = await checked(
+        db.rpc("bp_command", { p_action: "document", p: { token } }),
+      );
+      if (!doc || doc.request?.kind !== "enrollment")
+        throw new Error(
+          "Use the invoice from your original course registration.",
+        );
+      tuitionDocument = doc;
+      const names = doc.invoice.customer_name.split(" ");
+      $("#tFirstName").value = names.shift() || "";
+      $("#tLastName").value = names.join(" ") || "";
+      $("#tEmail").value = doc.invoice.customer_email;
+      $("#tPhone").value = doc.invoice.customer_phone;
+      $("#tCourseSelect").value = doc.request.content_id;
+      tuition();
+      $("#tKitOptionContainer").style.display = "none";
+      $("#tuition-invoice-help").textContent =
+        "Invoice connected · remaining balance " +
+        money(doc.invoice.total - doc.invoice.paid) +
+        ". Your original course and kit selection apply.";
+    } catch (err) {
+      tuitionDocument = null;
+      $("#tuition-invoice-help").textContent = err.message;
+    }
+  }
+  invoiceInput.onchange = loadEnrollmentInvoice;
+  const supplied = new URLSearchParams(location.search).get("invoice");
+  if (supplied) {
+    invoiceInput.value = supplied;
+    loadEnrollmentInvoice();
+  }
   render();
   update();
 }
@@ -403,13 +450,28 @@ async function submit(form, record) {
       throw new Error("Please leave the website field empty.");
     const id = crypto.randomUUID();
     record.id = id;
+    record.client_token = crypto.randomUUID();
     record.payment_method = String(fd.get("bp_payment") || "");
     record.data = {
       ...record.data,
       payment_reference: fd.get("bp_reference") || "",
     };
     await checked(db.from("bp_submissions").insert(record));
-    const quote = await checked(db.rpc("bp_request_quote", { p_id: id }));
+    const receipt = await checked(
+      db.rpc("bp_command", {
+        p_action: "receipt",
+        p: { id, token: record.client_token },
+      }),
+    );
+    if (record.kind === "enrollment" && receipt?.access_token) {
+      const field = $("#tEnrollmentInvoice");
+      if (field) {
+        field.value =
+          location.origin + "/invoice.html?token=" + receipt.access_token;
+        field.dispatchEvent(new Event("change"));
+      }
+    }
+    const quote = receipt ? [receipt] : [];
     if (!quote?.length)
       throw new Error(
         "Your request is saved. Please contact the salon with reference " +
@@ -435,6 +497,10 @@ async function submit(form, record) {
     d.querySelector("button").onclick = () => d.close();
     d.addEventListener("close", () => d.remove());
     d.showModal();
+    d.querySelector("#bp-payment-action").insertAdjacentHTML(
+      "beforebegin",
+      `<a class="bp-button" href="/invoice.html?token=${receipt.access_token}" target="_blank" rel="noopener">View & download your invoice</a>`,
+    );
     const action = d.querySelector("#bp-payment-action");
     if (url && safeURL(url)) {
       action.innerHTML = `<a class="bp-button" href="${esc(safeURL(url))}" target="_blank" rel="noopener">Open secure ${esc(p.label)} payment page ↗</a><p>Check the amount and use your reference. The salon verifies payment.</p>`;
@@ -555,6 +621,12 @@ function wireForms() {
             kind === "tuition" ? Number(d.tAmount) : settings.registration_fee,
           data: {
             item: c.title,
+            enrollment_token:
+              kind === "tuition"
+                ? String(d.tEnrollmentInvoice || "").match(
+                    /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i,
+                  )?.[0] || ""
+                : "",
             schedule: c.data.schedule,
             kit: kind === "tuition" ? !!d.tKitOption : !!d.kitOption,
             approach: d.approach || "Scheduled class",
@@ -702,6 +774,10 @@ async function boot() {
     courseCatalog();
     gallery();
     wireForms();
+    await initStore({
+      settings,
+      shop: rows.find((r) => r.id === "shop-settings")?.data || {},
+    });
     events();
     extras();
     applyPages();
